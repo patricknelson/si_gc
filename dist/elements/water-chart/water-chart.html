@@ -1,0 +1,139 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
+<polymer-element name="water-chart"  attributes="num,height">
+  <template>
+
+  	<style>
+	 :host {
+        display: block;
+        /*position: relative;
+        top: -25px;*/
+   }
+      .blue{color:#0064D2}
+    .green{color:#86B817;}
+    .grey{color:#796e65;}
+    .lt-blue{color:#66A2E4;}
+      .top_label, .bottom_label{position:relative;z-index: 99;}
+      .top_label{left: 92px;  top: 80px;}
+      .bottom_label{left:92px; top:56px;color:#fff;}
+      .top_label>p, .bottom_label>p{position:absolute;font-size:18px;}
+
+      .top_label>p.blue{left:-4px;}
+      .bottom_label > p:first-child{left:1%;}
+
+      .top_label>p.green{left:16.8%;top:85px;}
+      .bottom_label > p:nth-child(2) {left:18.6%;}
+
+      .top_label>p.lt-blue{left:33.6%;top:206px;}
+      .bottom_label > p:last-child{left: 35.2%;}
+    </style>
+
+     <google-chart
+                  type="bar"
+                  id="water{{num}}"
+                  options='{{opts}}'
+                  data='scripts/data/water{{num}}.json'>
+                </google-chart>
+  </template>
+  <script>
+    (function(){
+      Polymer({
+          ready: function() {
+            var self = this;
+            this.id = 'water' + this.num;
+            console.log(this.height);
+            this.opts = {"title": "", "width": 1200, "height": this.height , "bar": {"groupWidth": "95%"}, "legend": {"position": "none" }, "hAxis": { "textPosition": "none","gridlines": {"color": "transparent"} }, "vAxis": { "textPosition": "none","gridlines": {"color": "transparent"}}, "annotations": {"alwaysOutside": true,"textStyle": {"fontSize": 18}}, "animation":{"duration": 3000,"easing": "in"}, "tooltip": { "trigger": "none" }, "enableInteractivity" : false};
+            console.log(this.opts);
+            this.barLabels = {
+              1:{
+                0:['Salt Lake City, UT',68],
+                1:['Phoenix, AZ',120],
+              },
+              2:{
+                  0:['San Jose North',86],
+                  1:['San Jose South',138],
+                  2:['Omaha',188]
+              }
+            }
+           $(document).on('google-chart-render',function(e){
+            var id = e.target.id;
+            var height = (self.num == 2) ? 260 : 175;
+            if(id == self.id){
+              setTimeout(function(){
+                console.log(height);
+                //self.findChart().options.height = height;
+                //self.fixHeight();
+                self.positionHorizontalLabels();
+                self.createBarLabel();
+              }, 1000);
+            }else{
+              return false;
+            }
+          });
+          },
+          positionHorizontalLabels:function(){
+            var lbls = $(this.getHorizontalLabels());
+            lbls.each(function(i,el){
+              if(i == 0 || i== 1) $(el).attr('x','380'); //FORCE FURTHER RIGHT ON FIRST ONE
+                $(el).attr('transform','translate(15,0)');
+            });
+          },
+          getHorizontalLabels:function(){
+            var gs = this.getHorizontal();//chrt.getChartSvg().querySelectorAll('g:first-of-type');
+            var lbls = $(gs[0]).find('>g:last-child  text');
+            return lbls;
+          },
+          createBarLabel:function(){
+            var bars = this.getHorizontalBars(),
+                lbls = this.barLabels[this.num],
+                self = this,i;
+            bars.forEach(function(el,i){
+              if(i == 0) $(el).attr('width','250'); //FORCE LONGER ON FIRST ONE
+              var txt= self.buildLabelSvg(lbls[i][0],lbls[i][1]);
+              $(el).after(txt);
+            });
+          },
+          getHorizontalBars:function(){
+            var gs = this.getHorizontal();
+            var bars = $(gs[0]).find('>g:first-of-type>g rect');
+            var bars1 = [$(bars[0]),$(bars[1])] ;
+            if (this.num == 2) {
+              bars1[2] = $(bars[2]);
+            }
+            return bars1;
+          },
+          getHorizontal:function(){
+            var chrt = this.findChart();
+            return  chrt.getChartSvg().querySelectorAll('g:first-of-type');
+          },
+          buildLabelSvg:function (txt,posy,posx)
+          {
+             posx = (typeof posx === 'undefined') ? "190" : posx;//164
+             var text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+             var attrs = ["y","x","text-anchor","fill","font-size"];
+             var avals = [posy,posx,"start","#fff","17px"];
+             this.setAllAttributes(text,attrs,avals);
+             var node = document.createTextNode(txt);
+             text.appendChild(node);
+             return text;
+          },
+          redraw :function (chrt){
+            chrt.drawChart();
+          },
+          updateChart:function(chrt,rows){
+            chrt.rows = rows;
+          },
+          findChart:function(id){
+            //return document.getElementById(id)
+            var id = (typeof id === 'undefined') ? this.id : 'energy_trends' + id;
+            return this.$[id];
+          },
+          setAllAttributes:function(el,attrs,avals){
+            attrs.forEach(function(attr,i){
+              el.setAttribute(attr,avals[i]);
+            });
+          }
+      });
+    })();
+  </script>
+</polymer-element>

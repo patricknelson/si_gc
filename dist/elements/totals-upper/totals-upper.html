@@ -1,0 +1,103 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
+<polymer-element name="totals-upper" attributes="url">
+  <template>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  	<style>
+	 :host {
+        display: block;
+      }
+    .blue{color:#0064D2}
+	  .green{color:#86B817;}
+	  .grey{color:#796e65;}
+	  .lt-blue{color:#66A2E4;}
+    div.half {height:86.05%;}/**width: 46.9% !important;padding-left: 10px;width:47%;**/
+    div.third {float:left;   width: 33% !important;  left: 1.75%;height: 100%;  position: relative;
+  z-index: 1;  background: white;}
+   .lower > .inner {padding-top:14px;}
+div.upper {
+  border-bottom: 1px solid #ccc;
+}
+    .upper > .half:first-child > .half:last-child{border-right: 1px solid #ccc;}
+    div.upper, div.lower {height:240px;}
+    div.slide-wrap div.upper{border-bottom:1px solid #ccc;}
+    div.upper > .half:first-child > .col-lg-6 {  border-right: 1px solid #ccc;  height: 200px;}
+    .figure:nth-of-type(even){margin-left: 11px;}
+    .figure{margin:4px auto 0 10px;}
+    .figure.large{  font-size: 37px;}
+    .figure.grey.large{font-size:20px;}
+    .figure.medium{font-size:24px;}
+    .chart-title{text-align:left; position:relative; left:20px;font-size:18px;z-index:9;  margin-bottom: 15px;}
+    .cf:before, .cf:after {
+      content: " ";
+      display: table;
+    }
+    .cf:after {
+      clear:both;
+    }
+	  h4{color: #796e65;font-size:18px;}
+	</style>
+  <core-ajax auto url="{{url}}" handleAs="json" response="{{response}}"></core-ajax> 
+    <div class="upper row">
+      <div class="half col-sm-12 col-md-5 col-lg-6">
+        <h4 class="col-lg-offset-1">Energy Use</h4>
+          <div class="col-lg-5 col-lg-offset-1">
+          <p class="blue figure large">{{energy[0].val}}</p>
+          <p class="grey figure large">{{energy[0].unit}}</p>
+          <div class="clearfix"></div>
+          </div>
+
+          <div class="col-sm-6 col-lg-6">
+            <p class="blue figure medium">{{energy[1].val}}</p>
+            <p class="figure grey">{{energy[1].unit}}</p>
+            <div class="clearfix"></div>
+            <br>
+            <p class="blue figure medium">{{energy[2].val}}</p>
+            <p class="figure grey">{{energy[2].unit}}</p>
+          <div class="clearfix"></div>
+          </div>
+      </div>
+      <div class="col-sm-12 col-md-5 col-lg-6">
+        <h4>Carbon</h4>
+        <div class="col-lg-5">
+        <p class="blue figure large">{{carbon[0].val}}</p>
+        <p class="grey figure large">{{carbon[0].unit}}CO<sub>2</sub>e</p>
+        <div class="clearfix"></div>
+        </div>
+        <div class="col-lg-4">
+          <p class="blue figure medium">{{carbon[1].val}}</p>
+          <p class="figure grey">CO<sub>2</sub>{{carbon[1].unit}}</p>
+          <br>
+          <p class="blue figure medium">{{carbon[2].val}}</p>
+          <p class="figure grey">CO<sub>2</sub>{{carbon[2].unit}}</p>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+    </template>
+      <script>
+    (function(){
+      Polymer({
+          ready: function() {
+            if(!this.url){
+              this.energy = [
+                 {"val":"695,194","unit":"MW h"},
+                 {"val":"21.86","unit":"MW h/Employee"},
+                 {"val":"0.00004332","unit":"MW h/Revenue"}
+              ];
+              this.carbon = [
+                {"val":"300,193","unit":"Tonnes of "},
+                {"val":"9.44","unit":"/Emplyee"},
+                {"val":".000019","unit":"/$ Revenue"}
+              ]
+            }
+          },
+          responseChanged: function(oldValue) {
+            this.energy = this.response.upper.energy_use;
+            this.carbon = this.response.upper.carbon;
+          },     
+      });
+    })();
+  </script>
+</polymer-element>

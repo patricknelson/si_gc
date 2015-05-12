@@ -1,0 +1,38 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<polymer-element name="datacenter-locations" noscript>
+  <template>
+  	<style>
+	 :host {
+        display: block;
+      }
+    .blue{color:#0064D2}
+	  .green{color:#86B817;}
+	  .grey{color:#796e65;}
+	  .lt-blue{color:#66A2E4;}
+    div.left-full{width:15%;float:left;}
+    .chart-title{text-align:left; position:relative; left:20px;font-size:18px;z-index:9;  margin-bottom: 15px;}
+	  ul.locations-list{margin-top: 45px;list-style-type: none;position: relative;left: 10px;}
+    ul.locations-list li{ padding-bottom:16px;font-size:20px;position:relative;}
+    ul.locations-list li:before{
+      content:"";
+      left: -28px;
+      top: -5px;
+      width: 20px;
+      height: 24px;
+      position: absolute;
+      z-index: 99;
+    }
+    ul.locations-list li.blue:before{background:url(../../img/blue_icon.png) no-repeat;}
+    ul.locations-list li.green:before{background:url(../../img/green_icon.png) no-repeat;}
+    ul.locations-list li.lt-blue:before{background:url(../../img/ltblue_icon.png) no-repeat;}
+	</style>
+    <div class="left-full">
+        <div class="chart-title grey">Locations</div>
+        <ul class="locations-list">
+            <li class="blue">Salt Lake City, UT</li>
+            <li class="green">Las Vegas, Nevada</li>
+            <li class="lt-blue">Phoenix, AZ</li>
+        </ul>
+    </div>
+    </template>
+</polymer-element>

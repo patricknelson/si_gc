@@ -1,0 +1,161 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
+<polymer-element name="energytrends-chart"  attributes="num">
+  <template>
+
+  	<style>
+	 :host {
+        display: block;
+        /*position: relative;
+        top: -25px;*/
+   }
+      .blue{color:#0064D2}
+    .green{color:#86B817;}
+    .grey{color:#796e65;}
+    .lt-blue{color:#66A2E4;}
+      .top_label, .bottom_label{position:relative;z-index: 99;}
+      .top_label{left: 92px;  top: 80px;}
+      .bottom_label{left:92px; top:56px;color:#fff;}
+      .top_label>p, .bottom_label>p{position:absolute;font-size:18px;}
+
+      .top_label>p.blue{left:-4px;}
+      .bottom_label > p:first-child{left:1%;}
+
+      .top_label>p.green{left:16.8%;top:85px;}
+      .bottom_label > p:nth-child(2) {left:18.6%;}
+
+      .top_label>p.lt-blue{left:33.6%;top:206px;}
+      .bottom_label > p:last-child{left: 35.2%;}
+    </style>
+
+     <google-chart
+                  type="bar"
+                  id="energy_trends{{num}}"
+                  options='{
+                        "title": "",                    
+                        "width": 1400,
+                        "height": 200,
+                        "bar": {"groupWidth": "95%"},
+                        "legend": {"position": "none" },
+                        "hAxis": { "textPosition": "none","gridlines": {"color": "transparent"} },
+                        "vAxis": { "textPosition": "none","gridlines": {"color": "transparent"}},
+                        "annotations": {"alwaysOutside": true,"textStyle": {"fontSize": 18}},
+                        "animation":{"duration": 3000,"easing": "in"},
+                        "tooltip": {
+                            "trigger": "none"
+                        },
+                        "enableInteractivity" : false 
+                      }'
+                  data='scripts/data/energy_trends{{num}}.json'>
+                </google-chart>
+  </template>
+  <script>
+    (function(){
+      Polymer({
+          ready: function() {
+            var self = this;
+            this.id = 'energy_trends' + this.num;
+            this.barLabels = {
+            1:{
+              0:['2014',68],
+              1:['2013',108],
+              2:['2012',148],
+            },
+            2:{
+              0:['2014',68],
+              1:['2013',108],
+              2:['2012',148]
+            }
+
+           }
+           $(document).on('google-chart-render',function(e){
+            var id = e.target.id;
+            if(id == self.id){
+              setTimeout(function(){
+                self.fixTrendsLabels();
+                self.createTrendsLabels();
+              }, 1000);
+            }else{
+              return false;
+            }
+          });
+          },
+          fixTrendsLabels:function(){
+            var lbls = this.getTrendsLabels();
+            lbls.forEach(function(el,i){
+              $(el).attr('transform','translate(20,0)');
+            });
+          },
+          getTrendsLabels:function()
+          {
+            var t1 = this.getHorizontal();
+            return [$(t1[3]),$(t1[6]),$(t1[9])];
+          },
+          getHorizontal:function(id){
+            var chrt = this.findChart(id);
+            return  chrt.getChartSvg().querySelectorAll('g:first-of-type');
+          },
+          createTrendsLabels:function()
+          {
+            var bars = this.getTrendBars(),
+            lbls = this.barLabels[this.num],
+            self = this, i;
+            bars.forEach(function(el,i){
+              var txt= self.buildLabelSvg(lbls[i][0],lbls[i][1],"170");
+              $(el).after(txt);
+            });
+          },
+          getTrendBars:function(){
+            var t1 = this.getTrendBar();
+            return  [t1[0],t1[1],t1[2]];//,t2[0],t2[1],t2[2]
+          },
+          getTrendBar:function(){
+            var chrt = this.findChart();
+            return chrt.getChartSvg().querySelectorAll('g:first-of-type>g:first-child > rect');
+          },
+          buildLabelSvg:function (txt,posy,posx)
+          {
+             posx = (typeof posx === 'undefined') ? "190" : posx;//164
+             var text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+             var attrs = ["y","x","text-anchor","fill","font-size"];
+             var avals = [posy,posx,"start","#fff","17px"];
+             this.setAllAttributes(text,attrs,avals);
+             var node = document.createTextNode(txt);
+             text.appendChild(node);
+             return text;
+          },
+          redraw :function (chrt){
+            chrt.drawChart();
+          },
+          updateChart:function(chrt,rows){
+            chrt.rows = rows;
+          },
+          findChart:function(id){
+            //return document.getElementById(id)
+            var id = (typeof id === 'undefined') ? this.id : 'energy_trends' + id;
+            return this.$[id];
+          },
+          getHorizontalLabels:function(id){
+            //var chrt = this.findChart(id);
+            var gs = this.getHorizontal(id);//chrt.getChartSvg().querySelectorAll('g:first-of-type');
+            var lbls = $(gs[0]).find('>g:last-child  text');
+            return lbls;
+          },
+          getHorizontalBars:function(id,num){
+            var gs = this.getHorizontal(id);
+            var bars = $(gs[0]).find('>g:first-of-type>g rect');
+            var bars1 = [$(bars[0]),$(bars[1])] ;
+            if (num == 2) {
+              bars1[2] = $(bars[2]);
+            }
+            return bars1;
+          },
+          setAllAttributes:function(el,attrs,avals){
+            attrs.forEach(function(attr,i){
+              el.setAttribute(attr,avals[i]);
+            });
+          }
+      });
+    })();
+  </script>
+</polymer-element>
