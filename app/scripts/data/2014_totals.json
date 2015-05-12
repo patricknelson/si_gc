@@ -1,0 +1,18 @@
+{
+  "upper":
+  	{"energy_use":[
+  		 {"val":"695,194","unit":"MW h"},
+  		 {"val":"21.86","unit":"MW h/Employee"},
+    	 {"val":"0.00004332","unit":"MW h/Revenue"}
+   	],
+    "carbon":[
+    	{"val":"XX,XXXX","unit":"Tonnes of "},
+  		{"val":"XX,XXXX","unit":"/Emplyee"},
+    	{"val":"XX,XXXX","unit":"/$ Revenue"}
+    ]},
+  "lower":{
+  	"asia_pacific":"XXX,XXX",
+  	"americas":"XXX,XXX",	
+  	"europe_mideast_africa":"XXX,XXX"
+  }
+}

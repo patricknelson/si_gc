@@ -1,0 +1,64 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
+<polymer-element name="co2e-chart"  attributes="num">
+  <template>
+
+  	<style>
+	 :host {
+        display: block;
+        position: relative;
+        top: -25px;
+   }
+      .blue{color:#0064D2}
+    .green{color:#86B817;}
+    .grey{color:#796e65;}
+    .lt-blue{color:#66A2E4;}
+      .top_label, .bottom_label{position:relative;z-index: 99;}
+      .top_label{left: 92px;  top: 80px;}
+      .bottom_label{left:92px; top:56px;color:#fff;}
+      .top_label>p, .bottom_label>p{position:absolute;font-size:18px;}
+
+      .top_label>p.blue{left:-4px;}
+      .bottom_label > p:first-child{left:1%;}
+
+      .top_label>p.green{left:16.8%;top:85px;}
+      .bottom_label > p:nth-child(2) {left:18.6%;}
+
+      .top_label>p.lt-blue{left:33.6%;top:206px;}
+      .bottom_label > p:last-child{left: 35.2%;}
+    </style>
+     <core-ajax auto url="scripts/data/co2e_trends{{num}}.json" handleAs="json" response="{{response}}"></core-ajax> 
+     <div class="top_label"><p class="blue">{{vals[0]}}</p><p class="green">{{vals[1]}}</p><p class="lt-blue">{{vals[2]}}</p></div>
+      <google-chart type="column" id="co2e_trends{{num}}" options='{
+                        "title": "",                    
+                        "width": 400,
+                        "height": 500,
+                        "chartArea": {"width": "60%", "height": "60%"},
+                        "bar": {"groupWidth": "90%"},
+                        "legend": {"position": "none" },
+                        "hAxis": { "textPosition": "none","gridlines": {"color": "transparent"} },
+                        "vAxis": { "textPosition": "none","gridlines": {"color": "transparent"}},
+                        "annotations": {"alwaysOutside": true, "textStyle": {"fontSize": 18}},
+                        "animation":{"duration": 3000,"easing": "in"},
+                        "tooltip": {
+                          "trigger": "none"
+                        }
+                      }'
+                  data='scripts/data/co2e_trends{{num}}.json'>
+       </google-chart>
+       <div class="bottom_label"><p>2014</p><p>2013</p><p>2012</p></div>
+  </template>
+  <script>
+    (function(){
+      Polymer({
+          ready: function() {
+            
+          },
+          responseChanged: function(oldValue) {
+            this.vals = [this.response[1][1],this.response[2][1],this.response[3][1]];
+            this.vals[0] = 'XX,XXX';
+          }     
+      });
+    })();
+  </script>
+</polymer-element>

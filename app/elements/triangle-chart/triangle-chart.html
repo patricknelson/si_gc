@@ -1,0 +1,50 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
+<polymer-element name="triangle-chart"  attributes="ctitle,url">
+  <template>
+  	<style>
+	 :host {
+        display: block;
+      }
+    .blue{color:#0064D2}
+	  .green{color:#86B817;}
+	  .grey{color:#796e65;}
+	  .lt-blue{color:#66A2E4;}
+    .chart-title{text-align:left; position:relative; left:-40px;font-size:18px;z-index:9;  margin-bottom: 15px;}
+      .triangle_label{position:absolute;left:180px;top:69px;}
+      .triangle_label.green{left:242px;top:136px;}
+      .triangle_label.lt-blue{left:315px;top:51px;}
+      .triangle_label > span{font-size: 12px;position: absolute;color: #796e65;left: 14px;top: 22px;}
+      #triangles {position:relative; top: 54px;}
+    </style>
+      <core-ajax auto url="{{url}}" handleAs="json" response="{{response}}"></core-ajax> 
+      <div class="chart-title grey">{{ctitle}}</div>
+      <template repeat="{{label in data}}">
+            <div class="triangle_label {{label.color}}">
+              {{label.currVal}}<br>
+              <span class="grey small">{{label.lastVal}}</span>
+            </div>
+        </template>
+        <img id ="triangles" src="../../img/triangles.png">
+  </template>
+  <script>
+    (function(){
+      Polymer({
+          ready: function() {
+            if(!this.ctitle) this.ctitle  = "MWh";
+            if(!this.url){
+              this.data = [
+                {currVal:'XX,XXXX',lastVal:'56,592',color:'blue'},
+                {currVal:'XX,XXXX',lastVal:'56,592',color:'green'},
+                {currVal:'XX,XXXX',lastVal:'56,592',color:'lt-blue'}
+              ];
+            }
+          },
+          responseChanged: function(oldValue) {
+            this.data = this.response.data;
+            console.log(this.response.data);
+          },     
+      });
+    })();
+  </script>
+</polymer-element>

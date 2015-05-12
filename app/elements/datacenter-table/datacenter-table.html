@@ -1,0 +1,43 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
+<polymer-element name="datacenter-table"  attributes="ctitle">
+  <template>
+  	<style>
+	 :host {
+        display: block;
+      }
+      .blue{color:#0064D2}
+	  .green{color:#86B817;}
+	  .grey{color:#796e65;}
+	  .lt-blue{color:#66A2E4;}
+      .chart-title{text-align:left; position:relative; left:-40px;font-size:18px;z-index:9;  margin-bottom: 15px;}
+  	  .chart-data{margin-top:20px;}
+      .chart-data  tr > td {font-size:18px; padding:6px 14px;}
+      .chart-data  tr > td:last-child {font-size:12px;color:#796e65;padding-top:10px; }
+	</style>
+    <div class="chart-title grey">{{ctitle}}</div>
+		<table class="chart-data">
+		  <tbody>
+		  	<template repeat="{{location in locations}}">
+		        <tr class="{{location.color}}">
+		        	<td>{{location.loc}}</td><td>{{location.currVal}}</td><td>{{location.lastVal}}</td>
+		        </tr>
+		    </template>
+		</tbody>
+	</table>
+  </template>
+  <script>
+  	(function(){
+  		Polymer({
+       		ready: function() {
+       			if(!this.ctitle) this.ctitle  = "Server Count";
+       			this.locations = [
+   					{loc:'UTAH',currVal:'XX,XXXX',lastVal:'56,592',color:'blue'},
+   					{loc:'NEVADA',currVal:'XX,XXXX',lastVal:'56,592',color:'green'},
+   					{loc:'ARIZONA',currVal:'XX,XXXX',lastVal:'56,592',color:'lt-blue'}
+       			];
+       		}			
+      });
+  	})();
+  </script>
+</polymer-element>

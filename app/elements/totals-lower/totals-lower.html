@@ -1,0 +1,68 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
+<polymer-element name="totals-lower" attributes="url">
+  <template>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  	<style>
+	 :host {
+        display: block;
+      }
+    .blue{color:#0064D2}
+	  .green{color:#86B817;}
+	  .grey{color:#796e65;}
+	  .lt-blue{color:#66A2E4;}
+    div.third {/*float:left;   width: 33% !important;  left: 1.75%;height: 100%;  position: relative;
+  z-index: 1;  background: white;*/}
+   .lower > .inner {padding-top:24px;}    
+    div.lower {height:260px;padding-left: 3%;}
+    .figure:nth-of-type(even){margin-left: 11px;}
+    .figure{margin:4px auto 0 10px;}
+    .figure.large{  font-size: 37px;}
+    .figure.grey.large{font-size:20px;}
+    .figure.medium{font-size:24px;}
+    .chart-title{text-align:left; position:relative; left:20px;font-size:18px;z-index:9;  margin-bottom: 15px;}
+	  h4{color: #796e65;font-size:18px;margin-left:30px;}
+	</style>
+  <core-ajax auto url="{{url}}" handleAs="json" response="{{response}}"></core-ajax> 
+    <div class="lower row">
+              <div class="inner">
+                <h4 >CO<sub>2</sub> by Geography</h4>
+                <div class="third col-lg-4">
+                  <p class="figure large green">{{locations.asia_pacific}}</p>
+                  <p class="figure grey">Asia Pacific</p>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="third col-lg-4">
+                  <p class="figure large green">{{locations.americas}}</p>
+                  <p class="figure grey">Americas</p>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="third col-lg-4">
+                  <p class="figure large green">{{locations.europe_mideast_africa}}</p>
+                  <p class="figure grey">Europe Middle East & Africa</p>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+    </div>
+    </template>
+      <script>
+    (function(){
+      Polymer({
+          ready: function() {
+            if(!this.url){
+              this.location = {
+                "asia_pacific":"XXX,XXX",
+                "americas":"XXX,XXX", 
+                "europe_mideast_africa":"XXX,XXX"
+              }
+            }  
+          },
+          responseChanged: function(oldValue) {
+            this.locations = this.response.lower;
+          },     
+      });
+    })();
+  </script>
+</polymer-element>

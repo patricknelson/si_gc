@@ -1,0 +1,30 @@
+{
+  "slides_nav":[
+    {"text":"One"},
+    {"text":"Two"},
+    {"text":"Three"},
+    {"text":"Four"},
+    {"text":"Five"},
+    {"text":"Six"},
+    {"text":"Seven"},
+    {"text":"Eight"},
+    {"text":"Nine"},
+    {"text":"Ten"},
+    {"text":"Eleven"},
+    {"text":"Twelve"}
+  ],
+  "slides":[
+    {"text":"One"},
+    {"text":"Two"},
+    {"text":"Three"},
+    {"text":"Four"},
+    {"text":"Five"},
+    {"text":"Six"},
+    {"text":"Seven"},
+    {"text":"Eight"},
+    {"text":"Nine"},
+    {"text":"Ten"},
+    {"text":"Eleven"},
+    {"text":"Twelve"}
+  ]
+}
