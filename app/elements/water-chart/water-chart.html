@@ -42,7 +42,7 @@
             var self = this;
             this.id = 'water' + this.num;
             console.log(this.height);
-            this.opts = {"title": "", "width": 1200, "height": this.height , "bar": {"groupWidth": "95%"}, "legend": {"position": "none" }, "hAxis": { "textPosition": "none","gridlines": {"color": "transparent"} }, "vAxis": { "textPosition": "none","gridlines": {"color": "transparent"}}, "annotations": {"alwaysOutside": true,"textStyle": {"fontSize": 18}}, "animation":{"duration": 3000,"easing": "in"}, "tooltip": { "trigger": "none" }, "enableInteractivity" : false};
+            this.opts = {"title": "", "width": 1000, "height": this.height , "bar": {"groupWidth": "95%"}, "legend": {"position": "none" }, "hAxis": { "textPosition": "none","gridlines": {"color": "transparent"} }, "vAxis": { "textPosition": "none","gridlines": {"color": "transparent"}}, "backgroundColor": { "fill":"transparent" }, "annotations": {"alwaysOutside": true,"textStyle": {"fontSize": 18}}, "animation":{"duration": 3000,"easing": "in"}, "tooltip": { "trigger": "none" }, "enableInteractivity" : false};
             console.log(this.opts);
             this.barLabels = {
               1:{
@@ -74,7 +74,7 @@
           positionHorizontalLabels:function(){
             var lbls = $(this.getHorizontalLabels());
             lbls.each(function(i,el){
-              if(i == 0 || i== 1) $(el).attr('x','380'); //FORCE FURTHER RIGHT ON FIRST ONE
+              if(i == 0 ) $(el).attr('x','380'); //FORCE FURTHER RIGHT ON FIRST ONE
                 $(el).attr('transform','translate(15,0)');
             });
           },

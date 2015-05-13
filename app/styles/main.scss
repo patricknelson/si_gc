@@ -197,8 +197,13 @@ div#main{
 
      #tabs div[data-link^="ENERGY US"] div.half:nth-child(2) .chart-title.grey{left:124px;}
      #tabs div[data-link^="ENERGY US"] div.half:nth-child(3) .chart-title.grey{left:-60px;}
+     #tabs div[data-link^="ENERGY US"] div.slide-wrap > div{padding-left:0;}
       /** LEGEND ENERGY USED CHART **/
+      #energy_use1 {left:1% }
+      #energy_use2 {left:-25% }
      div[data-link$="CO2e"] .slide-wrap{position:relative;}
+
+
      .energy-used-legend.active{
        z-index:0;
        /*left:3%;*/
@@ -220,6 +225,7 @@ div#main{
           float: left;
           padding: 0 30px;
           cursor:pointer;
+          position:relative;
       }
       .energy-used-legend div:before{
         content:"";
@@ -228,22 +234,22 @@ div#main{
         background-color:#0064D2;
         position:absolute;
         left:0;
-        top: -1px;
+        top: 1px;
       }
       .energy-used-legend div.l2:before{
-        left: 20%;
+        //left: 10.5%;
         background-color:#3383DB;
       }
       .energy-used-legend div.l3:before{
-        left: 35%;
+        //left: 20%;
         background-color:#66A2E4;
       }
       .energy-used-legend div.l4:before{
-        left: 58%;
+        //left: 33.5%;
         background-color:#99C1ED;
       }
       .energy-used-legend div.l5:before{
-        left: 78%;
+        //left: 45.3%;
         background-color: #CCE0F6;
       }
 
@@ -303,33 +309,14 @@ div#main{
       #tabs div[data-link^="DATA"] .chart-title.grey {text-align: left;}
       #tabs div[data-link^="DATA"] .upper{overflow:hidden;}
       #tabs div[data-link^="DATA"] .slide-wrap > div:not(:first-child) .chart-title.grey {left:-40px;margin-bottom:15px;}
-      #tabs div[data-link^="DATA"] > div.slide-wrap > div.right-full{width:84%;float:left;position:relative;}  
+      #tabs div[data-link^="DATA"] > div.slide-wrap > div.right-full{/*width:84%;*/float:left;position:relative;}  
       #tabs div[data-link^="DATA"] div.half{overflow:hidden;}
       #tabs div[data-link^="DATA"] div.half:first-of-type{border-right:1px solid #ccc;}
-      #tabs div[data-link^="DATA"] div.half {height:100%;padding: 5px 0 0 10%;width:39%!important;}
+      #tabs div[data-link^="DATA"] div.half {height:100%;padding: 5px 0 0 10%;/*width:39%!important;*/}
       #tabs div[data-link^="DATA"] div.lower>div.half{padding-top: 24px;}
       #tabs div[data-link^="DATA"] .info-right-top{top:-3px;position:absolute;z-index:99}
       
       #data_center1,#data_center2{bottom:-7px;position:relative;left:-30%;}
-
-      #tabs div[data-link^="DATA"] .top_label {
-        left: 26px;
-        top: 20px;
-      }
-      #tabs div[data-link^="DATA"] .top_label > p > span {
-        font-size: 12px;
-        position: absolute;
-        color: #796e65;
-        left: 14px;
-        top: 24px;
-      }
-      #tabs div[data-link^="DATA"] .top_label > p.green{left: 36.8%; top: 50px;}  
-      #tabs div[data-link^="DATA"] .top_label > p.lt-blue{left: 72.6%;top: 114px;}
-      #tabs div[data-link^="DATA"] .bottom_label {left: 38px;  top: -82px;}
-      #tabs div[data-link^="DATA"] .bottom_label > p{top: -30px;}
-      #tabs div[data-link^="DATA"] .bottom_label > p:first-child {left: .2%;}
-      #tabs div[data-link^="DATA"] .bottom_label > p:nth-child(2) {left: 38.6%;}   
-      #tabs div[data-link^="DATA"] .bottom_label > p:nth-child(3) {left: 75.5%;}  
 
       /** DATA CENTERS TRIANGLE CHART **/
       #tabs div[data-link^="DATA"] .upper > .half:first-child{position:relative;}
@@ -345,7 +332,89 @@ div#main{
         left: 80px;
       }
       .qtip-light {background-color:rgba(221, 221, 221, 0.4)!important;}
-
+      body > div:first-of-type{height:100%;}
       @media screen and (max-width:1148px){
-        #pager a {font-size:13px;}
+        #pager a {font-size:11px;}
       }
+      @media screen and (max-width:1200px){
+        #main #wrapper > .caroufredsel_wrapper {height:auto;}
+        #pager.container{  margin-top: -62px;}
+        #tabs{min-height:560px!important;}
+        #tabs > div{overflow-x:hidden;overflow-y:auto;min-height:560px!important;}
+        #tabs > div:first-child {}
+        #energy_use1,#energy_use2 {left: -44%;}
+        div[data-link^="ENERGY USE"] #tabs > div div.slide-wrap > div {top: -40px;background: transparent;}
+        #tabs div[data-link^="ENERGY US"] div.slide-wrap > div {left: 10px;top:-15px;}
+        #tabs .chart-title {
+              left: -100px;
+              top: 14px;
+        }
+        #tabs div[data-link^="ENERGY US"] div.slide-wrap > div.energy-used-legend{left:60px;top:25px;}
+        #tabs .chart-title.hbar {left: -38%;}
+        #tabs .chart-title.grey.vbar {left: 36px;}
+        #tabs div[data-link^="DATA"] .info-right-top {
+          right: -9px;
+        }
+        #tabs div[data-link^="DATA"] .lower > .half{padding-left:5%}
+      }
+      /** Tablet Portrait **/
+      @media screen and (max-width:1200px) and (orientation:portrait){
+        #pager.container {margin-top: -54px;}
+        #pager li.selected > a {  height: 51px;}
+        #wrapper{width: 748px;left: -11.4%; padding-top:2px;}
+        #tabs .chart-title.grey.vbar {left: 2px;}
+        #tabs div[data-link^="DATA"] .info-right-top{top:-92px;}
+        #triangles {width: auto;top: 54px;}
+        #tabs div[data-link^="ENERGY US"] div.slide-wrap > div {left: 10px!important;}
+        #tabs div[data-link^="ENERGY US"] div.slide-wrap > div.energy-used-legend{left:40px!important;}
+
+      }
+       @media screen and (max-width:992px){
+        #tabs div[data-link^="ENERGY US"] div.slide-wrap > div {left: -10px;} 
+        #tabs div[data-link^="ENERGY US"] div.slide-wrap > div.energy-used-legend{left:0;}
+        #energy_use1,#energy_use2 {left: -70%;}
+      }
+      /** MENU BREAKPOINT (<Tablet) **/
+      @media only screen and (max-width:767px){
+          div#main div.title {width:200%;margin-left:-41%; }
+          div#main div.title h1{font-size:25px;}
+          #wrapper{  width: 670px;  left: -14.4%;}
+          #pager.container {margin-top: -54px;}
+          .nav>li{display: inline-block!important;width:48%;font-size:16px;}
+          #pager .nav> li.selected >a{height:51px;}
+          #pager .nav> li{height:51px;}
+          #pager .nav> li  a{font-size:17px;height:51px;}
+          #pager .nav> li:nth-child(4).selected{  top: -13px;}
+          #pager .nav> li:nth-child(5).selected{  top: 2px; }
+          .nav>li.inactive{display:none!important;}
+          .nav>li.next-arrow,.nav >li.prev-arrow{width:2%;font-size:24px;cursor:pointer;}
+      }
+
+      /** phones landscape **/
+      @media only screen 
+        and (max-device-width: 667px)
+        and (orientation:landscape){
+
+      }
+
+      @media only screen and (max-device-width: 667px){
+        #wrapper{
+          left: -29.4%;
+            padding-top: 2px;
+            width: 160%;
+        }    
+      }
+
+      /** iphone 5 only **/
+       @media screen and (device-aspect-ratio: 40/71) {
+        #wrapper {left: -44.4%;width: 190%;}
+        #main #wrapper > .caroufredsel_wrapper{left:0}
+        #pager .nav> li  a{font-size:11px;}
+       }
+
+      /*iPhone 6 and iPhone 6+ portrait and landscape*/
+      @media only screen and (max-device-width: 640px), 
+           only screen and (max-device-width: 667px), 
+           only screen and (max-width: 480px){
+
+       }

@@ -26,6 +26,23 @@
 
       .top_label>p.lt-blue{left:33.6%;top:206px;}
       .bottom_label > p:last-child{left: 35.2%;}
+
+      @media screen and (max-width:1200px){ 
+        :host{left: -20%;}
+        .top_label>p.green {left: 29.6%;}
+        .top_label>p.lt-blue {left: 58.6%;}
+        .bottom_label > p:first-child {left: 3%;}
+        .bottom_label > p:nth-child(2) {left: 32.6%;}
+        .bottom_label > p:last-child {left: 62.2%;}
+      }
+      @media screen and (max-width: 1200px) and (orientation:portrait){
+        :host {left: -36%;}
+         .top_label>p.green {left: 33.6%;}
+        .top_label>p.lt-blue {left: 67.6%;}
+        .bottom_label > p:first-child {left: 3%;}
+        .bottom_label > p:nth-child(2) {left: 36.6%;}
+        .bottom_label > p:last-child {left: 70.2%}
+      }
     </style>
      <core-ajax auto url="scripts/data/co2e_trends{{num}}.json" handleAs="json" response="{{response}}"></core-ajax> 
      <div class="top_label"><p class="blue">{{vals[0]}}</p><p class="green">{{vals[1]}}</p><p class="lt-blue">{{vals[2]}}</p></div>
@@ -38,6 +55,7 @@
                         "legend": {"position": "none" },
                         "hAxis": { "textPosition": "none","gridlines": {"color": "transparent"} },
                         "vAxis": { "textPosition": "none","gridlines": {"color": "transparent"}},
+                        "backgroundColor": { "fill":"transparent" },
                         "annotations": {"alwaysOutside": true, "textStyle": {"fontSize": 18}},
                         "animation":{"duration": 3000,"easing": "in"},
                         "tooltip": {

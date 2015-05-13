@@ -23,22 +23,29 @@
     .figure.medium{font-size:24px;}
     .chart-title{text-align:left; position:relative; left:20px;font-size:18px;z-index:9;  margin-bottom: 15px;}
 	  h4{color: #796e65;font-size:18px;margin-left:30px;}
+    @media only screen and (max-device-width: 667px){
+      .lower > .inner {  width: 90%;}
+        .figure.large{  font-size: 20px;}
+        h4{margin-left:6px;}
+        div.third{  padding-left: 4px;}
+        .figure{margin-left:0;}
+    }
 	</style>
   <core-ajax auto url="{{url}}" handleAs="json" response="{{response}}"></core-ajax> 
     <div class="lower row">
               <div class="inner">
                 <h4 >CO<sub>2</sub> by Geography</h4>
-                <div class="third col-lg-4">
+                <div class="third col-xs-4 col-sm-4 col-md-4 col-lg-4">
                   <p class="figure large green">{{locations.asia_pacific}}</p>
                   <p class="figure grey">Asia Pacific</p>
                   <div class="clearfix"></div>
                 </div>
-                <div class="third col-lg-4">
+                <div class="third col-xs-4 col-sm-4 col-md-4 col-lg-4">
                   <p class="figure large green">{{locations.americas}}</p>
                   <p class="figure grey">Americas</p>
                   <div class="clearfix"></div>
                 </div>
-                <div class="third col-lg-4">
+                <div class="third col-xs-4 col-sm-4 col-md-4 col-lg-4">
                   <p class="figure large green">{{locations.europe_mideast_africa}}</p>
                   <p class="figure grey">Europe Middle East & Africa</p>
                   <div class="clearfix"></div>

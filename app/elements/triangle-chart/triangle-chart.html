@@ -2,6 +2,7 @@
 <link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
 <polymer-element name="triangle-chart"  attributes="ctitle,url">
   <template>
+
   	<style>
 	 :host {
         display: block;
@@ -16,6 +17,16 @@
       .triangle_label.lt-blue{left:315px;top:51px;}
       .triangle_label > span{font-size: 12px;position: absolute;color: #796e65;left: 14px;top: 22px;}
       #triangles {position:relative; top: 54px;}
+
+       @media screen and (max-width:1200px){ 
+        #triangles {width:120%;left:-47px;}
+        .triangle_label{  left: 80px;}
+        .triangle_label.green{left:148px;}
+        .triangle_label.lt-blue{left: 225px;}
+       }
+       @media screen and (max-width:1200px) and (orientation:portrait){
+        #triangles {width: auto;top: 54px;}
+      }
     </style>
       <core-ajax auto url="{{url}}" handleAs="json" response="{{response}}"></core-ajax> 
       <div class="chart-title grey">{{ctitle}}</div>
