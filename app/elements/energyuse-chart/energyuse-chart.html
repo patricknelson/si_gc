@@ -1,0 +1,148 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
+<polymer-element name="energyuse-chart"  attributes="num">
+  <template>
+
+  	<style>
+	 :host {
+        display: block;
+        /*position: relative;
+        top: -25px;*/
+   }
+      .blue{color:#0064D2}
+    .green{color:#86B817;}
+    .grey{color:#796e65;}
+    .lt-blue{color:#66A2E4;}
+      .top_label, .bottom_label{position:relative;z-index: 99;}
+      .top_label{left: 92px;  top: 80px;}
+      .bottom_label{left:92px; top:56px;color:#fff;}
+      .top_label>p, .bottom_label>p{position:absolute;font-size:18px;}
+
+      .top_label>p.blue{left:-4px;}
+      .bottom_label > p:first-child{left:1%;}
+
+      .top_label>p.green{left:16.8%;top:85px;}
+      .bottom_label > p:nth-child(2) {left:18.6%;}
+
+      .top_label>p.lt-blue{left:33.6%;top:206px;}
+      .bottom_label > p:last-child{left: 35.2%;}
+    </style>
+
+    <google-chart 
+        type='pie'
+        id="energy_use{{num}}"
+        options='{{opts}}'
+        data='scripts/data/energy_use{{num}}.json'>
+     </google-chart>
+
+  </template>
+  <script>
+    (function(){
+      Polymer({
+          ready: function() {
+            var self = this;
+            this.id = 'energy_use' + this.num;
+            this.showLegend = (this.num == 2) ? true : false;
+            var startAngle = (this.num == 1) ? 180 : 201;
+            this.opts = {"title": "","pieStartAngle":startAngle,"colors": ["#0064D2", "#3383DB", "#66A2E4", "#99C1ED", "#CCE0F6"],"legend": "none","width":760,"height":400,"backgroundColor": { "fill":'transparent' },"tooltip": { "trigger": "none"},"enableInteractivity" : false}
+            this.positions={
+              1:{ 3:325,2:[430,160],1:[440,242],0:[400,280] },
+              2:{  3:325,2:[440,175],1:[420,270],0:[373,286]}
+            };
+
+            this.fillColors={
+                4:"#0064d2",
+                3:"#3383db",
+                2:"#66a2e4",
+                1:"#99c1ed",
+                0:"#cce0f6"
+            };
+
+           $(document).on('google-chart-render',function(e){
+            var id = e.target.id;
+            if(id == self.id){
+              setTimeout(function(){
+                self.fixPieLabels();
+              }, 1000);
+            }else{
+              return false;
+            }
+          });
+            $('.energy-used-legend > div').on('mouseenter',function(){
+                self.legendHover($(this));
+            }).on('mouseleave',function(){
+                self.resetSliceFill();
+            });  
+          },
+          fixPieLabels:function(){
+            lbls = this.getLabels();
+            var self = this;
+            [].forEach.call(lbls, function(el,i){
+                self.positionLabels(el,i,self.positions[self.num]);
+            });
+          },
+          getLabels:function(){
+            var chrt = this.findChart();
+            return chrt.getChartSvg().querySelectorAll('g text');
+          },
+          position:function(lbl,i){
+            var self = this;
+            this.positionLabels(lbl,i,self.positions[self.num]);
+          },
+          positionLabels:function(lbl,i,data){
+            lbl.setAttribute('text-anchor','middle');
+            if(i == 3){
+              lbl.setAttribute("x",data[i]);
+            }else{
+              var trans = data[i][0]+','+data[i][1];
+              lbl.setAttribute("x",data[i][0]);
+              lbl.setAttribute("y",data[i][1]);
+            }
+          },
+          redraw :function (chrt){
+            chrt.drawChart();
+          },
+          updateChart:function(chrt,rows){
+            chrt.rows = rows;
+          },
+          findChart:function(id){
+            //return document.getElementById(id)
+            var id = (typeof id === 'undefined') ? this.id : 'energy_use' + id;
+            return this.$[id];
+          },
+          legendHover:function(el){
+            this.resetSliceFill();
+            var slices = el.siblings().length;
+            var chrtSlice = slices - el.index();
+            pie1 = this.getSlice(CHRTR.pie1);
+            [].forEach.call(pie1, function(el,i){
+              if(i != chrtSlice){
+                $(el).find('path').attr('fill','rgba(204, 204, 204, 0.76)');
+              }
+            });
+            pie2 = this.getSlice(CHRTR.pie2);
+            [].forEach.call(pie2, function(el,i){
+              if(i != chrtSlice){
+                $(el).find('path').attr('fill','rgba(204, 204, 204, 0.76)');
+              }
+            });
+          },
+          resetSliceFill:function(){
+            var pie1 = this.getSlice('energy_use1');
+            var pie2 = this.getSlice('energy_use2');
+            var colors = this.fillColors;
+            [].forEach.call(pie1,function(el,i){
+              $(el).find('path').attr('fill',colors[i]);
+            });
+            [].forEach.call(pie2,function(el,i){
+              $(el).find('path').attr('fill',colors[i]);
+            });
+          },
+          getSlice:function(id){
+            var chrt = this.findChart();
+            return chrt.getChartSvg().querySelectorAll('g');
+          }
+      });
+    })();
+  </script>
+</polymer-element>
