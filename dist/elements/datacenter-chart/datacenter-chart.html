@@ -1,0 +1,114 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
+<polymer-element name="datacenter-chart"  attributes="num,height">
+  <template>
+
+  	<style>
+	 :host {
+        display: block;
+        /*position: relative;
+        top: -25px;*/
+   }
+   .chart-title{
+     position: relative;
+  left: -40px;
+  font-size: 18px;
+  z-index: 9;
+  margin-bottom: 15px;
+}
+
+      .blue{color:#0064D2}
+    .green{color:#86B817;}
+    .grey{color:#796e65;}
+    .lt-blue{color:#66A2E4;}
+      .top_label, .bottom_label{position:relative;z-index: 99;}
+      .bottom_label{left:-40px; top:-284px;color:#fff;}
+      #data_center2{bottom:94px;position:relative;left:-40%;}
+
+      .top_label {
+        left: -55px;
+        top: 20px;
+      }
+      .top_label > p{position: relative;}
+      .top_label > p > span {
+        font-size: 12px;
+        position: absolute;
+        color: #796e65;
+        left: 6px;
+        top: 24px;
+      }
+      .top_label > p.green{left: 29.8%; top: 12px;}  
+      .top_label > p.lt-blue{left: 58.6%;top: 42px;}
+      .bottom_label > p{position:absolute;top: 55px;font-size: 18px;}
+      .bottom_label > p:first-child {left: .2%;}
+      .bottom_label > p:nth-child(2) {left: 28.6%;}   
+      .bottom_label > p:nth-child(3) {left: 58.5%;} 
+      @media screen and (max-width:1200px){ 
+        #data_center2{left: -68%;}
+        .top_label {left: -49px;}
+        .bottom_label{left:10px;}
+        .top_label > p.green{left: 49.8%; }
+        .top_label > p.lt-blue{left: 95.6%;}
+        .bottom_label > p:first-child {left: -17%;}
+        .bottom_label > p:nth-child(2) {left: 33.6%;}   
+        .bottom_label > p:nth-child(3) {left: 80.5%;} 
+      }  
+      @media screen and (max-width:667px){
+        #data_center2{left: -48%;}
+        .chart-title{margin-bottom: 25px;top:35px;left:-20px;}
+        .top_label {  left: -16px;}
+        .top_label > p.green {left: 37.8%;}
+        .top_label > p.lt-blue {left: 75.6%;}
+        .bottom_label > p:first-child {left: -5%;}
+        .bottom_label > p:nth-child(3) {left: 70.5%;}
+        .bottom_label{top:-270px;};
+
+      }
+    </style>
+<core-ajax auto url="../../scripts/data/data_center2.json" handleAs="json" response="{{response}}"></core-ajax> 
+     <div class="chart-title grey">CO<sub>2</sub>e</div>
+    <div class="top_label">
+      <p class="blue">{{vals[0]}}<br><span>56,592</span></p>
+      <p class="green">{{vals[1]}}<br><span>56,592</span></p>
+      <p class="lt-blue">{{vals[2]}}<br><span>56,592</span></p>
+    </div>
+    <google-chart
+    type="column"
+    id="data_center2"
+    options='{{opts}}'
+    data='scripts/data/data_center2.json'>
+  </google-chart>
+  <div class="bottom_label"><p>UT</p><p>NV</p><p>AZ</p></div>
+  </template>
+  <script>
+    (function(){
+      Polymer({
+          ready: function() {
+            var width  = (this.isMobile()) ? 500 : 600;
+            var height = (this.isMobile()) ? 280 : 260;
+            var font   = (this.isMobile()) ? 16 : 18;
+            var gwdth  = (this.isMobile()) ? "70%" : "60";
+            this.opts  = {"width": width,"height": height,"bar": {"groupWidth": gwdth},"legend": {"position": "none" },"hAxis": { "textPosition": "none","gridlines": {"color": "#ffffff"},"baselineColor": '#ffffff' },"vAxis": { "textPosition": "none","gridlines": {"color": "#ffffff"},"baselineColor": '#ffffff'},"backgroundColor": { "fill":"transparent" },"annotations": {"alwaysOutside": true, "textStyle": {"fontSize": font}},"animation":{"duration": 3000,"easing": "in"},"tooltip": {"trigger": "none"} }
+          },
+          responseChanged: function(oldValue) {
+            //this.vals = [this.response[1][1],this.response[2][1],this.response[3][1]];
+            this.vals = ['XX,XXX','XX,XXX','XX,XXX'];
+          },  
+          isMobile :function(){
+            return window.matchMedia('screen and (max-width: 767px)').matches;
+          },
+          redraw :function (chrt){
+            chrt.drawChart();
+          },
+          updateChart:function(chrt,rows){
+            chrt.rows = rows;
+          },
+          findChart:function(id){
+            //return document.getElementById(id)
+            var id = (typeof id === 'undefined') ? this.id : 'energy_trends' + id;
+            return this.$[id];
+          }
+      });
+    })();
+  </script>
+</polymer-element>

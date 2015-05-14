@@ -1,0 +1,112 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
+<polymer-element name="dotpager-nav">
+  <template>
+
+  	<style>
+	 :host {
+        display: block;
+      }
+    .blue{color:#0064D2}
+	  .green{color:#86B817;}
+	  .grey{color:#796e65;}
+	  .lt-blue{color:#66A2E4;}
+    #dotpager ul {
+        position: relative;
+        display: inline-block;
+        margin: auto;
+        padding: 0;
+        list-style: none;
+        cursor: default;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      #dotpager li {
+        position: relative;
+        display: block;
+        float: left;
+        margin: 0 10px;
+        width: 8px;
+        height: 8px;
+        cursor: pointer;
+      }
+
+      #dotpager li:after{
+        content:"";
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        background: #c7c2be;
+        -moz-border-radius: 50px;
+        -webkit-border-radius: 50px;
+        border-radius: 50px
+      }  
+      #dotpager li.current:after{
+        background: #796e65;
+      }
+
+      #dotpager{
+        position: absolute;
+        bottom: -160px;
+      }  
+    </style>
+      <div id="dotpager" class="hidden-sm hidden-md hidden-lg">
+        <ul>
+          <li on-click="{{navigate}}" class="current"><a></a></li>
+          <li on-click="{{navigate}}"><a href="#"></a></li>
+          <li on-click="{{navigate}}"><a href="#"></a></li>
+          <li on-click="{{navigate}}"><a href="#"></a></li>
+          <li on-click="{{navigate}}"><a href="#"></a></li>
+          <li on-click="{{navigate}}"><a href="#"></a></li>
+        </ul>
+      </div>
+  </template>
+  <script>
+    (function(){
+      Polymer({
+          ready: function() {
+             this.id = 'dot-pager';
+
+          },
+          navigate:function(e,detail,sender){
+               var $me  = $(sender);
+               var idx  = $me.index();
+               var $prv = $me.siblings();
+               $('#tabs').trigger('slideTo', idx);
+               $prv.removeClass('current');
+               $me.addClass('current');
+               this.progressTabs(idx);
+          },
+          progressTabs:function(idx){
+            var $active = $('.nav > li').eq(idx);
+            var $nxt    = (idx == 5) ? $('.nav > li.the-first') : $('.nav > li').eq(idx+1);
+            if($nxt.hasClass('the-first')){
+                var $first = $nxt.detach();
+                $active.after($nxt);
+            }
+            var toHide = $active.siblings().not($nxt);
+            $active.removeClass('inactive');
+            $nxt.removeClass('inactive');
+            toHide.addClass('inactive');
+            $('.selected').removeClass('selected');
+            $active.addClass('selected');
+
+          },
+          advanceDots:function(idx){
+            var $old = $(this.$.dotpager).find('.current');
+            console.log(idx);
+            var $nxt = (idx != 6) ? $old.next() : $(this.$.dotpager).find('li:eq(0)');
+            console.log($old);
+            console.log($nxt);
+            $old.removeClass('current');
+            $nxt.addClass('current');
+          }   
+      });
+    })();
+  </script>
+</polymer-element>
