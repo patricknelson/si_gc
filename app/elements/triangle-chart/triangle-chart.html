@@ -27,6 +27,14 @@
        @media screen and (max-width:1200px) and (orientation:portrait){
         #triangles {width: auto;top: 54px;}
       }
+
+      @media screen and (max-width:667px){
+        #triangles {width: 100%;left: -20px;top: 98.5px!important;}
+        .triangle_label{  left: 45px;}
+        .triangle_label.green{left:108px;}
+        .triangle_label.lt-blue{left: 175px;}
+        .chart-title{margin-bottom: -10px;top:5px;left:-20px;}
+      }
     </style>
       <core-ajax auto url="{{url}}" handleAs="json" response="{{response}}"></core-ajax> 
       <div class="chart-title grey">{{ctitle}}</div>

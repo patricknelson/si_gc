@@ -39,13 +39,22 @@
         line-height: 22px;
       }
     }
+    @media only screen and (max-device-width: 667px){
+         ul.locations-list li {font-size:14px;}
+         ul.locations-list li:before{left:-20px;}
+         ul.locations-list li:first-child{left:-20px;}
+    }
+    @media screen and (device-aspect-ratio: 40/71) {       
+      .chart-title {left:3px; top:8px;} 
+      ul.locations-list li.green{left:-12px;}
+    }
 	</style>
-    <div class="left-full col-sm-12 col-md-2 col-lg-2">
+    <div class="left-full col-xs-12 col-sm-12 col-md-2 col-lg-2">
         <div class="chart-title grey">Locations</div>
         <ul class="locations-list">
-            <li class="blue col-sm-4 col-md-12">Salt Lake City, UT</li>
-            <li class="green col-sm-4 col-md-12">Las Vegas, Nevada</li>
-            <li class="lt-blue col-sm-4 col-md-12">Phoenix, AZ</li>
+            <li class="blue col-xs-4 col-sm-4 col-md-12">Salt Lake City, UT</li>
+            <li class="green col-xs-4 col-sm-4 col-md-12">Las Vegas, Nevada</li>
+            <li class="lt-blue col-xs-4 col-sm-4 col-md-12">Phoenix, AZ</li>
         </ul>
         <div class="clearfix"></div>
     </div>

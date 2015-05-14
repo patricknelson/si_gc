@@ -26,6 +26,11 @@
 
       .top_label>p.lt-blue{left:33.6%;top:206px;}
       .bottom_label > p:last-child{left: 35.2%;}
+    @media screen and (device-aspect-ratio: 40/71){
+      :host {
+        left:-84%!important;
+      }
+    }
     </style>
 
     <google-chart 
@@ -67,12 +72,14 @@
             }else{
               return false;
             }
+
           });
             $('.energy-used-legend > div').on('mouseenter',function(){
                 self.legendHover($(this));
             }).on('mouseleave',function(){
                 self.resetSliceFill();
             });  
+             
           },
           fixPieLabels:function(){
             lbls = this.getLabels();

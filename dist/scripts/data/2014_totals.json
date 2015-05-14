@@ -1,13 +1,13 @@
 {
   "upper":
   	{"energy_use":[
-  		 {"val":"695,194","unit":"MW h"},
-  		 {"val":"21.86","unit":"MW h/Employee"},
-    	 {"val":"0.00004332","unit":"MW h/Revenue"}
+  		 {"val":"695,194","unit":"MWh"},
+  		 {"val":"21.86","unit":"MWh/Employee"},
+    	 {"val":"0.00004332","unit":"MWh/$ Revenue"}
    	],
     "carbon":[
     	{"val":"XX,XXXX","unit":"Tonnes of "},
-  		{"val":"XX,XXXX","unit":"/Emplyee"},
+  		{"val":"XX,XXXX","unit":"/Employee"},
     	{"val":"XX,XXXX","unit":"/$ Revenue"}
     ]},
   "lower":{

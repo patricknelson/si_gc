@@ -16,9 +16,6 @@
     div.third {float:left;   width: 33% !important;  left: 1.75%;height: 100%;  position: relative;
   z-index: 1;  background: white;}
    .lower > .inner {padding-top:14px;}
-div.upper {
-  border-bottom: 1px solid #ccc;
-}
     .upper > .half:first-child > .half:last-child{border-right: 1px solid #ccc;}
     div.upper, div.lower {height:240px;}
     div.slide-wrap div.upper{border-bottom:1px solid #ccc;}
@@ -36,41 +33,65 @@ div.upper {
     .cf:after {
       clear:both;
     }
+    div.upper > .half:first-child > .col-lg-6{position:relative;}
+    div.upper{position:relative;}
+    div.upper:after {
+      content: "";
+      border-bottom: 1px solid #ccc;
+      position: absolute;
+      width: 90%;
+      top: 240px;
+    }
 	  h4{color: #796e65;font-size:18px;}
+    @media only screen and (max-device-width: 667px){
+      div.upper{  height: 200px;}
+      div.upper:after {width: 300px;top: 200px;}
+      .col-xs-6:not(.half),.col-xs-12{padding:0;}
+      div.upper > .half:first-child > .col-lg-6{border-right:none;}
+      div.upper > .half:first-child > .col-lg-6:after{content:"";border-right:1px solid #ccc;position:absolute; left: 96%;height: 188px;top: -75px;}
+      .figure:nth-of-type(even){margin-left: 0;}
+      .figure{  margin: 4px 0 0 0;}
+      .figure.large{  font-size: 16px;}
+      .figure.grey.large{font-size:12px;}
+      .figure.medium{font-size:14px;}
+      .upper .col-xs-12:first-of-type .figure{margin-left:0;}
+      p.figure.grey{font-size:12px;top: -5px; position: relative;}
+
+    }
 	</style>
   <core-ajax auto url="{{url}}" handleAs="json" response="{{response}}"></core-ajax> 
     <div class="upper row">
-      <div class="half col-sm-12 col-md-5 col-lg-6">
+      <div class="half col-xs-6 col-sm-6 col-md-6 col-lg-6">
         <h4 class="col-lg-offset-1">Energy Use</h4>
-          <div class="col-lg-5 col-lg-offset-1">
-          <p class="blue figure large">{{energy[0].val}}</p>
-          <p class="grey figure large">{{energy[0].unit}}</p>
+          <div class="col-xs-12 col-sm-6 col-xs-offset-0 col-md-6 col-lg-5 col-lg-offset-1">
+          <p class="blue figure large ">{{energy[0].val}}</p>
+          <p class="grey figure large ">{{energy[0].unit}}</p>
           <div class="clearfix"></div>
           </div>
 
-          <div class="col-sm-6 col-lg-6">
-            <p class="blue figure medium">{{energy[1].val}}</p>
-            <p class="figure grey">{{energy[1].unit}}</p>
+          <div class="col-xs-12 col-sm-6 col-lg-6">
+            <p class="blue figure medium ">{{energy[1].val}}</p>
+            <p class="figure grey ">{{energy[1].unit}}</p>
             <div class="clearfix"></div>
-            <br>
+            <br class="hidden-xs">
             <p class="blue figure medium">{{energy[2].val}}</p>
-            <p class="figure grey">{{energy[2].unit}}</p>
+            <p class="figure grey ">{{energy[2].unit}}</p>
           <div class="clearfix"></div>
           </div>
       </div>
-      <div class="col-sm-12 col-md-5 col-lg-6">
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
         <h4>Carbon</h4>
-        <div class="col-lg-5">
-        <p class="blue figure large">{{carbon[0].val}}</p>
-        <p class="grey figure large">{{carbon[0].unit}}CO<sub>2</sub>e</p>
+        <div class="col-xs-12 col-sm-6 col-md-5 col-lg-5">
+        <p class="blue figure large ">{{carbon[0].val}}</p>
+        <p class="grey figure large ">{{carbon[0].unit}}CO<sub>2</sub>e</p>
         <div class="clearfix"></div>
         </div>
-        <div class="col-lg-4">
-          <p class="blue figure medium">{{carbon[1].val}}</p>
-          <p class="figure grey">CO<sub>2</sub>{{carbon[1].unit}}</p>
-          <br>
-          <p class="blue figure medium">{{carbon[2].val}}</p>
-          <p class="figure grey">CO<sub>2</sub>{{carbon[2].unit}}</p>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+          <p class="blue figure medium ">{{carbon[1].val}}</p>
+          <p class="figure grey ">CO<sub>2</sub>{{carbon[1].unit}}</p>
+          <br class="hidden-xs">
+          <p class="blue figure medium ">{{carbon[2].val}}</p>
+          <p class="figure grey ">CO<sub>2</sub>{{carbon[2].unit}}</p>
           <div class="clearfix"></div>
         </div>
       </div>

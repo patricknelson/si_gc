@@ -43,26 +43,33 @@
         .bottom_label > p:nth-child(2) {left: 36.6%;}
         .bottom_label > p:last-child {left: 70.2%}
       }
+
+       @media only screen and (max-device-width: 667px){
+        :host {
+          left: -20%;
+        }
+        .bottom_label{  top: -70px;}
+        .top_label>p.green{left:24.6%;top:60px;}
+        .top_label>p.lt-blue {top:146px;left: 48.6%;}
+        .bottom_label > p:nth-child(2) {left: 26.6%;}
+        .bottom_label > p:last-child {left: 50.2%}
+      }
+      @media screen and (device-aspect-ratio: 40/71) {
+        .top_label{top: 35px;}
+        .bottom_label{  top: -70px;}
+        .top_label>p.green{top:60px!important;left:27.6%!important;}
+        .top_label>p.lt-blue {top:146px;left: 54.6%;}
+        .bottom_label > p:nth-child(2) {left: 29.6%;}
+        .bottom_label > p:last-child {left: 56.2%;}
+      }
     </style>
      <core-ajax auto url="scripts/data/co2e_trends{{num}}.json" handleAs="json" response="{{response}}"></core-ajax> 
      <div class="top_label"><p class="blue">{{vals[0]}}</p><p class="green">{{vals[1]}}</p><p class="lt-blue">{{vals[2]}}</p></div>
-      <google-chart type="column" id="co2e_trends{{num}}" options='{
-                        "title": "",                    
-                        "width": 400,
-                        "height": 500,
-                        "chartArea": {"width": "60%", "height": "60%"},
-                        "bar": {"groupWidth": "90%"},
-                        "legend": {"position": "none" },
-                        "hAxis": { "textPosition": "none","gridlines": {"color": "transparent"} },
-                        "vAxis": { "textPosition": "none","gridlines": {"color": "transparent"}},
-                        "backgroundColor": { "fill":"transparent" },
-                        "annotations": {"alwaysOutside": true, "textStyle": {"fontSize": 18}},
-                        "animation":{"duration": 3000,"easing": "in"},
-                        "tooltip": {
-                          "trigger": "none"
-                        }
-                      }'
-                  data='scripts/data/co2e_trends{{num}}.json'>
+      <google-chart type="column" 
+                    id="co2e_trends{{num}}" 
+                    options='{{opts}}'
+                    numberFormats = '[{"col":2, "groupingSymbol": ","}]'
+                    data='scripts/data/co2e_trends{{num}}.json'>
        </google-chart>
        <div class="bottom_label"><p>2014</p><p>2013</p><p>2012</p></div>
   </template>
@@ -70,12 +77,24 @@
     (function(){
       Polymer({
           ready: function() {
-            
+            var height = (this.isMobile()) ? 350 : 500;
+            this.opts = {"width": 400,"height": height,"chartArea": {"width": "60%", "height": "60%"},"bar": {"groupWidth": "90%"},"legend": {"position": "none" },"hAxis": { "textPosition": "none","gridlines": {"color": "transparent"},"baselineColor": 'transparent'},"vAxis": { "textPosition": "none","gridlines": {"color": "transparent"},"baselineColor": 'transparent'},"backgroundColor": { "fill":"transparent" },"annotations": {"alwaysOutside": true, "textStyle": {"fontSize": 18}},"animation":{"duration": 3000,"easing": "in"},"tooltip": {"trigger": "none"}}
           },
           responseChanged: function(oldValue) {
             this.vals = [this.response[1][1],this.response[2][1],this.response[3][1]];
+            this.formatNumbers(this.vals);
             this.vals[0] = 'XX,XXX';
-          }     
+          },
+          isMobile :function(){
+            return window.matchMedia('screen and (max-width: 767px)').matches;
+          },
+          formatNumbers:function(data){
+              var self = this;
+              data.forEach(function(num,i){
+                  self.vals[i] = num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+              });
+          }
+
       });
     })();
   </script>

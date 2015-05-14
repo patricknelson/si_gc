@@ -41,8 +41,10 @@
           ready: function() {
             var self = this;
             this.id = 'water' + this.num;
-            console.log(this.height);
-            this.opts = {"title": "", "width": 1000, "height": this.height , "bar": {"groupWidth": "95%"}, "legend": {"position": "none" }, "hAxis": { "textPosition": "none","gridlines": {"color": "transparent"} }, "vAxis": { "textPosition": "none","gridlines": {"color": "transparent"}}, "backgroundColor": { "fill":"transparent" }, "annotations": {"alwaysOutside": true,"textStyle": {"fontSize": 18}}, "animation":{"duration": 3000,"easing": "in"}, "tooltip": { "trigger": "none" }, "enableInteractivity" : false};
+            this.isMobile = this.isMobile();
+            var width = (this.isMobile)? 420:1000;
+            var font = (this.isMobile)? 14:18;
+            this.opts = {"title": "", "width": width, "height": this.height , "bar": {"groupWidth": "95%"}, "legend": {"position": "none" }, "hAxis": { "textPosition": "none","gridlines": {"color": "transparent"} }, "vAxis": { "textPosition": "none","gridlines": {"color": "transparent"}}, "backgroundColor": { "fill":"transparent" }, "annotations": {"alwaysOutside": true,"textStyle": {"fontSize": 18}}, "animation":{"duration": 3000,"easing": "in"}, "tooltip": { "trigger": "none" }, "enableInteractivity" : false};
             console.log(this.opts);
             this.barLabels = {
               1:{
@@ -57,12 +59,8 @@
             }
            $(document).on('google-chart-render',function(e){
             var id = e.target.id;
-            var height = (self.num == 2) ? 260 : 175;
             if(id == self.id){
               setTimeout(function(){
-                console.log(height);
-                //self.findChart().options.height = height;
-                //self.fixHeight();
                 self.positionHorizontalLabels();
                 self.createBarLabel();
               }, 1000);
@@ -71,10 +69,15 @@
             }
           });
           },
+          isMobile :function(){
+            return window.matchMedia('screen and (max-width: 767px)').matches;
+          },
           positionHorizontalLabels:function(){
             var lbls = $(this.getHorizontalLabels());
+            var  self =  this;
             lbls.each(function(i,el){
-              if(i == 0 ) $(el).attr('x','380'); //FORCE FURTHER RIGHT ON FIRST ONE
+               var left = (self.isMobile) ? 340 : 380; 
+              if(i == 0 ) $(el).attr('x',left); //FORCE FURTHER RIGHT ON FIRST ONE
                 $(el).attr('transform','translate(15,0)');
             });
           },
@@ -111,11 +114,17 @@
              posx = (typeof posx === 'undefined') ? "190" : posx;//164
              var text = document.createElementNS("http://www.w3.org/2000/svg", "text");
              var attrs = ["y","x","text-anchor","fill","font-size"];
-             var avals = [posy,posx,"start","#fff","17px"];
+             var avals = this.getLabelVals(posx,posy);
              this.setAllAttributes(text,attrs,avals);
              var node = document.createTextNode(txt);
              text.appendChild(node);
              return text;
+          },
+          getLabelVals:function(posx,posy){
+              posx = (this.isMobile) ? ((this.num == 1) ? posx - 30: posx - 40): posx;
+              posy = (this.isMobile) ? posy - 3: posy;
+              var font = (this.isMobile) ? "12px" : "17px";
+              return [posy,posx,"start","#fff",font];
           },
           redraw :function (chrt){
             chrt.drawChart();
