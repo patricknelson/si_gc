@@ -26,6 +26,8 @@
 
       .top_label>p.lt-blue{left:33.6%;top:206px;}
       .bottom_label > p:last-child{left: 35.2%;}
+
+
     </style>
 
      <google-chart
@@ -42,9 +44,9 @@
             var self = this;
             this.id = 'water' + this.num;
             this.isMobile = this.isMobile();
-            var width = (this.isMobile)? 420:1000;
+            var width = (this.isMobile)? 390:1000;
             var font = (this.isMobile)? 14:18;
-            this.opts = {"title": "", "width": width, "height": this.height , "bar": {"groupWidth": "95%"}, "legend": {"position": "none" }, "hAxis": { "textPosition": "none","gridlines": {"color": "transparent"} }, "vAxis": { "textPosition": "none","gridlines": {"color": "transparent"}}, "backgroundColor": { "fill":"transparent" }, "annotations": {"alwaysOutside": true,"textStyle": {"fontSize": 18}}, "animation":{"duration": 3000,"easing": "in"}, "tooltip": { "trigger": "none" }, "enableInteractivity" : false};
+            this.opts = {"title": "", "width": width, "height": this.height , "bar": {"groupWidth": "95%"}, "legend": {"position": "none" }, "hAxis": { "textPosition": "none","gridlines": {"color": "transparent"},"baselineColor": 'transparent' }, "vAxis": { "textPosition": "none","gridlines": {"color": "transparent"},"baselineColor": 'transparent'}, "backgroundColor": { "fill":"transparent" }, "annotations": {"alwaysOutside": true,"textStyle": {"fontSize": 18}}, "animation":{"duration": 3000,"easing": "in"}, "tooltip": { "trigger": "none" }, "enableInteractivity" : false};
             console.log(this.opts);
             this.barLabels = {
               1:{
@@ -76,9 +78,9 @@
             var lbls = $(this.getHorizontalLabels());
             var  self =  this;
             lbls.each(function(i,el){
-               var left = (self.isMobile) ? 340 : 380; 
+               var left = (self.isMobile) ? 315 : 380; 
               if(i == 0 ) $(el).attr('x',left); //FORCE FURTHER RIGHT ON FIRST ONE
-                $(el).attr('transform','translate(15,0)');
+                $(el).attr('transform','translate(3,0)');
             });
           },
           getHorizontalLabels:function(){
@@ -91,7 +93,7 @@
                 lbls = this.barLabels[this.num],
                 self = this,i;
             bars.forEach(function(el,i){
-              if(i == 0) $(el).attr('width','250'); //FORCE LONGER ON FIRST ONE
+              if(i == 0) $(el).attr('width','240'); //FORCE LONGER ON FIRST ONE
               var txt= self.buildLabelSvg(lbls[i][0],lbls[i][1]);
               $(el).after(txt);
             });
@@ -121,7 +123,7 @@
              return text;
           },
           getLabelVals:function(posx,posy){
-              posx = (this.isMobile) ? ((this.num == 1) ? posx - 30: posx - 40): posx;
+              posx = (this.isMobile) ? ((this.num == 1) ? posx - 70: posx - 80): posx;
               posy = (this.isMobile) ? posy - 3: posy;
               var font = (this.isMobile) ? "12px" : "17px";
               return [posy,posx,"start","#fff",font];

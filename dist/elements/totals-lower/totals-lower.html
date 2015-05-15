@@ -26,28 +26,33 @@
     @media only screen and (max-device-width: 667px){
       .lower > .inner {  width: 90%;}
         .figure.large{  font-size: 20px;}
-        h4{margin-left:6px;}
-        div.third{  padding-left: 4px;}
+        .figure:nth-of-type(even){text-align: center;  margin-left: -35%;}
+        h4{  margin-left: -12px; text-align: center;}
+        div.third{  padding-left: 4px;  margin-bottom: 24px;}
+        div.third:first-of-type{  margin-top: 20px;}
         .figure{margin-left:0;}
+    }
+    @media only screen and (max-device-width: 667px){
+      .lower > .inner { width: 80%;padding-top:12px;}
     }
 	</style>
   <core-ajax auto url="{{url}}" handleAs="json" response="{{response}}"></core-ajax> 
     <div class="lower row">
               <div class="inner">
                 <h4 >CO<sub>2</sub>e by Geography (Tonnes)</h4>
-                <div class="third col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <div class="third col-xs-12 col-xs-offset-4 col-sm-offset-0 col-sm-4 col-md-4 col-lg-4">
                   <p class="figure large green">{{locations.asia_pacific}}</p>
-                  <p class="figure grey">Asia Pacific</p>
+                  <p class="figure grey col-xs-12 col-xs-offset-0">Asia Pacific</p>
                   <div class="clearfix"></div>
                 </div>
-                <div class="third col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <div class="third col-xs-12 col-xs-offset-4 col-sm-offset-0  col-sm-4 col-md-4 col-lg-4">
                   <p class="figure large green">{{locations.americas}}</p>
-                  <p class="figure grey">Americas</p>
+                  <p class="figure grey col-xs-12 col-xs-offset-0">Americas</p>
                   <div class="clearfix"></div>
                 </div>
-                <div class="third col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <div class="third col-xs-12 col-xs-offset-4 col-sm-offset-0  col-sm-4 col-md-4 col-lg-4">
                   <p class="figure large green">{{locations.europe_mideast_africa}}</p>
-                  <p class="figure grey">Europe Middle East & Africa</p>
+                  <p class="figure grey col-xs-12 col-xs-offset-0">Europe Middle East & Africa</p>
                   <div class="clearfix"></div>
                 </div>
               </div>

@@ -22,11 +22,11 @@
     .grey{color:#796e65;}
     .lt-blue{color:#66A2E4;}
       .top_label, .bottom_label{position:relative;z-index: 99;}
-      .bottom_label{left:-40px; top:-284px;color:#fff;}
+      .bottom_label{left:-6px; top:-291px;color:#fff;}
       #data_center2{bottom:94px;position:relative;left:-40%;}
 
       .top_label {
-        left: -55px;
+        left: -15px;
         top: 20px;
       }
       .top_label > p{position: relative;}
@@ -37,33 +37,57 @@
         left: 6px;
         top: 24px;
       }
-      .top_label > p.green{left: 29.8%; top: 12px;}  
-      .top_label > p.lt-blue{left: 58.6%;top: 42px;}
+      .top_label > p.green{left: 35.8%; top: 12px;}  
+      .top_label > p.lt-blue{left: 71.6%;top: 42px;}
       .bottom_label > p{position:absolute;top: 55px;font-size: 18px;}
       .bottom_label > p:first-child {left: .2%;}
-      .bottom_label > p:nth-child(2) {left: 28.6%;}   
-      .bottom_label > p:nth-child(3) {left: 58.5%;} 
-      @media screen and (max-width:1200px){ 
+      .bottom_label > p:nth-child(2) {left: 36.6%;}   
+      .bottom_label > p:nth-child(3) {left: 72.5%;} 
+      @media screen and (min-width:1025px) and (max-width:1349px){
+        .top_label {left:0;}
+        .bottom_label{left:12px;}
+        .top_label > p.green{left: 40.8%; }
+        .top_label > p.lt-blue{left: 81.6%;}
+        .bottom_label > p:nth-child(2) {left: 41.6%;}   
+        .bottom_label > p:nth-child(3) {left: 81.5%;}
+      }
+
+      @media screen and (max-width:1024px){ 
         #data_center2{left: -68%;}
         .top_label {left: -49px;}
         .bottom_label{left:10px;}
         .top_label > p.green{left: 49.8%; }
-        .top_label > p.lt-blue{left: 95.6%;}
+        .top_label > p.lt-blue{left: 98.6%;}
         .bottom_label > p:first-child {left: -17%;}
         .bottom_label > p:nth-child(2) {left: 33.6%;}   
-        .bottom_label > p:nth-child(3) {left: 80.5%;} 
+        .bottom_label > p:nth-child(3) {left: 82.5%;} 
       }  
-      @media screen and (max-width:667px){
+
+
+
+      @media only screen and (max-device-width: 640px), 
+           only screen and (max-device-width: 667px){
+            .chart-title {left: -16px;  top: 34px;}
+            #data_center2 {left: -38%;bottom: 84px;}
+        .bottom_label{  top: -260px;}
+        .top_label {top: 28px;}
+        .top_label > p.blue{left: 15%;}
+        .top_label > p.lt-blue{left: 82.6%;top:48px;}
+        .bottom_label > p:first-child {left: -.5%;}   
+        .bottom_label > p:nth-child(3) {left: 68%;} 
+      }
+            @media screen and (device-aspect-ratio: 40/71) {  
         #data_center2{left: -48%;}
+          .top_label > p.blue {left:0;}
         .chart-title{margin-bottom: 25px;top:35px;left:-20px;}
         .top_label {  left: -16px;}
         .top_label > p.green {left: 37.8%;}
         .top_label > p.lt-blue {left: 75.6%;}
         .bottom_label > p:first-child {left: -5%;}
         .bottom_label > p:nth-child(3) {left: 70.5%;}
-        .bottom_label{top:-270px;};
-
+        .bottom_label{top:-270px;}
       }
+
     </style>
 <core-ajax auto url="../../scripts/data/data_center2.json" handleAs="json" response="{{response}}"></core-ajax> 
      <div class="chart-title grey">CO<sub>2</sub>e</div>
@@ -88,7 +112,7 @@
             var height = (this.isMobile()) ? 280 : 260;
             var font   = (this.isMobile()) ? 16 : 18;
             var gwdth  = (this.isMobile()) ? "70%" : "60";
-            this.opts  = {"width": width,"height": height,"bar": {"groupWidth": gwdth},"legend": {"position": "none" },"hAxis": { "textPosition": "none","gridlines": {"color": "#ffffff"},"baselineColor": '#ffffff' },"vAxis": { "textPosition": "none","gridlines": {"color": "#ffffff"},"baselineColor": '#ffffff'},"backgroundColor": { "fill":"transparent" },"annotations": {"alwaysOutside": true, "textStyle": {"fontSize": font}},"animation":{"duration": 3000,"easing": "in"},"tooltip": {"trigger": "none"} }
+            this.opts  = {"width": width,"height": height,"bar": {"groupWidth": gwdth},"legend": {"position": "none" },"hAxis": { "textPosition": "none","gridlines": {"color": "#ffffff"},"baselineColor": 'transparent' },"vAxis": { "textPosition": "none","gridlines": {"color": "#ffffff"},"baselineColor": 'transparent'},"backgroundColor": { "fill":"transparent" },"annotations": {"alwaysOutside": true, "textStyle": {"fontSize": font}},"animation":{"duration": 3000,"easing": "in"},"tooltip": {"trigger": "none"} }
           },
           responseChanged: function(oldValue) {
             //this.vals = [this.response[1][1],this.response[2][1],this.response[3][1]];

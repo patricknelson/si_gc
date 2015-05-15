@@ -75,7 +75,7 @@ div#main{
       #wrapper {
         background-color: #fff;
         border: 1px solid #ccc;
-        max-width: 1500px;
+        max-width: 1200px;
         /*width:105%;*/
         height: 560px;
         padding-top: 25px;
@@ -87,7 +87,7 @@ div#main{
       }
       #main .title{
         margin:0 auto;
-        max-width: 1500px;
+        max-width: 1100px;
         width: 100%;
       }
       #main .title .heading{color:#86B817;margin:0 auto 0 -3%;}
@@ -197,7 +197,7 @@ div#main{
      #energy_use2{left:-10%;}
 
      #tabs div[data-link^="ENERGY US"] div.half:nth-child(2) .chart-title.grey{left:124px;}
-     #tabs div[data-link^="ENERGY US"] div.half:nth-child(3) .chart-title.grey{left:-60px;}
+     #tabs div[data-link^="ENERGY US"] div.slide-wrap > div:nth-child(3) > .chart-title.grey{  left: -25%;}
      #tabs div[data-link^="ENERGY US"] div.slide-wrap > div{padding-left:0;}
       /** LEGEND ENERGY USED CHART **/
       #energy_use1 {left:1% }
@@ -216,8 +216,8 @@ div#main{
         /*bottom:-180px;
         left:1.8%;
         z-index:-1;*/
-        bottom: -20%;
-  		left: 22%;
+        bottom: -13%;
+  		left: 19%;
   		z-index:0;
       }  
       .energy-used-legend div{
@@ -253,7 +253,7 @@ div#main{
         //left: 45.3%;
         background-color: #CCE0F6;
       }
-
+      #tabs div[data-link^="ENERGY TRE"] div.lower .chart-title.hbar{left:-40.7%}
       #energy_trends1,#energy_trends2,
       #water1,#water2{
           position: relative;
@@ -419,13 +419,22 @@ div#main{
           left: -29.4%;
             padding-top: 2px;
             width: 160%;
-            min-height:600px;
-            margin-bottom:12px;
+            /*min-height:600px;
+            margin-bottom:12px;*/
+            min-height: 426px;
+            margin-bottom: 14px;
+            height:380px;
         }    
-        #main #wrapper >.caroufredsel_wrapper{top: -48px!important;}
+        /*#main #wrapper >.caroufredsel_wrapper{top: -48px!important;height:400px!important;}
+        #tabs > div { min-height: 400px!important;}*/
+        #tabs {min-height: 380px!important;}
 
+        #tabs > div div.slide-wrap{height:auto!important;}
         /*div[data-link^="CO2e TRENDS"] .slide-wrap .col-xs-12:not(:first-child){top:80px;}
         div[data-link^="CO2e TRENDS"] .slide-wrap .col-xs-12:last-child{top:150px;}*/
+        #tabs div[data-link^="ENERGY TRE"] div.lower .chart-title.hbar {
+  left: -14.7%;
+}
         #tabs div[data-link^="ENERGY US"] div.slide-wrap > div.energy-used-legend {left: 15px !important;}
         #tabs div[data-link^="DATA"] .info-right-top {top: -120px;}
         div#main{padding:10px 80px;height:100%;}
@@ -455,12 +464,20 @@ div#main{
       /** iphone 5 only **/
        @media screen and (device-aspect-ratio: 40/71) {        
         #wrapper {left: -44.4%;width: 190%;}
+        #wrapper{height:380px!important;}    
+        body #main #wrapper >.caroufredsel_wrapper{top: -18px!important;height:395px!important;}
+        #wrapper #tabs > div { min-height: 390px!important;}
+        #tabs {min-height: 380px!important;}
+          #tabs {min-height: 370px;}
+        #tabs .slide-wrap{height:auto;}
+        #main .title {margin-left: -41%!important;}
+        #main .title > h1 {font-size:24px;}
         #main #wrapper > .caroufredsel_wrapper{left:0}
-        #pager .nav> li  a{font-size:11px;}
+        #pager .nav> li  a{font-size:11px!important;}
         #main #wrapper > .caroufredsel_wrapper{
             top: -16px !important; 
         }  
-        #tabs > div[data-link^="2014"] div.slide-wrap  {margin-top: auto!important;  margin-left: auto!important;}
+        #tabs > div[data-link^="2014"] div.slide-wrap  {margin-top: 15px!important;  margin-left: auto!important;}
        #tabs .chart-title.hbar {
           left: -18%;
           font-size: 16px;
@@ -478,18 +495,42 @@ div#main{
           top: -45px;
           font-size: 14px;
         }
-        #tabs .water-icons{  left: 3px;}
+        #tabs .water-icons{    left: 16px;top: 50px;}
         #tabs .water-icons img{  width: 4%;}
         #tabs div[data-link^="DATA"] .info-right-top {
           top: -114px;
         }
+         #tabs div[data-link^="DATA"] .upper div.half:last-child:after {top: 21.5em;}
 
 
        }
 
       /*iPhone 6 and iPhone 6+ portrait and landscape*/
-      @media only screen and (max-device-width: 640px), 
-           only screen and (max-device-width: 667px){
-                   #tabs > div[data-link^="2014"] div.slide-wrap  {margin-top: 40px;  margin-left: 18px;}
-
+      @media only screen and (max-device-width : 667px),
+            only screen and (min-device-width : 414px) and (max-device-width : 736px){
+            body > div:first-of-type { overflow: hidden;height: 667px;}
+             #wrapper{height:520px;}    
+            #main #wrapper >.caroufredsel_wrapper{top:-16px!important;height:510px!important;}
+            #tabs div.slide-wrap div.upper {border-bottom:none;}
+            #tabs div.slide-wrap div.upper:after {  content:""; border-bottom: 1px solid #ccc;position:absolute; width: 91%;  top: 91%;}
+            #tabs > div {  min-height: 490px!important;}
+            #tabs {min-height: 520px;}
+            #tabs .slide-wrap{height:auto;}
+             #tabs > div[data-link^="2014"] div.slide-wrap  {margin-top: 5px;  margin-left: 18px;}
+             #energy_trends1, #energy_trends2, #water1, #water2 {left: -80px;}
+              #tabs > div[data-link^="WATER"] div.slide-wrap {margin-top:2px;}
+              #tabs div[data-link^="WATER"] .chart-title.hbar {left: 16px;font-size: 17px;}
+              #tabs div[data-link^="DATA"] .info-right-top {top: -95px;font-size: 14px;}
+              .info-right-top {position: relative;right: -40px;top: -49px;font-size: 15px;}
+              .info-right-top > span{font-size:10px;left:4px;}
+                            .info-right-top > span:before {left: -20px;}
+              #tabs .chart-title.hbar{left:-18%;}
+             #pager .nav>li a {font-size: 13px;}
+             #pager .nav > li {left: -1.3px;top: -5px;}
+            #pager .nav > li > a {position:absolute;width:100%}
+            #pager .nav > li.selected.the-fourth{ top:0;}
+             #pager .nav > li.selected > a{height: 53px;}
+             #pager .nav > li:not(.selected) > a{  top: 5px;  left: -15px;}
+             div#main div.title {margin-left:-21%;}
+             .water-icons{left: 14px;}
        }

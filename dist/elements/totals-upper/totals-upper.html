@@ -44,8 +44,9 @@
     }
 	  h4{color: #796e65;font-size:18px;}
     @media only screen and (max-device-width: 667px){
+      :host{padding-left:10px;}
       div.upper{  height: 200px;}
-      div.upper:after {width: 300px;top: 200px;}
+      div.upper:after {width: 284px;top: 200px;}
       .col-xs-6:not(.half),.col-xs-12{padding:0;}
       div.upper > .half:first-child > .col-lg-6{border-right:none;}
       div.upper > .half:first-child > .col-lg-6:after{content:"";border-right:1px solid #ccc;position:absolute; left: 96%;height: 188px;top: -75px;}
@@ -56,8 +57,12 @@
       .figure.medium{font-size:14px;}
       .upper .col-xs-12:first-of-type .figure{margin-left:0;}
       p.figure.grey{font-size:12px;top: -5px; position: relative;}
-
     }
+    @media only screen and (max-device-width : 667px),
+            only screen and (min-device-width : 414px) and (max-device-width : 736px){
+      div.upper > .half:first-child > .col-lg-6:after { left: 88%;}
+    }
+
 	</style>
   <core-ajax auto url="{{url}}" handleAs="json" response="{{response}}"></core-ajax> 
     <div class="upper row">
@@ -88,10 +93,10 @@
         </div>
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
           <p class="blue figure medium ">{{carbon[1].val}}</p>
-          <p class="figure grey ">CO<sub>2</sub>{{carbon[1].unit}}</p>
+          <p class="figure grey ">CO<sub>2</sub>e{{carbon[1].unit}}</p>
           <br class="hidden-xs">
           <p class="blue figure medium ">{{carbon[2].val}}</p>
-          <p class="figure grey ">CO<sub>2</sub>{{carbon[2].unit}}</p>
+          <p class="figure grey ">CO<sub>2</sub>e{{carbon[2].unit}}</p>
           <div class="clearfix"></div>
         </div>
       </div>

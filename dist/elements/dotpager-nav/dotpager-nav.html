@@ -2,16 +2,19 @@
 <link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
 <polymer-element name="dotpager-nav">
   <template>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
 
   	<style>
 	 :host {
         display: block;
+        position:relative;
       }
     .blue{color:#0064D2}
 	  .green{color:#86B817;}
 	  .grey{color:#796e65;}
 	  .lt-blue{color:#66A2E4;}
     #dotpager ul {
+        width:200px;
         position: relative;
         display: inline-block;
         margin: auto;
@@ -51,11 +54,20 @@
       }
 
       #dotpager{
-        position: absolute;
-        bottom: -160px;
+        /*position: absolute;
+        bottom: -85px;*/
+          position: absolute;
+  bottom: -88px;
+  left: 10%;
+  background-color: #F2F2F2;
+  width: 400px;
       }  
+/** iphone 5 only **/
+       @media screen and (device-aspect-ratio: 40/71) {
+        #dotpager{left: -4px!important;}
+      }
     </style>
-      <div id="dotpager" class="hidden-sm hidden-md hidden-lg">
+      <div id="dotpager" class="visible-xs-block">
         <ul>
           <li on-click="{{navigate}}" class="current"><a></a></li>
           <li on-click="{{navigate}}"><a href="#"></a></li>
