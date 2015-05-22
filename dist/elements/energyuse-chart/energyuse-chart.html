@@ -80,7 +80,7 @@
                 self.resetSliceFill();
             });  
              
-          },
+          },               
           fixPieLabels:function(){
             lbls = this.getLabels();
             var self = this;
@@ -121,13 +121,13 @@
             this.resetSliceFill();
             var slices = el.siblings().length;
             var chrtSlice = slices - el.index();
-            pie1 = this.getSlice(CHRTR.pie1);
+            pie1 = this.getSlice(this.pie1);
             [].forEach.call(pie1, function(el,i){
               if(i != chrtSlice){
                 $(el).find('path').attr('fill','rgba(204, 204, 204, 0.76)');
               }
             });
-            pie2 = this.getSlice(CHRTR.pie2);
+            pie2 = this.getSlice(this.pie2);
             [].forEach.call(pie2, function(el,i){
               if(i != chrtSlice){
                 $(el).find('path').attr('fill','rgba(204, 204, 204, 0.76)');

@@ -83,7 +83,6 @@
       Polymer({
           ready: function() {
              this.id = 'dot-pager';
-
           },
           navigate:function(e,detail,sender){
                var $me  = $(sender);
@@ -95,12 +94,11 @@
                this.progressTabs(idx);
           },
           progressTabs:function(idx){
-            var $active = $('.nav > li').eq(idx);
-            var $nxt    = (idx == 5) ? $('.nav > li.the-first') : $('.nav > li').eq(idx+1);
-            if($nxt.hasClass('the-first')){
-                var $first = $nxt.detach();
-                $active.after($nxt);
-            }
+            var cls  = this.getClassFromIdx(idx);
+            var cls2 = this.getClassFromIdx(idx+1);
+            var $active = $('.nav > li.'+cls);
+            var $nxt    = (idx == 5) ? $('.nav > li.the-first') : $('.nav > li.'+cls2);
+            this.checkDoInfinite($active,$nxt);            
             var toHide = $active.siblings().not($nxt);
             $active.removeClass('inactive');
             $nxt.removeClass('inactive');
@@ -109,12 +107,27 @@
             $active.addClass('selected');
 
           },
+          checkDoInfinite:function($active,$nxt){
+            if($nxt.hasClass('the-first')){
+                var $first = $nxt.detach();
+                $active.after($nxt);
+            }
+            if($active.hasClass('the-first')){
+               var $first = $active.detach();
+               $nxt.before($active);
+            }
+          },
+          getClassFromIdx:function(idx){
+            if(idx == 0) return 'the-first';
+            if(idx == 1) return 'the-second';
+            if(idx == 2) return 'the-third';
+            if(idx == 3) return 'the-fourth';
+            if(idx == 4) return 'the-fifth';
+            if(idx == 5) return 'the-sixth';
+          },
           advanceDots:function(idx){
             var $old = $(this.$.dotpager).find('.current');
-            console.log(idx);
-            var $nxt = (idx != 6) ? $old.next() : $(this.$.dotpager).find('li:eq(0)');
-            console.log($old);
-            console.log($nxt);
+            var $nxt = (idx != 0) ? $old.next() : $(this.$.dotpager).find('li:eq(0)');
             $old.removeClass('current');
             $nxt.addClass('current');
           }   

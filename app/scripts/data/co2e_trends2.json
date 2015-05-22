@@ -1,1 +1,4 @@
-[[{"label": "Year","type": "string"},{"label": "Usage","type": "number"},{"type": "string","role": "style"}],["2014",35803,"color:#0064D2"],["2013",28090,"color: #86B817"],["2012",16895,"color: #66A2E4"]]
+[[{"label": "Year","type": "string"},{"label": "Usage","type": "number"},{"type": "string","role": "style"}],
+["2014",229274,"color:#0064D2"],
+["2013",223935,"color: #86B817"],
+["2012",207332,"color: #66A2E4"]]

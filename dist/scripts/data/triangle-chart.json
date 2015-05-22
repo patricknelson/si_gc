@@ -1,7 +1,7 @@
 {
   "data":[
-  	{"currVal":"XX,XXXX","lastVal":"56,592","color":"blue"},
-  	{"currVal":"XX,XXXX","lastVal":"56,592","color":"green"},
-    {"currVal":"XX,XXXX","lastVal":"56,592","color":"lt-blue"}
+  	{"currVal":"90,648","lastVal":"73,329","v2012":"56,592","color":"blue"},
+  	{"currVal":"72,815","lastVal":"48,312","v2012":"26,134","color":"green"},
+    {"currVal":"98,755","lastVal":"95,715","v2012":"87,171","color":"lt-blue"}
   ]
 }

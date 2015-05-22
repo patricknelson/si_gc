@@ -1,6 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
-<polymer-element name="datacenter-chart"  attributes="num,height">
+<polymer-element name="datacenter-chart"  attributes="num,height,url">
   <template>
 
   	<style>
@@ -22,27 +22,32 @@
     .grey{color:#796e65;}
     .lt-blue{color:#66A2E4;}
       .top_label, .bottom_label{position:relative;z-index: 99;}
-      .bottom_label{left:-6px; top:-291px;color:#fff;}
-      #data_center2{bottom:94px;position:relative;left:-40%;}
+      .bottom_label{left:-6px; top:-349px;color:#fff;}
+      #data_center2{bottom:232px;position:relative;left:-40%;}
 
       .top_label {
         left: -15px;
-        top: 20px;
+        top: 44px;
+        font-size:14px;
       }
-      .top_label > p{position: relative;}
+      .top_label > p{position: relative;left:15px;top:5px;}
       .top_label > p > span {
         font-size: 12px;
         position: absolute;
         color: #796e65;
-        left: 6px;
-        top: 24px;
+        left: 2px;
+        top: 18px;
+        font-weight:bold;
       }
-      .top_label > p.green{left: 35.8%; top: 12px;}  
-      .top_label > p.lt-blue{left: 71.6%;top: 42px;}
+      .top_label > p > span:last-child {font-weight:normal;font-size:10px;top:32px;left: 4.5px;}
+      .top_label > p.green{left:5px;}
+      .top_label > p.green{left: 36.4%; top: 10px;}  
+      .top_label > p.lt-blue{left: 69.6%;top: -172px;}
       .bottom_label > p{position:absolute;top: 55px;font-size: 18px;}
-      .bottom_label > p:first-child {left: .2%;}
+      .bottom_label > p:first-child {left: 4%;}
       .bottom_label > p:nth-child(2) {left: 36.6%;}   
-      .bottom_label > p:nth-child(3) {left: 72.5%;} 
+      .bottom_label > p:nth-child(3) {left: 69.5%;} 
+      /*.top_label >p{color:red!important;}*/
       @media screen and (min-width:1025px) and (max-width:1349px){
         .top_label {left:0;}
         .bottom_label{left:12px;}
@@ -68,15 +73,18 @@
       @media only screen and (max-device-width: 640px), 
            only screen and (max-device-width: 667px){
             .chart-title {left: -16px;  top: 34px;}
-            #data_center2 {left: -38%;bottom: 84px;}
-        .bottom_label{  top: -260px;}
-        .top_label {top: 28px;}
-        .top_label > p.blue{left: 15%;}
-        .top_label > p.lt-blue{left: 82.6%;top:48px;}
+            #data_center2 {left: -38%;bottom: 144px;}
+        .bottom_label{  top: -318px;}
+        .top_label {top: 88px;}
+        .top_label > p.blue{left: 15%;top:10px;}
+        .top_label > p.green{top: 10px;}
+        .top_label > p.lt-blue{left: 82.6%;top:-148px;}
+        .top_label > p > span:last-child{font-size:10px;left:4px;}
         .bottom_label > p:first-child {left: -.5%;}   
+        .bottom_label > p:nth-child(3){left:32.6%;}
         .bottom_label > p:nth-child(3) {left: 68%;} 
       }
-            @media screen and (device-aspect-ratio: 40/71) {  
+      @media screen and (device-aspect-ratio: 40/71) {  
         #data_center2{left: -48%;}
           .top_label > p.blue {left:0;}
         .chart-title{margin-bottom: 25px;top:35px;left:-20px;}
@@ -85,16 +93,21 @@
         .top_label > p.lt-blue {left: 75.6%;}
         .bottom_label > p:first-child {left: -5%;}
         .bottom_label > p:nth-child(3) {left: 70.5%;}
-        .bottom_label{top:-270px;}
       }
 
     </style>
-<core-ajax auto url="../../scripts/data/data_center2.json" handleAs="json" response="{{response}}"></core-ajax> 
+<core-ajax auto url="{{url}}" handleAs="json" response="{{response}}"></core-ajax> 
      <div class="chart-title grey">CO<sub>2</sub>e</div>
     <div class="top_label">
-      <p class="blue">{{vals[0]}}<br><span>56,592</span></p>
-      <p class="green">{{vals[1]}}<br><span>56,592</span></p>
-      <p class="lt-blue">{{vals[2]}}<br><span>56,592</span></p>
+      <p class="blue">{{vals[0]}}
+        <br><span>{{oldData[2013][0]}}</span>
+        <br><span>{{oldData[2012][0]}}</span></p>
+      <p class="green">{{vals[1]}}
+        <br><span>{{oldData[2013][1]}}</span>
+        <br><span>{{oldData[2012][1]}}</span></p>
+      <p class="lt-blue">{{vals[2]}}
+        <br><span>{{oldData[2013][2]}}</span>
+        <br><span>{{oldData[2012][2]}}</span></p>
     </div>
     <google-chart
     type="column"
@@ -109,17 +122,27 @@
       Polymer({
           ready: function() {
             var width  = (this.isMobile()) ? 500 : 600;
-            var height = (this.isMobile()) ? 280 : 260;
+            var height = (this.isMobile()) ? 280 : 350;
             var font   = (this.isMobile()) ? 16 : 18;
             var gwdth  = (this.isMobile()) ? "70%" : "60";
             this.opts  = {"width": width,"height": height,"bar": {"groupWidth": gwdth},"legend": {"position": "none" },"hAxis": { "textPosition": "none","gridlines": {"color": "#ffffff"},"baselineColor": 'transparent' },"vAxis": { "textPosition": "none","gridlines": {"color": "#ffffff"},"baselineColor": 'transparent'},"backgroundColor": { "fill":"transparent" },"annotations": {"alwaysOutside": true, "textStyle": {"fontSize": font}},"animation":{"duration": 3000,"easing": "in"},"tooltip": {"trigger": "none"} }
+            this.oldData = {
+              2013:['44,490','23,929','50,158'],
+              2012:['39,258','12,944','45,866']
+            }
           },
           responseChanged: function(oldValue) {
-            //this.vals = [this.response[1][1],this.response[2][1],this.response[3][1]];
-            this.vals = ['XX,XXX','XX,XXX','XX,XXX'];
+            this.vals = [this.response[1][1],36075,this.response[3][1]];
+            this.formatNumbers(this.vals);
           },  
           isMobile :function(){
             return window.matchMedia('screen and (max-width: 767px)').matches;
+          },
+          formatNumbers:function(data){
+              var self = this;
+              data.forEach(function(num,i){
+                  self.vals[i] = num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+              });
           },
           redraw :function (chrt){
             chrt.drawChart();

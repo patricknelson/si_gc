@@ -12,11 +12,12 @@
 	  .green{color:#86B817;}
 	  .grey{color:#796e65;}
 	  .lt-blue{color:#66A2E4;}
-    div.third {/*float:left;   width: 33% !important;  left: 1.75%;height: 100%;  position: relative;
-  z-index: 1;  background: white;*/}
+    div.third {background:transparent;}
    .lower > .inner {padding-top:24px;}    
     div.lower {height:260px;padding-left: 3%;}
     .figure:nth-of-type(even){margin-left: 11px;}
+    .inner .third:nth-child(3) .figure.grey{margin-left: 24px;}
+    .inner .third:nth-child(4) .figure.grey{margin-left: -8%;}
     .figure{margin:4px auto 0 10px;}
     .figure.large{  font-size: 37px;}
     .figure.grey.large{font-size:20px;}
@@ -26,15 +27,16 @@
     @media only screen and (max-device-width: 667px){
       .lower > .inner {  width: 90%;}
         .figure.large{  font-size: 20px;}
-        .figure:nth-of-type(even){text-align: center;  margin-left: -35%;}
+        .inner .third .figure:nth-of-type(even){text-align: center;  margin-left: -39%!important;}
         h4{  margin-left: -12px; text-align: center;}
         div.third{  padding-left: 4px;  margin-bottom: 24px;}
         div.third:first-of-type{  margin-top: 20px;}
         .figure{margin-left:0;}
-    }
-    @media only screen and (max-device-width: 667px){
       .lower > .inner { width: 80%;padding-top:12px;}
     }
+     @media screen and (device-aspect-ratio: 40/71) {
+        .inner .third .figure:nth-of-type(even){margin-left: -37%!important;}
+     }
 	</style>
   <core-ajax auto url="{{url}}" handleAs="json" response="{{response}}"></core-ajax> 
     <div class="lower row">

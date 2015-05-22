@@ -1,149 +1,187 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
-<polymer-element name="water-chart"  attributes="num,height">
+<polymer-element name="water-chart"  attributes="num">
   <template>
 
-  	<style>
-	 :host {
+    <style>
+   :host {
         display: block;
-        /*position: relative;
-        top: -25px;*/
+        position: relative;
+        top: 8px;
    }
+   :host google-chart{
+      top:-40px;
+    }   
       .blue{color:#0064D2}
     .green{color:#86B817;}
     .grey{color:#796e65;}
     .lt-blue{color:#66A2E4;}
-      .top_label, .bottom_label{position:relative;z-index: 99;}
+      .top_label, .bottom_label{position:absolute;z-index: 99;width:100%;}
       .top_label{left: 92px;  top: 80px;}
-      .bottom_label{left:92px; top:56px;color:#fff;}
+      .bottom_label{left:28%; top:45%;color:#fff;}
       .top_label>p, .bottom_label>p{position:absolute;font-size:18px;}
 
-      .top_label>p.blue{left:-4px;}
-      .bottom_label > p:first-child{left:1%;}
+      .top_label>p.blue{left:-4px;top:-109px;}
+      .bottom_label > p:first-child{left:0;}
 
-      .top_label>p.green{left:16.8%;top:85px;}
-      .bottom_label > p:nth-child(2) {left:18.6%;}
+      .top_label>p.green{left:22%;top:-55px;}
+      .bottom_label > p:nth-child(2) {left:22%;}
 
-      .top_label>p.lt-blue{left:33.6%;top:206px;}
-      .bottom_label > p:last-child{left: 35.2%;}
+      .top_label>p.lt-blue{left:44%;top:24px;}
+      .bottom_label > p:last-child{left: 43.2%;}
+      .water-loc.grey{margin-top:14px;font-size:15px;text-align:center;position:relative;top:-7.6em;}
 
+      /** CHART 1 **/
+      .top_label.chart1>p.blue{top:-112px;}
+      .top_label.chart1>p.green{top:-48px;}
+      .top_label.chart1>p.lt-blue{top:38px;}
+      /** CHART 2 **/
+      .top_label.chart2{top:96px;}
+      .top_label.chart2>p.green{top:-128px;}
+      .top_label.chart2>p.lt-blue{top:12px}
+       /** CHART 3 */
+      .top_label.chart3{top:85px;}
+      .top_label.chart3>p.green{top:-40px;}
+      .top_label.chart3>p.lt-blue{top:34px;}
+       /** CHART 4 */
+      .top_label.chart4{top:94px;}
+      .top_label.chart4>p.green{top:-11px;}
+      .top_label.chart4>p.lt-blue{top:33px;}
+      /** CHART 5 */
+      .top_label.chart5{top:40px;}
+      .top_label.chart5>p.blue{top:68px;left:-5px;}
+      .top_label.chart5>p.green{top:-11px;}
+      .top_label.chart5>p.lt-blue{top:-34px;}
 
+      /**.top_label > p{color:red!important;}**/
+      @media screen and (min-width:1025px) and (max-width:1349px){
+        :host{  position: relative;  left: -16%;}
+        .top_label > p.green{left: 23.8%; }
+        .top_label > p.lt-blue{left: 47.6%;}
+        .bottom_label > p:nth-child(2) {left: 26.6%;}   
+        .bottom_label > p:nth-child(3) {left: 51.2%;}
+      }
+
+      @media screen and (max-width:1024px){  
+        :host{left: -20%;}
+        .bottom_label{left:60%;}
+        .top_label>p.green {left: 31.6%;}
+        .top_label>p.lt-blue {left: 62.6%;}
+        .bottom_label > p:first-child {left: -55px;}
+        .bottom_label > p:nth-child(2) {left: 10%;}
+        .bottom_label > p:last-child {left: 109px;}
+        .water-loc.grey {font-size: 14px;top: -8.4em;left: 5.3em;}
+      }
+      @media screen and (max-width: 1200px) and (orientation:portrait){
+        :host {left: -39%;}
+        .bottom_label.upper{left:22%;}
+        .bottom_label{left:28%;}
+         .top_label>p.green {left: 35.6%;}
+        .top_label>p.lt-blue {left: 72.6%;}
+        .top_label.upper>p.green{left:29.6%;} 
+        .top_label.upper>p.lt-blue{left:57.6%;}
+        .bottom_label > p:first-child {left: 37px;}
+        .bottom_label > p:nth-child(2) {left: 116px;}
+        .bottom_label > p:last-child {left: 196px}
+        .water-loc.grey {font-size: 14px;top: -8.4em;left: 6.5em;}
+      }
+
+       @media only screen and (max-device-width: 667px){
+        :host {left: -18%;}
+        :host google-chart::before {content: "";height: 1px;background: #ccc;display: block;position: absolute;width: 110%;top: 154px;left: 20px;}
+        .top_label{top: 80px;}
+        
+        .bottom_label{  top: 105px;}
+        .bottom_label.lower{left:22%;}
+        .top_label.chart1>p.blue{top:-115px;}
+        .top_label.chart1>p.green {top: -64px;left:28.6%;}
+        .top_label.upper.chart1>p.lt-blue{top:4px;}
+        .top_label.chart2 {top: 92px;}
+        .top_label.chart2>p.green {top: -126px;}
+        .top_label.chart2>p.lt-blue {top: -12px!important;}
+        .top_label.chart3{top:90px;}
+        .top_label.chart3>p.blue{top:-118px;}
+        .top_label.chart3>p.green {top: -62px;left:30.6%;}
+
+        .top_label.chart4>p.blue{top:-114;}
+        .top_label.chart4>p.green {top: -42px; left: 26.4%;}
+        .top_label.chart5 {top: 5px;}
+        .top_label.chart5.lower>p.lt-blue{top:-12px;}
+        .top_label.chart5>p.green{top:10px;left: 26.6%;}
+        /*.top_label>p.green{top:-66px!important;left:26.6%!important;}*/
+        .top_label.upper>p.lt-blue,.top_label.lower>p.lt-blue {top:-4px;left: 52.6%;}
+        .bottom_label > p:nth-child(2) {left: 36.6%;}
+        .bottom_label > p:last-child {left: 63.2%;}
+        .water-loc.grey {top: -11em;left: 3em;}
+      }
+      @media screen and (device-aspect-ratio: 40/71) {
+        :host {left: -28%;}
+        :host google-chart::before {width:118%;left: 24px;}
+        .top_label>p.green{left:29.6%!important;}
+        .top_label.upper>p.lt-blue,.top_label.lower>p.lt-blue {top:-4px;left: 59.6%;}
+
+        .bottom_label > p:nth-child(2) {left: 45.6%;}
+        .bottom_label > p:last-child {left: 75.2%;}
+        .water-loc.grey {top: -11em;left: 4.5em;}
+      }
     </style>
-
-     <google-chart
-                  type="bar"
-                  id="water{{num}}"
-                  options='{{opts}}'
-                  data='scripts/data/water{{num}}.json'>
-                </google-chart>
+     <core-ajax auto url="scripts/data/water{{num}}.json" handleAs="json" response="{{response}}"></core-ajax> 
+     <div class="top_label {{cls}} chart{{num}}"><p class="blue">{{vals[0]}}</p><p class="green">{{vals[1]}}</p><p class="lt-blue">{{vals[2]}}</p></div>
+      <google-chart type="column" 
+                    id="water{{num}}" 
+                    options='{{opts}}'
+                    data='scripts/data/water{{num}}.json'>
+       </google-chart>
+       <div class="bottom_label {{cls}}"><p>2014</p><p>2013</p><p>2012</p></div>
+       <div class="water-loc grey {{cls}}">{{locations[num]}}</div>
   </template>
   <script>
     (function(){
       Polymer({
           ready: function() {
-            var self = this;
-            this.id = 'water' + this.num;
-            this.isMobile = this.isMobile();
-            var width = (this.isMobile)? 390:1000;
-            var font = (this.isMobile)? 14:18;
-            this.opts = {"title": "", "width": width, "height": this.height , "bar": {"groupWidth": "95%"}, "legend": {"position": "none" }, "hAxis": { "textPosition": "none","gridlines": {"color": "transparent"},"baselineColor": 'transparent' }, "vAxis": { "textPosition": "none","gridlines": {"color": "transparent"},"baselineColor": 'transparent'}, "backgroundColor": { "fill":"transparent" }, "annotations": {"alwaysOutside": true,"textStyle": {"fontSize": 18}}, "animation":{"duration": 3000,"easing": "in"}, "tooltip": { "trigger": "none" }, "enableInteractivity" : false};
-            console.log(this.opts);
-            this.barLabels = {
-              1:{
-                0:['Salt Lake City, UT',68],
-                1:['Phoenix, AZ',120],
-              },
-              2:{
-                  0:['San Jose North',86],
-                  1:['San Jose South',138],
-                  2:['Omaha',188]
+            this.cls =  (this.num < 3) ? 'upper' : 'lower';
+            this.locations = {
+              1:"Salt Lake City, Utah",
+              2:"Pheonix, AZ",
+              3:"San Jose North",
+              4:"San Jose South",
+              5:"Omaha"
+           };
+            var height = (this.isMobile()) ? 155 : 195;
+            var caw  = (this.isMobile()) ? 155 : 195;
+            this.opts = {"width": 400,"height": height,"chartArea": {"width": "60%", "height": "110%"},"bar": {"groupWidth": "90%"},"legend": {"position": "none" },"hAxis": { "textPosition": "none","gridlines": {"color": "transparent"},"baselineColor": 'transparent'},"vAxis": { "textPosition": "none","gridlines": {"color": "transparent"},"baselineColor": 'transparent'},"backgroundColor": { "fill":"transparent" },"annotations": {"alwaysOutside": true, "textStyle": {"fontSize": 18}},"animation":{"duration": 3000,"easing": "in"},"tooltip": {"trigger": "none"}}
+            /*$(document).on('google-chart-render',function(e){
+              var id = e.target.id;
+              console.log(id);
+              if(id == self.id){
+                setTimeout(function(){
+                  console.log(self.findChart().getChartSvg());
+                }, 1000);
+              }else{
+                return false;
               }
-            }
-           $(document).on('google-chart-render',function(e){
-            var id = e.target.id;
-            if(id == self.id){
-              setTimeout(function(){
-                self.positionHorizontalLabels();
-                self.createBarLabel();
-              }, 1000);
-            }else{
-              return false;
-            }
-          });
+            });*/
+
+          },
+          responseChanged: function(oldValue) {
+            this.vals = [this.response[1][1],this.response[2][1],this.response[3][1]];
+            this.formatNumbers(this.vals);
           },
           isMobile :function(){
             return window.matchMedia('screen and (max-width: 767px)').matches;
           },
-          positionHorizontalLabels:function(){
-            var lbls = $(this.getHorizontalLabels());
-            var  self =  this;
-            lbls.each(function(i,el){
-               var left = (self.isMobile) ? 315 : 380; 
-              if(i == 0 ) $(el).attr('x',left); //FORCE FURTHER RIGHT ON FIRST ONE
-                $(el).attr('transform','translate(3,0)');
-            });
-          },
-          getHorizontalLabels:function(){
-            var gs = this.getHorizontal();//chrt.getChartSvg().querySelectorAll('g:first-of-type');
-            var lbls = $(gs[0]).find('>g:last-child  text');
-            return lbls;
-          },
-          createBarLabel:function(){
-            var bars = this.getHorizontalBars(),
-                lbls = this.barLabels[this.num],
-                self = this,i;
-            bars.forEach(function(el,i){
-              if(i == 0) $(el).attr('width','240'); //FORCE LONGER ON FIRST ONE
-              var txt= self.buildLabelSvg(lbls[i][0],lbls[i][1]);
-              $(el).after(txt);
-            });
-          },
-          getHorizontalBars:function(){
-            var gs = this.getHorizontal();
-            var bars = $(gs[0]).find('>g:first-of-type>g rect');
-            var bars1 = [$(bars[0]),$(bars[1])] ;
-            if (this.num == 2) {
-              bars1[2] = $(bars[2]);
-            }
-            return bars1;
-          },
-          getHorizontal:function(){
-            var chrt = this.findChart();
-            return  chrt.getChartSvg().querySelectorAll('g:first-of-type');
-          },
-          buildLabelSvg:function (txt,posy,posx)
-          {
-             posx = (typeof posx === 'undefined') ? "190" : posx;//164
-             var text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-             var attrs = ["y","x","text-anchor","fill","font-size"];
-             var avals = this.getLabelVals(posx,posy);
-             this.setAllAttributes(text,attrs,avals);
-             var node = document.createTextNode(txt);
-             text.appendChild(node);
-             return text;
-          },
-          getLabelVals:function(posx,posy){
-              posx = (this.isMobile) ? ((this.num == 1) ? posx - 70: posx - 80): posx;
-              posy = (this.isMobile) ? posy - 3: posy;
-              var font = (this.isMobile) ? "12px" : "17px";
-              return [posy,posx,"start","#fff",font];
-          },
-          redraw :function (chrt){
-            chrt.drawChart();
-          },
-          updateChart:function(chrt,rows){
-            chrt.rows = rows;
+          formatNumbers:function(data){
+              var self = this;
+              data.forEach(function(num,i){
+                  self.vals[i] = num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+              });
           },
           findChart:function(id){
             //return document.getElementById(id)
-            var id = (typeof id === 'undefined') ? this.id : 'energy_trends' + id;
+            var id = (typeof id === 'undefined') ? this.id : 'water' + id;
             return this.$[id];
-          },
-          setAllAttributes:function(el,attrs,avals){
-            attrs.forEach(function(attr,i){
-              el.setAttribute(attr,avals[i]);
-            });
           }
+
       });
     })();
   </script>

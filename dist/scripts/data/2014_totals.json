@@ -1,18 +1,18 @@
 {
   "upper":
   	{"energy_use":[
-  		 {"val":"695,194","unit":"MWh"},
-  		 {"val":"21.86","unit":"MWh/Employee"},
-    	 {"val":"0.00004332","unit":"MWh/$ Revenue"}
+  		 {"val":"716,353","unit":"MWh"},
+  		 {"val":"20.8","unit":"MWh/Employee"},
+    	 {"val":"0.00003993","unit":"MWh/$ Revenue"}
    	],
     "carbon":[
-    	{"val":"XX,XXXX","unit":"Tonnes of "},
-  		{"val":"XX,XXXX","unit":"/Employee"},
-    	{"val":"XX,XXXX","unit":"/$ Revenue"}
+    	{"val":"308,592","unit":"Tonnes of "},
+  		{"val":"7.81","unit":"/Employee"},
+    	{"val":"0.000015","unit":"/$ Revenue"}
     ]},
   "lower":{
-  	"asia_pacific":"XXX,XXX",
-  	"americas":"XXX,XXX",	
-  	"europe_mideast_africa":"XXX,XXX"
+  	"asia_pacific":"30,851",
+  	"americas":"225,610",	
+  	"europe_mideast_africa":"13,915"
   }
 }

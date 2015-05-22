@@ -1,1 +1,6 @@
-[[{"label": "Area", "type": "string"},{"label": "Usage", "type": "number"}],["Data Centers", 44],["OFFICES", 34],["BUSINEESS TRAVEL", 14],["WAREHOUSES", 7],["CORPORATE JET", 1]]
+[[{"label": "Area", "type": "string"},{"label": "Usage", "type": "number"}],
+["Data Centers", 49],
+["OFFICES", 32],
+["BUSINEESS TRAVEL", 11],
+["WAREHOUSES", 7],
+["CORPORATE JET", 1]]

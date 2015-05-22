@@ -216,6 +216,11 @@ gulp.task('default', ['clean'], function (cb) {
 
 // Load custom tasks from the `tasks` directory
 try { require('require-dir')('tasks'); } catch (err) {}
+function swallowError (error) {
+    //If you want details of the error in the console
+    console.log(error.toString());
+    this.emit('end');
+}
 function errorHandler (error) {
   console.log(error.toString());
   this.emit('end');

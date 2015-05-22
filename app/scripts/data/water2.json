@@ -1,1 +1,4 @@
-[[{"label": "Location", "type": "string" },{"label": "Amt. Water Consumed (Kgal)","type": "number"},{"type": "string", "role": "style" },{"type": "string", "role": "annotation"}],[ "SAN JOSE NORTH",56589,"color:#0064D2","  56,589"],[ "SAN JOSE SOUTH", 56590,"color: #3383DB","  56,590"],[ "OMAHA", 56592,"color: #66A2E4","  56,592"]]
+[[{"label": "Year", "type": "string" },{"label": "Amt. Water Consumed (Kgal)","type": "number"},{"type": "string", "role": "style" }],
+[ "2014", 57421,"color:#0064D2"],
+[ "2013", 59157,"color: #86B817"],
+[ "2012", 47590,"color: #66A2E4"]]

@@ -11,11 +11,14 @@
 	  .green{color:#86B817;}
 	  .grey{color:#796e65;}
 	  .lt-blue{color:#66A2E4;}
+    .small{font-weight:bold;}
+    .xsmall{font-size:10px;}
     .chart-title{text-align:left; position:relative; left:-40px;font-size:18px;z-index:9;  margin-bottom: 15px;}
-      .triangle_label{position:absolute;left:160px;top:69px;}
+      .triangle_label{position:absolute;left:165px;top:68px;}
       .triangle_label.green{left:220px;top:136px;}
       .triangle_label.lt-blue{left:294px;top:51px;}
-      .triangle_label > span{font-size: 12px;position: absolute;color: #796e65;left: 10px;top: 22px;}
+      .triangle_label > span{font-size: 12px;position: absolute;color: #796e65;left: 4px;top: 18px;}
+      .triangle_label > span:last-child{font-size: 10px;left: 5.5px;top: 32px;}
       #triangles {position:relative; top: 54px;}
 
        @media screen and (min-width:1025px) and (max-width:1349px){
@@ -35,21 +38,22 @@
        @media screen and (max-width:1200px) and (orientation:portrait){
         #triangles {width: auto;top: 54px;}
       }
-
       
       @media only screen and (max-device-width: 640px), 
            only screen and (max-device-width: 667px){
-            .chart-title {left: -16px;  top: 15px;}
+            .chart-title {left: -14px!important;  top: 15px;}
+            .triangle_label.blue{left:65px;top:60px;}
             .triangle_label{  left: 60px;}
-            .triangle_label.green{left:120px;}
+            .triangle_label.green{left:130px;top:120px;}
         #triangles{left: -29px; top: 49px!important;}
-        .triangle_label.lt-blue{left: 190px;}
+        .triangle_label.lt-blue{left: 200px;top:42px;}
       }
       @media screen and (device-aspect-ratio: 40/71) {  
         #triangles {width: 100%;left: -20px;top: 98.5px!important;}
         .triangle_label{  left: 45px;}
-        .triangle_label.green{left:108px;}
-        .triangle_label.lt-blue{left: 175px;}
+        .triangle_label.blue{top:82px;}
+        .triangle_label.green{left:116px;top:136px;}
+        .triangle_label.lt-blue{left: 175px;top:66px;}
         .chart-title{margin-bottom: -10px;top:5px;left:-20px;}
       }
     </style>
@@ -58,7 +62,8 @@
       <template repeat="{{label in data}}">
             <div class="triangle_label {{label.color}}">
               {{label.currVal}}<br>
-              <span class="grey small">{{label.lastVal}}</span>
+              <span class="grey small">{{label.lastVal}}</span><br>
+              <span class="grey xsmall">{{label.v2012}}</span>
             </div>
         </template>
         <img id ="triangles" src="../../img/triangles.png">
@@ -78,7 +83,6 @@
           },
           responseChanged: function(oldValue) {
             this.data = this.response.data;
-            console.log(this.response.data);
           },     
       });
     })();

@@ -1,1 +1,4 @@
-[[{"label": "Location", "type": "string" },{"label": "Amt. Water Consumed (Kgal)","type": "number"},{"type": "string", "role": "style" }, {"type": "string", "role": "annotation"}],[ "SALT LAKE CITY, UT",44,"color:#86B817","  56,591"],[ "PHOENIX,AZ", 48,"color: #B1D16A","  56,592"]]
+[[{"label": "Year", "type": "string" },{"label": "Amt. Water Consumed (Kgal)","type": "number"},{"type": "string", "role": "style" }],
+[ "2014", 31354,"color:#0064D2"],
+[ "2013", 27465,"color: #86B817"],
+[ "2012", 22113,"color: #66A2E4"]]

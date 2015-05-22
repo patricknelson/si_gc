@@ -17,16 +17,31 @@
       .top_label{left: 92px;  top: 80px;}
       .bottom_label{left:92px; top:56px;color:#fff;}
       .top_label>p, .bottom_label>p{position:absolute;font-size:18px;}
-
       .top_label>p.blue{left:-4px;}
+      .top_label>p.green{left:20.8%;}
+      .top_label>p.lt-blue{left:41.6%;}
+      /** SCOPE 1 **/
+      .top_label.chart1{top:124px;}
+      .top_label.chart1>p.green{top:94px;}
+      .top_label.chart1>p.lt-blue{top:180px;}
+      /** SCOPE 2 **/
+      .top_label.chart2{top:64px;left:89px;}
+      .top_label.chart2>p.green{top:54px;}
+      .top_label.chart2>p.lt-blue{top:220px}
+       /** SCOPE 3 **/ 
+      .top_label.chart3{top:205px;}
+      .top_label.chart3>p.green{top:-135px;}
+      .top_label.chart3>p.lt-blue{top:101px;}
+
+      
+      /*.top_label>p.green{left:20.8%;top:85px;}
+      .top_label>p.lt-blue{left:41.6%;top:206px;}*/
+
       .bottom_label > p:first-child{left:1%;}
-
-      .top_label>p.green{left:20.8%;top:85px;}
       .bottom_label > p:nth-child(2) {left:23.6%;}
-
-      .top_label>p.lt-blue{left:41.6%;top:206px;}
       .bottom_label > p:last-child{left: 43.2%;}
 
+      /*.top_label > p{color:red!important;}*/
       @media screen and (min-width:1025px) and (max-width:1349px){
         :host{  position: relative;  left: -16%;}
         .top_label > p.green{left: 23.8%; }
@@ -38,7 +53,7 @@
       @media screen and (max-width:1024px){  
         :host{left: -20%;}
         .top_label>p.green {left: 29.6%;}
-        .top_label>p.lt-blue {left: 47.6%;}
+        .top_label>p.lt-blue {left: 57.6%;}
         .bottom_label > p:first-child {left: 3%;}
         .bottom_label > p:nth-child(2) {left: 32.6%;}
         .bottom_label > p:last-child {left: 62.2%;}
@@ -56,23 +71,37 @@
         :host {
           left: -20%;
         }
+        .top_label.top_label.chart1,.top_label.top_label.chart2,
+        .top_label.top_label.chart3{top:20px;}
         .bottom_label{  top: -70px;}
-        .top_label>p.green{left:24.6%;top:60px;}
+        .top_label>p.blue{top:50px;}
+        .top_label.chart2>p.blue{top:12px;}
+        .top_label.chart3>p.blue{top:107px;}
+
+        .top_label>p.green{left:24.6%;}
+        .top_label.chart1>p.green{top:120px;}
+        .top_label.chart2>p.green{top:48px;}
+        .top_label.chart3>p.green{top:14px;}
+
         .top_label>p.lt-blue {top:146px;left: 48.6%;}
+        .top_label.chart2>p.lt-blue {top:166px;}
+        .top_label.chart3>p.lt-blue {top:182px;}
+
         .bottom_label > p:nth-child(2) {left: 26.6%;}
         .bottom_label > p:last-child {left: 50.2%}
+        .top_label>p{color:red!important;}
       }
       @media screen and (device-aspect-ratio: 40/71) {
         .top_label{top: 35px;}
         .bottom_label{  top: -70px;}
-        .top_label>p.green{top:60px!important;left:27.6%!important;}
+        .top_label>p.green{left:27.6%!important;}
         .top_label>p.lt-blue {top:146px;left: 54.6%;}
         .bottom_label > p:nth-child(2) {left: 29.6%;}
         .bottom_label > p:last-child {left: 56.2%;}
       }
     </style>
      <core-ajax auto url="scripts/data/co2e_trends{{num}}.json" handleAs="json" response="{{response}}"></core-ajax> 
-     <div class="top_label"><p class="blue">{{vals[0]}}</p><p class="green">{{vals[1]}}</p><p class="lt-blue">{{vals[2]}}</p></div>
+     <div class="top_label chart{{num}}"><p class="blue">{{vals[0]}}</p><p class="green">{{vals[1]}}</p><p class="lt-blue">{{vals[2]}}</p></div>
       <google-chart type="column" 
                     id="co2e_trends{{num}}" 
                     options='{{opts}}'
@@ -91,7 +120,6 @@
           responseChanged: function(oldValue) {
             this.vals = [this.response[1][1],this.response[2][1],this.response[3][1]];
             this.formatNumbers(this.vals);
-            this.vals[0] = 'XX,XXX';
           },
           isMobile :function(){
             return window.matchMedia('screen and (max-width: 767px)').matches;
