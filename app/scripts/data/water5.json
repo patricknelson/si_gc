@@ -1,0 +1,4 @@
+[[{"label": "Year", "type": "string" },{"label": "Amt. Water Consumed (Kgal)","type": "number"},{"type": "string", "role": "style" }],
+[ "2014", 7898,"color:#0064D2"],
+[ "2013", 11085,"color: #86B817"],
+[ "2012", 12038,"color: #66A2E4"]]

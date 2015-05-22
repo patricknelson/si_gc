@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2014 SI Report</title>
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+  <!-- build:css styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- endbuild-->
+  <link type="text/css" rel="stylesheet" href="styles/jquery.qtip.min.css" />
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-1.11.2.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <!-- build:js bower_components/webcomponentsjs/webcomponents.min.js -->
+  <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+  <!-- endbuild -->
+
+  <!-- will be replaced with elements/elements.vulcanized.html -->
+  <link rel="import" href="elements/elements.html">
+  <!-- endreplace-->
+  
+  <script type="text/javascript" src="scripts/jquery.qtip.min.js"></script>
+  <script type="text/javascript" src="scripts/imagesloaded.pkg.min.js"></script>
+  <script src="scripts/jquery.carouFredSel.js"></script>
+  <script src="scripts/jquery.transit.min.js"></script>
+  <style> :host{width:auto;}</style>
+</head>
+
+<body unresolved fullbleed layout vertical>
+  <div style="background-color: #F2F2F2;">
+  <div id="main" class="">
+  <div class="title">
+    <h1 class="heading">Our Environmental Footprint</h1>
+  </div>
+  <div id="wrapper" >
+      <div id="pager" class="container" style="display: block;">
+        <ul class="nav nav-tabs nav-justified">
+          <li><a href="#" >2014 TOTALS</a></li>
+          <li><a href="#" class="">ENERGY USE/CO2e</a></li>
+          <li><a href="#" class="">ENERGY TRENDS</a></li>
+          <li><a href="#" class="">CO2e TRENDS</a></li>
+          <li><a href="#" class="">WATER CONSUMPTION</a></li>
+          <li><a href="#" class="">DATA CENTERS</a></li>
+        </ul>
+      </div>  
+        <div id="tabs" class="container">
+        <div data-link="2014 TOTALS" class="row"  >
+          <div class="slide-wrap">
+            <totals-upper url="scripts/data/2014_totals.json"></totals-upper>
+            <totals-lower url="scripts/data/2014_totals.json"></totals-lower>
+            <div class="clearfix"></div>
+          </div>
+          <div class="clearfix"></div>
+          </div>
+          <div  data-link="ENERGY USE/CO2e" class="row" style="margin-right: 0px;" >
+            <div class="slide-wrap">
+            <div class="slide-title grey">
+              <h5>Contribution by Source</h5>
+              <h6>(tonnes)</h6>
+            </div>
+               <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+               <div class="chart-title grey">CO<sub>2</sub>e</div>
+                <energyuse-chart num="1"></energyuse-chart>
+                 <div class="clearfix"></div>
+              </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                  <div class="chart-title grey">Energy Use</div>
+                  <energyuse-chart num="2"></energyuse-chart>
+                  <div class="clearfix"></div>
+              </div>
+                  
+              <div class="energy-used-legend col-md-12">
+                  <div class="l1  ">DATA CENTER</div> 
+                  <div class="l2 ">OFFICES</div>
+                   <div class="l3 ">BUSINESS TRAVEL</div>
+                    <div class="l4 ">WAREHOUSES</div>
+                     <div class="l5 ">CORPORATE JET</div>
+                  </div>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div data-link="ENERGY TRENDS" class="row" style="margin-right: 0px;" >
+            <div class="slide-wrap">
+              <div class="upper col-xs-12">
+              <div class="chart-title grey hbar">Electricity Use (MWh)</div>
+               <energytrends-chart num="1"></energytrends-chart>
+                <div class="clearfix"></div>
+              </div>
+              <div class="lower col-xs-12">
+                <div class="chart-title grey  hbar">Other Energy Use (MWh)</div>
+                <energytrends-chart num="2"></energytrends-chart>
+                <div class="clearfix"></div>                
+              </div>
+            </div>
+          </div>
+          <div data-link="CO2e TRENDS" class="row" style="margin-right: 0px;" >
+            <div class="slide-wrap">
+              <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                  <div class="chart-title grey vbar">Scope1 <span class="q-ttip" data-tooltip='Emissions from sources that are directly owned or controlled by eBay (i.e. "direct emissions")'></span><br>(CO<sub>2</sub>e tonnes)</div>
+                    <co2e-chart num="1"></co2e-chart>
+                <div class="clearfix"></div>                    
+              </div>
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                  <div class="chart-title grey vbar">Scope2 <span class="q-ttip" data-tooltip='Emissions from the use of purchased electricity (i.e. "indirect" emissions)'></span><br>(CO<sub>2</sub>e tonnes)</div>
+                  <co2e-chart num="2"></co2e-chart>
+                <div class="clearfix"></div>                  
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                   <div class="chart-title grey vbar">Scope3 <span class="q-ttip" data-tooltip='All other "indirect" emissions, such as business travel, not covered by Scope 2'></span><br>(CO<sub>2</sub>e tonnes)</div>
+                   <co2e-chart num="3"></co2e-chart>
+                <div class="clearfix"></div>
+               </div>
+            </div>
+          </div>
+          <div data-link="WATER CONSUMPTION"  class="row" style="margin-right: 0px;" >
+            <div class="slide-wrap">
+              <div class="upper col-lg-12 col-md-12">
+              <div class="chart-title grey  hbar">Data Centers<br><span> (Kgal)</span></div>
+              <div class="info-right-top grey">2014<br><span>2013</span></div>
+              <div class="water-icons"><img src="img/white_icon.png"><img src="img/white_icon.png"></div>
+              <water-chart num="1" height="175"></water-chart>
+                <div class="clearfix"></div>
+              </div>
+              <div class="clearfix"></div>
+              <div class="lower col-lg-12 col-md-12">
+                <div class="chart-title grey  hbar">Campuses<br><span> (Kgal)</span></div>
+                <div class="water-icons">
+                  <img src="img/white_icon.png">
+                  <img src="img/white_icon.png">
+                  <img src="img/white_icon.png">
+                </div>
+                <water-chart num="2" height="260"></water-chart>
+                <div class="clearfix"></div>
+              </div>
+          </div>
+          </div>
+          <div data-link="DATA CENTERS" class="row" style="margin-right: 0px;" >
+            <div class="slide-wrap">
+              <datacenter-locations></datacenter-locations>
+              <div class="right-full col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                <div class="info-right-top grey">2014<br><span>2013</span></div>
+                  <div class="upper">
+                    <div class="half col-md-6 col-lg-6">
+                      <triangle-chart url="scripts/data/triangle-chart.json"></triangle-chart>
+                    </div>
+                    <div class="half col-md-6 col-lg-6">
+                       <datacenter-chart url="scripts/data/data_center2.json"></datacenter-chart>
+                    </div>
+                  </div>
+                  <div class="lower">
+                    <div class="half col-xs-12 col-md-6 col-lg-6">
+                      <datacenter-table ctitle="Average Pue"></datacenter-table>
+                    </div>
+                    <div class="half col-xs-12 col-md-6 col-lg-6">
+                      <datacenter-table ctitle="Server Count"></datacenter-table>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="clearfix"></div>
+    <dotpager-nav></dotpager-nav>
+  </div>
+  <div class="clearfix"></div>
+</div>  
+  <!-- build:js scripts/app.js -->
+  <script src="scripts/mobile_nav.js"></script>
+  <script src="scripts/app.js"></script>
+  <!-- endbuild-->
+</body>
+
+</html>

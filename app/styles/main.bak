@@ -1,0 +1,547 @@
+body {
+  background: #fafafa;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #333;
+}
+
+.hero-unit {
+  margin: 50px auto 0 auto;
+  width: 300px;
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 30px;
+  background-color: #eee;
+  border-radius: 6px;
+  padding: 60px;
+}
+
+.hero-unit h1 {
+  font-size: 60px;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+[drawer] {
+  background-color: #EEEEEE;
+}
+
+core-toolbar {
+  color: #FAFAFA;
+  background-color: #009688;
+}
+.cf:before,
+.cf:after {
+    content: " ";
+    display: table;
+}
+
+.cf:after {
+    clear: both;
+}
+.blue{color:#0064D2}
+.green{color:#86B817;}
+.grey{color:#796e65;}
+.lt-blue{color:#66A2E4;}
+.figure:nth-of-type(even){margin-left: 11px;}
+.figure{margin:4px auto 0 10px;}
+.figure.large{  font-size: 37px;}
+.figure.grey.large{font-size:20px;}
+.figure.medium{font-size:24px;}
+
+div#top .heading {width:100%; clear: both;color:#86B817}
+div#top{margin:10px auto;max-width:1400px;padding:25px;}
+div#top div#body {}
+
+div#top div#body p {float:left; width:48%;text-align:justify}
+div#top div#body p:first-of-type{margin-right:2.1em;}
+div#main{
+  padding:80px;
+  /*background-color:#F2F2F2;*/
+  /*position: fixed;
+  bottom: 0;*/
+  /*position:relative;*/
+  height:74%;
+  /*padding: 45px 100px 10px 100px;*/
+  /*width: 100%;*/
+}
+    
+      #wrapper {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        max-width: 1200px;
+        /*width:105%;*/
+        height: 560px;
+        padding-top: 25px;
+        position: relative;
+        /*left: 5%;*/
+        top: 80px;
+        /*left:-5%;*/
+        margin:0 auto;
+      }
+      #main .title{
+        margin:0 auto;
+        max-width: 1100px;
+        width: 100%;
+      }
+      #main .title .heading{color:#86B817;margin:0 auto 0 -3%;}
+      #main #wrapper > .caroufredsel_wrapper{left:10px!important;height:560px!important;margin-left:0!important;}
+      #tabs{left:0!important;}
+      #tabs > div {
+        max-width: 1500px;
+        height: 560px;
+        /*float: left;*/
+        overflow: hidden;
+      }
+      #tabs > div:first-child {margin-right:0!important;}
+      #tabs img {
+        display: block;
+        margin: 0 25px 0 0;
+        float: left;
+      }
+      #tabs h3 {
+        font-size: 30px;
+        line-height: 20px;
+        margin: 60px 0 20px 0;
+      }
+      
+      #pager.container {
+        width: 100%;
+        /*margin: -76px auto 25px auto;*/
+        margin: -67px auto 25px auto;
+        text-align: left;
+       padding-left:0;
+      }
+      #pager > li {
+        border: 1px solid transparent;
+        border-bottom: none;
+        color: rgb(121,110,101);
+        font-size: 18px;
+        text-decoration: none;
+        line-height: 30px;
+        display: inline-block;
+        /*height: 30px;*/
+        padding: 10px 2.2em;/*2.67em;*/
+      }
+      #pager > li > a {
+        border: 1px solid transparent;
+        border-bottom: none;
+        color: rgb(121,110,101);
+        font-size: 18px;
+        text-decoration: none;
+        line-height: 30px;
+        display: inline-block;
+        /*height: 30px;*/
+        padding: 10px 2.2em;/*2.67em;*/
+      }
+      #pager a:hover {
+        color: #666;
+      }
+
+      #pager li.selected, #pager li.selected a{
+        background-color: #fff;
+        color: #86B817;
+        border-color: #ccc;
+        border-bottom:1px solid transparent;
+      }
+      #pager li.selected:first-child{position:relative;left:-1px;}
+      #pager li.selected:last-child,#pager li:last-child a:hover{position:relative;right:-1.1%;}
+
+      .nav.nav-tabs{border-bottom:0;}
+ .nav-tabs>li{width:16.6666666667%; text-align:center;} 
+ .nav-tabs>li>a {margin-right: 0!important;color:#666;}
+        .nav-tabs.nav-justified>li>a {border-bottom: 0!important;}
+
+
+      #tabs h4 {color: #796e65;font-size:18px;}
+      #tabs div.upper > div.half:first-child{/*border-right:1px solid #ccc;*/}
+      #tabs > div:first-child{}
+      #tabs slide-wrap > div {width: 96.5%;}
+      #tabs div.half {float:left;   width: 49% !important;height: 86.05%;}
+      #tabs div.third {float:left;   width: 33% !important;  left: 1.75%;height: 100%;  position: relative;  z-index: 1;  background: transparent;}
+      .lower > .inner {padding-top:14px;}
+
+      .upper > .half:first-child > .half:last-child{border-right: 1px solid #ccc;}
+
+      #tabs div.slide-wrap {  width: 98.6%;}
+      #tabs div.slide-wrap>div{padding-left:5%;}
+      #tabs div.slide-wrap div.upper, div.lower {height:260px;}
+      #tabs div.slide-wrap div.upper{border-bottom:1px solid #ccc;}
+
+      #tabs >div div.slide-wrap {height:520px;}
+      #tabs >div div.slide-wrap > div{ padding-left:0;}
+
+
+
+      /** CHART SLIDE TITLE **/
+      #tabs div.slide-title{margin:20px 2.5%;}
+      #tabs div.slide-title h5{font-size:18px;}
+      #tabs div.slide-title h5,h6{margin:3px;}
+
+      /** CHART TITLE **/
+      #tabs .chart-title{text-align:center; position:relative; left:20px;font-size:18px;z-index:9;}
+      #tabs .chart-title.hbar{left: -42%; top:6%;}
+     
+      /** TAB 1 2014 TOTALS ONLY **/
+      #tabs div[data-link^="2014"] div.half{padding-left: 3%;width: 46.9%!important;}
+      #tabs div[data-link^="2014"] div.lower{padding-left: 3%;}
+
+     #energy_use1,#energy_use2{position: relative; top: -30px;left:15%}
+     #energy_use2{left:-10%;}
+
+     #tabs div[data-link^="ENERGY US"] div.half:nth-child(2) .chart-title.grey{left:124px;}
+     #tabs div[data-link^="ENERGY US"] div.slide-wrap > div:nth-child(3) > .chart-title.grey{  left: -25%;}
+     #tabs div[data-link^="ENERGY US"] div.slide-wrap > div{padding-left:0;}
+      /** LEGEND ENERGY USED CHART **/
+      #energy_use1 {left:1% }
+      #energy_use2 {left:-25% }
+     div[data-link$="CO2e"] .slide-wrap{position:relative;}
+
+
+     .energy-used-legend.active{
+       z-index:0;
+       /*left:3%;*/
+      }
+
+      .energy-used-legend{
+        height: 200px;
+        position: absolute;
+        /*bottom:-180px;
+        left:1.8%;
+        z-index:-1;*/
+        bottom: -13%;
+  		left: 19%;
+  		z-index:0;
+      }  
+      .energy-used-legend div{
+          padding: 0 30px;
+          display: inline-block;
+          float: left;
+          padding: 0 30px;
+          cursor:pointer;
+          position:relative;
+      }
+      .energy-used-legend div:before{
+        content:"";
+        width:17px;
+        height:17px;
+        background-color:#0064D2;
+        position:absolute;
+        left:0;
+        top: 1px;
+      }
+      .energy-used-legend div.l2:before{
+        //left: 10.5%;
+        background-color:#3383DB;
+      }
+      .energy-used-legend div.l3:before{
+        //left: 20%;
+        background-color:#66A2E4;
+      }
+      .energy-used-legend div.l4:before{
+        //left: 33.5%;
+        background-color:#99C1ED;
+      }
+      .energy-used-legend div.l5:before{
+        //left: 45.3%;
+        background-color: #CCE0F6;
+      }
+      #tabs div[data-link^="ENERGY TRE"] div.lower .chart-title.hbar{left:-40.7%}
+      #energy_trends1,#energy_trends2,
+
+      #water1,#water2{
+          position: relative;
+          left: -132px;
+          top: 10px;
+      }
+      /*.water-icons{position:relative;top:48px;left:34px;/*16px;}
+      .water-icons >img{position:absolute;z-index:9;}
+      .upper .water-icons >img:last-child{top:54px;}
+      .lower .water-icons >img:first-child{top:5px;}
+      .lower .water-icons >img:nth-child(2){top:55px;}
+      .lower .water-icons >img:last-child{top:105px;}*/
+
+
+      /** CO2e **/
+      #co2e_trends1,#co2e_trends2,#co2e_trends3{
+        position:relative;
+        bottom: 0px;
+      }
+
+      /*** VERTICAL BAR GRAPH LABELS ***/
+      .top_label, .bottom_label{position:relative;z-index: 99;}
+      .top_label{left: 92px;  top: 80px;}
+      .bottom_label{left:92px; top:56px;color:#fff;}
+      .top_label>p, .bottom_label>p{position:absolute;font-size:18px;}
+
+      .top_label>p.blue{left:-4px;}
+      .bottom_label > p:first-child{left:1%;}
+
+      .top_label>p.green{left:16.8%;top:85px;}
+      .bottom_label > p:nth-child(2) {left:18.6%;}
+
+      .top_label>p.lt-blue{left:33.6%;top:206px;}
+      .bottom_label > p:last-child{left: 35.2%;}
+      #tabs .chart-title.grey.vbar{left:60px;top: 20px; text-align: left;}
+
+
+      /*** WATER CONSUMPTION ONLY ***/
+
+       div[data-link^="WATER"] .slide-wrap{  height: 550px;  top: -15px;  position: relative;}
+      div[data-link^="WATER"] .slide-wrap > div:first-child{height:260px}
+      div[data-link^="WATER"] .slide-wrap > div:after{content:"";border-top:1px solid #ccc;position:absolute;width:90%; bottom:12px;}
+      /*#tabs div[data-link^="WATER"] > div.slide-wrap > div.upper { height: 234px;}*/
+      #water1{top:0;}
+      #water2{top:-14px;}
+      #tabs div[data-link^="WATER"] .chart-title.hbar{text-align:left;left: 16px;top:4%;}
+      /*.info-right-top{
+          position:relative;
+          right:20px;
+          width:100px;
+          float:right; 
+          top: -25px;
+          font-size: 18px;
+      }
+      .info-right-top > span {font-size:12px;text-align:center;position:relative;left:6px;}
+      .info-right-top > span:before{content:"";display: block;height: .05em;width: 60%;background: #ccc;margin-top:2px;position:relative; left:-16px;}*/
+
+      /** Data CENTERS ONLY **/
+      #tabs div[data-link^="DATA"] .chart-title.grey {text-align: left;}
+      #tabs div[data-link^="DATA"] .upper{overflow:hidden;}
+      #tabs div[data-link^="DATA"] .slide-wrap > div:not(:first-child) .chart-title.grey {left:-40px;margin-bottom:15px;}
+      #tabs div[data-link^="DATA"] > div.slide-wrap > div.right-full{/*width:84%;*/float:left;position:relative;}  
+      #tabs div[data-link^="DATA"] div.half{overflow:hidden;}
+      #tabs div[data-link^="DATA"] div.half:first-of-type{border-right:1px solid #ccc;}
+      #tabs div[data-link^="DATA"] div.half {height:100%;padding: 5px 0 0 10%;/*width:39%!important;*/}
+      #tabs div[data-link^="DATA"] div.lower>div.half{padding-top: 24px;}
+      #tabs div[data-link^="DATA"] .info-right-top{top:-3px;position:absolute;z-index:99}
+      
+      #data_center1,#data_center2{bottom:-7px;position:relative;left:-30%;}
+
+      /** DATA CENTERS TRIANGLE CHART **/
+      #tabs div[data-link^="DATA"] .upper > .half:first-child{position:relative;}
+
+      /** TOOL TIPS **/
+      .q-ttip{cursor:pointer;}
+      .q-ttip:after{
+        content:"";
+        background:url('../img/qmark.png') no-repeat;
+        position:absolute;
+        width: 14px;
+        height: 14px;
+        left: 80px;
+      }
+      .qtip-light {background-color:rgba(221, 221, 221, 0.4)!important;}
+      body > div:first-of-type{height:100%;}
+      @media screen and (max-width:1148px){
+        #pager a {font-size:11px;}
+      }
+      @media screen and (max-width:1200px){
+        #main #wrapper > .caroufredsel_wrapper {height:auto;}
+        #pager.container{  margin-top: -62px;}
+        #tabs{min-height:560px!important;}
+        #tabs > div{overflow-x:hidden;overflow-y:auto;min-height:560px!important;}
+        #tabs > div:first-child {}
+        #energy_use1,#energy_use2 {left: -44%;}
+        div[data-link^="ENERGY USE"] #tabs > div div.slide-wrap > div {top: -40px;background: transparent;}
+        #tabs div[data-link^="ENERGY US"] div.slide-wrap > div {left: 10px;top:-15px;}
+        #tabs .chart-title {
+              left: -100px;
+              top: 14px;
+        }
+        #tabs div[data-link^="ENERGY US"] div.slide-wrap > div.energy-used-legend{left:60px;top:25px;}
+        #tabs .chart-title.hbar {left: -38%;}
+        #tabs .chart-title.grey.vbar {left: 36px;}
+        #tabs div[data-link^="DATA"] .info-right-top {
+          right: -9px;
+        }
+        #tabs div[data-link^="DATA"] .lower > .half{padding-left:5%}
+      }
+      /** Tablet Portrait **/
+      @media screen and (max-width:1200px) and (orientation:portrait){
+        #pager.container {margin-top: -54px;}
+        #pager li.selected > a {  height: 51px;}
+        #wrapper{width: 748px;left: -11.4%; padding-top:2px;}
+        #tabs .chart-title.grey.vbar {left: 2px;}
+        #tabs div[data-link^="DATA"] .info-right-top{top:-92px;}
+        #triangles {width: auto;top: 54px;}
+        #tabs div[data-link^="ENERGY US"] div.slide-wrap > div {left: 10px!important;}
+        #tabs div[data-link^="ENERGY US"] div.slide-wrap > div.energy-used-legend{left:40px!important;}
+
+      }
+       @media screen and (max-width:992px){
+        #tabs div[data-link^="ENERGY US"] div.slide-wrap > div {left: -10px;} 
+        #tabs div[data-link^="ENERGY US"] div.slide-wrap > div.energy-used-legend{left:0;}
+        #energy_use1,#energy_use2 {left: -70%;}
+      }
+      /** MENU BREAKPOINT (<Tablet) **/
+      @media only screen and (max-width:767px){
+
+          #wrapper{  width: 670px;  left: -14.4%;}
+          #pager.container {margin-top: -54px;}
+          ul.nav-tabs.nav-justified{width:110%;}
+          .nav>li{display: inline-block!important;width:50%;font-size:16px;}
+          #pager .nav> li.selected >a{height:51px;}
+          #pager .nav> li{height:51px;cursor:pointer}
+          #pager .nav> li  a{font-size:17px;height:51px;}
+          #pager .nav> li.the-fourth.selected{  top: -13px;}
+          /*#pager .nav> li:nth-child(5).selected{  top: 2px; }*/
+          #pager .nav> li.selected{  top: 2px;}
+          .nav>li.inactive{display:none!important;}
+          .nav>li.next-arrow,.nav >li.prev-arrow{width:2%;font-size:24px;cursor:pointer;}
+          li:not(.inactive):not(.selected) > a{width:97%;}
+      }
+
+      /** phones landscape **/
+      @media only screen 
+        and (max-device-width: 667px)
+        and (orientation:landscape){
+
+      }
+
+      @media only screen and (max-device-width: 667px){
+      html, body,body>div:first-child,#main{ height:auto;}
+      body{background-color: #F2F2F2;}
+                  div#main div.title {width:200%;margin-left:-41%; }
+          div#main div.title h1{font-size:25px;}
+          .nav:after{
+            content:"\00BB"!important;
+            right:0;
+            position: absolute;
+              color: #86B817;
+              font-size: 24px;
+              top: -53px;
+              cursor:pointer;
+              z-index:0;
+          } 
+        #wrapper{
+          left: -29.4%;
+            padding-top: 2px;
+            width: 160%;
+            /*min-height:600px;
+            margin-bottom:12px;*/
+            min-height: 426px;
+            margin-bottom: 14px;
+            height:380px;
+        }    
+        /*#main #wrapper >.caroufredsel_wrapper{top: -48px!important;height:400px!important;}
+        #tabs > div { min-height: 400px!important;}*/
+        #tabs {min-height: 380px!important;}
+
+        #tabs > div div.slide-wrap{height:auto!important;}
+        /*div[data-link^="CO2e TRENDS"] .slide-wrap .col-xs-12:not(:first-child){top:80px;}
+        div[data-link^="CO2e TRENDS"] .slide-wrap .col-xs-12:last-child{top:150px;}*/
+        #tabs div[data-link^="ENERGY TRE"] div.lower .chart-title.hbar {
+  left: -14.7%;
+}
+        #tabs div[data-link^="ENERGY US"] div.slide-wrap > div.energy-used-legend {left: 15px !important;}
+        #tabs div[data-link^="DATA"] .info-right-top {top: -120px;}
+        div#main{padding:10px 80px;height:100%;}
+
+                .info-right-top > span{font-size:11px;}
+                #tabs div[data-link^="DATA"] .upper{overflow:inherit;}
+                #tabs div[data-link^="DATA"] div.half {width:100%!important;}
+                #tabs div[data-link^="DATA"] div.upper div.half:last-child{top: 400px;position:absolute;}
+                 #tabs div[data-link^="DATA"] div.lower div.half:last-child{top: 691px;position:absolute;}
+                 #tabs div[data-link^="DATA"] div.half{border-right:none!important;border-bottom:none!important;}
+                  #tabs div[data-link^="DATA"] div.upper{border-bottom:none!important;}
+                 
+
+                 #tabs div[data-link^="DATA"] .upper div.half:after,#tabs div[data-link^="DATA"] div.lower div.half:first-child:after{
+                    content:"";
+                    border-bottom:1px solid #ccc;
+                    position:absolute;
+                    width: 100%;
+                    left: -4%;
+                    top: 99.8%;
+                 }
+                 #tabs div[data-link^="DATA"] .upper div.half:last-child:after{left: -7.5%;top: 20.8em;}
+                 #tabs div[data-link^="DATA"] div.lower div.half:first-child:after{ top:12em;}
+                 #tabs div[data-link^="DATA"] div.lower div.half:last-child{  height: auto;}
+      }
+
+      /** iphone 5 only **/
+       @media screen and (device-aspect-ratio: 40/71) {        
+        #wrapper {left: -44.4%;width: 190%;}
+        #wrapper{height:380px!important;}    
+        body #main #wrapper >.caroufredsel_wrapper{top: -18px!important;height:395px!important;}
+        #wrapper #tabs > div { min-height: 390px!important;}
+        #tabs {min-height: 380px!important;}
+          #tabs {min-height: 370px;}
+        #tabs .slide-wrap{height:auto;}
+        #main .title {margin-left: -41%!important;}
+        #main .title > h1 {font-size:24px;}
+        #main #wrapper > .caroufredsel_wrapper{left:0}
+        #pager .nav> li  a{font-size:11px!important;}
+        #main #wrapper > .caroufredsel_wrapper{
+            top: -16px !important; 
+        }  
+        #tabs > div[data-link^="2014"] div.slide-wrap  {margin-top: 15px!important;  margin-left: auto!important;}
+       #tabs .chart-title.hbar {
+          left: -18%;
+          font-size: 16px;
+        }
+        #tabs div[data-link^="WATER"] .chart-title.hbar {
+          text-align: left;
+          left: 20px;
+          top: 4%;
+        }
+        .info-right-top {
+          position: relative;
+          right: -35px;
+          width: 100px;
+          float: right;
+          top: -45px;
+          font-size: 14px;
+        }
+        #tabs .water-icons{    left: 16px;top: 50px;}
+        #tabs .water-icons img{  width: 4%;}
+        #tabs div[data-link^="DATA"] .info-right-top {
+          top: -114px;
+        }
+         #tabs div[data-link^="DATA"] .upper div.half:last-child:after {top: 21.5em;}
+
+
+       }
+
+      /*iPhone 6 and iPhone 6+ portrait and landscape*/
+      @media only screen and (max-device-width : 667px),
+            only screen and (min-device-width : 414px) and (max-device-width : 736px){
+            body > div:first-of-type { overflow: hidden;height: 667px;}
+             #wrapper{height:520px;}    
+            #main #wrapper >.caroufredsel_wrapper{top:-16px!important;height:510px!important;}
+            #tabs div.slide-wrap div.upper {border-bottom:none;}
+            #tabs div.slide-wrap div.upper:after {  content:""; border-bottom: 1px solid #ccc;position:absolute; width: 91%;  top: 91%;}
+            #tabs > div {  min-height: 490px!important;}
+            #tabs {min-height: 520px;}
+            #tabs .slide-wrap{height:auto;}
+             #tabs > div[data-link^="2014"] div.slide-wrap  {margin-top: 5px;  margin-left: 18px;}
+             #energy_trends1, #energy_trends2, #water1, #water2 {left: -80px;}
+              #tabs > div[data-link^="WATER"] div.slide-wrap {margin-top:2px;}
+              #tabs div[data-link^="WATER"] .chart-title.hbar {left: 16px;font-size: 17px;}
+              #tabs div[data-link^="DATA"] .info-right-top {top: -95px;font-size: 14px;}
+              .info-right-top {position: relative;right: -40px;top: -36px;font-size: 15px;} 
+              .info-right-top > span{font-size:10px;left:4px;}
+                            .info-right-top > span:before {left: -20px;}
+              #tabs .chart-title.hbar{left:-18%;}
+             #pager .nav>li a {font-size: 13px;}
+             #pager .nav > li {left: -1.3px;top: -5px;}
+            #pager .nav > li > a {position:absolute;width:100%}
+            #pager .nav > li.selected.the-fourth{ top:0;}
+             #pager .nav > li.selected > a{height: 53px;}
+             #pager .nav > li:not(.selected) > a{  top: 5px;  left: -15px;}
+             div#main div.title {margin-left:-21%;}
+             .water-icons{left: 14px;}
+       }
+       /** Safari 6.1+ ONLY **/
+       @media screen and (-webkit-min-device-pixel-ratio:0) { 
+            /* Safari only override */
+            ::i-block-chrome,#energy_trends1, #energy_trends_2, #water1, #water2{left:0px;}
+            ::i-block-chrome,.info-right-top > span::before{height:.1em;}
+        }
