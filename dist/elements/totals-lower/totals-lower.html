@@ -16,6 +16,7 @@
    .lower > .inner {padding-top:24px;}    
     div.lower {height:260px;padding-left: 3%;position:relative;top:60px;}
     div.lower:after{content:url(../../img/map.png);position:absolute;top:4%;left:24.5%;}
+    div.lower.notChrome:after{top: -3%;}
     .lower > .inner h4 {margin-left:0;}
     .figure:nth-of-type(even){margin-left: 11px;}
     .inner .third:nth-child(2){padding-left: 5%;}
@@ -47,7 +48,7 @@
      }
 	</style>
   <core-ajax auto url="{{url}}" handleAs="json" response="{{response}}"></core-ajax> 
-    <div class="lower row">
+    <div class="lower row {{cls}}">
               <div class="inner">
                 <h4 class="col-sm-2 col-md-2 col-lg-2">CO<sub>2</sub>e by Geography (Tonnes)</h4>
                   <div class="third col-xs-12 col-xs-offset-4 col-sm-offset-0  col-sm-4 col-md-4 col-lg-3">
@@ -80,10 +81,14 @@
                 "europe_mideast_africa":"XXX,XXX"
               }
             }  
+            this.cls = (this.isNotChrome()) ? "notChrome" : '';
           },
           responseChanged: function(oldValue) {
             this.locations = this.response.lower;
-          },     
+          },  
+          isNotChrome:function(){
+            return (!!window.chrome && !!window.chrome.webstore) ? false: true;
+          }   
       });
     })();
   </script>

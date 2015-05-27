@@ -153,10 +153,21 @@ div#main{
       #pager li.selected:first-child{position:relative;left:-1px;}
       #pager li.selected:last-child,#pager li:last-child a:hover{position:relative;right:-1.1%;}
 
-      .nav.nav-tabs{border-bottom:0;}
- .nav-tabs>li{width:16.6666666667%; text-align:center;} 
- .nav-tabs>li>a {margin-right: 0!important;color:#666;}
-        .nav-tabs.nav-justified>li>a {border-bottom: 0!important;}
+      .nav{
+        &.nav-tabs{
+            border-bottom:0;
+            >li{
+              width:16.6666666667%; 
+              text-align:center;
+              >a {
+                  margin-right: 0!important;
+                  color:#666!important;
+                  outline:none;
+              }
+            } 
+        }    
+      }
+        .nav-tabs.nav-justified>li>a {border-bottom: 0!important;color:#666!important;}
 
 
       #tabs h4 {color: #796e65;font-size:18px;}
@@ -617,7 +628,8 @@ div#main{
              .notChrome datacenter-chart{position:relative; left:-7%;}
             /*#tabs div.third {width: 100% !important;}*/
             .notChrome #tabs div.slide-wrap div.upper:after{width: 78%;top: 77%;}
-            .notChrome #tabs div[data-link^="2014"] div.slide-wrap div.upper:after{top: 90%;}
+            .notChrome #tabs div[data-link^="2014"] div.slide-wrap div.upper:after{top: 120%;left: 6%;
+width: 84%;}
             
        /** Safari 6.1+ ONLY **/
        @media screen and (-webkit-min-device-pixel-ratio:0) { 

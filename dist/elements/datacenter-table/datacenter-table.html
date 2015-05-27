@@ -36,14 +36,12 @@
     <div class="chart-title grey {{cls2}}">{{ctitle}}</div>
 		<table class="chart-data {{cls}}">
 		  <tbody>
-		  	<template repeat="{{location in locations}}">
-		        <tr class="{{location.color}}">
+		        <tr template repeat="{{location in locations}}" class="{{location.color}}">
 		        	<td>{{location.loc}}</td>
               <td>{{location.currVal}}</td>
               <td class="v2013">{{location.lastVal}}</td>
               <td>{{location.v2012}}</td>
 		        </tr>
-		    </template>
 		</tbody>
 	</table>
   </template>
@@ -55,9 +53,9 @@
        			if(this.ctitle == "Server Count"){
               this.cls = "tbl-2";
               this.locations = [
-       					{loc:'UTAH',currVal:'31,385',lastVal:'26,575',v2012:'20,089',color:'blue'},
-       					{loc:'NEVADA',currVal:'20,855',lastVal:'14,386',v2012:'9,303',color:'green'},
-       					{loc:'ARIZONA',currVal:'34,514',lastVal:'30,710',v2012:'26,529',color:'lt-blue'}
+       					{'loc':'UTAH','currVal':'31,385','lastVal':'26,575','v2012':'20,089',color:'blue'},
+       					{'loc':'NEVADA','currVal':'20,855','lastVal':'14,386','v2012':'9,303',color:'green'},
+       					{'loc':'ARIZONA','currVal':'34,514','lastVal':'30,710','v2012':'26,529',color:'lt-blue'}
          			];
             }else{
               this.cls = "tbl-1";
@@ -67,6 +65,7 @@
                 {loc:'ARIZONA',currVal:'1.48',lastVal:'1.490',v2012:'1.49',color:'lt-blue'}
               ];  
             }
+            console.log(this.locations);
             this.cls2 = (this.isNotChrome()) ? "notChrome" : '';
        		},
           isNotChrome:function(){

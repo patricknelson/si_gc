@@ -10,23 +10,33 @@
 
   <!-- build:css styles/main.css -->
   <link rel="stylesheet" href="styles/main.css">
-  <!-- endbuild-->
   <link type="text/css" rel="stylesheet" href="styles/jquery.qtip.min.css" />
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+  <!-- endbuild-->
+  <script src="scripts/weakmap.js"></script>
+    <script src="scripts/classList.js"></script>
+    <!--<script src="token-list.min.js"></script>-->
   <script src="https://code.jquery.com/jquery-1.11.2.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
   <!-- build:js bower_components/webcomponentsjs/webcomponents.min.js -->
-  <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+      <!--[if lte IE 9]>
+   <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <![endif]-->
+    <!--[if (gte IE 9) | (!IE)]><!-->
+    <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+    <!--<![endif]-->
+   
+    <script type="text/javascript" src="scripts/jquery.qtip.min.js"></script>
+  <script type="text/javascript" src="scripts/imagesloaded.pkg.min.js"></script>
+  <script src="scripts/jquery.carouFredSel.js"></script>
+  <script src="scripts/jquery.transit.min.js"></script>
   <!-- endbuild -->
 
   <!-- will be replaced with elements/elements.vulcanized.html -->
   <link rel="import" href="elements/elements.html">
   <!-- endreplace-->
   
-  <script type="text/javascript" src="scripts/jquery.qtip.min.js"></script>
-  <script type="text/javascript" src="scripts/imagesloaded.pkg.min.js"></script>
-  <script src="scripts/jquery.carouFredSel.js"></script>
-  <script src="scripts/jquery.transit.min.js"></script>
+
   <style> :host{width:auto;}</style>
 </head>
 
@@ -171,6 +181,8 @@
   <div class="clearfix"></div>
 </div>  
   <!-- build:js scripts/app.js -->
+
+  <script src="scripts/matchMedia.js"></script>
   <script src="scripts/mobile_nav.js"></script>
   <script src="scripts/app.js"></script>
   <!-- endbuild-->
