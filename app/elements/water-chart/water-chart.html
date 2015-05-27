@@ -16,9 +16,15 @@
     .green{color:#86B817;}
     .grey{color:#796e65;}
     .lt-blue{color:#66A2E4;}
+      .notChrome.top_label{top:96px;}
+      /*.notChrome.top_label.upper{left:-40px}*/
+      .notChrome.bottom_label{top:29%;left:27%;}
+      .notChrome.bottom_label.lower{top:29%;}
       .top_label, .bottom_label{position:absolute;z-index: 99;width:100%;}
+      
       .top_label{left: 92px;  top: 80px;}
       .bottom_label{left:28%; top:45%;color:#fff;}
+      
       .top_label>p, .bottom_label>p{position:absolute;font-size:18px;}
 
       .top_label>p.blue{left:-4px;top:-109px;}
@@ -37,18 +43,21 @@
       .top_label.chart1>p.lt-blue{top:38px;}
       /** CHART 2 **/
       .top_label.chart2{top:96px;}
+      .notChrome.top_label.chart2{top:114px;}
       .top_label.chart2>p.green{top:-128px;}
       .top_label.chart2>p.lt-blue{top:12px}
        /** CHART 3 */
-      .top_label.chart3{top:85px;}
+      .notChrome.top_label.chart3{top:100px;}
       .top_label.chart3>p.green{top:-40px;}
       .top_label.chart3>p.lt-blue{top:34px;}
        /** CHART 4 */
       .top_label.chart4{top:94px;}
+      .notChrome.top_label.chart4{top:110px;}
       .top_label.chart4>p.green{top:-11px;}
       .top_label.chart4>p.lt-blue{top:33px;}
       /** CHART 5 */
       .top_label.chart5{top:40px;}
+      .notChrome.top_label.chart5{top:54px;}
       .top_label.chart5>p.blue{top:68px;left:-5px;}
       .top_label.chart5>p.green{top:-11px;}
       .top_label.chart5>p.lt-blue{top:-34px;}
@@ -90,29 +99,47 @@
         :host {left: -18%;}
         :host google-chart::before {content: "";height: 1px;background: #ccc;display: block;position: absolute;width: 110%;top: 154px;left: 20px;}
         .top_label{top: 80px;}
-        
+        .notChrome.top_label.upper > p.lt-blue,.notChrome.top_label.lower > p.lt-blue{left:58.6%;}
+        .notChrome.upper.bottom_label > p:last-child,.notChrome.lower.bottom_label > p:last-child{left:70.2%;}
+        .notChrome.upper.bottom_label > p:nth-child(2),.notChrome.lower.bottom_label > p:nth-child(2){left:39.6%;}
+
         .bottom_label{  top: 105px;}
+        .notChrome.bottom_label.upper,.notChrome.bottom_label.lower{top:23%;}
         .bottom_label.lower{left:22%;}
+
         .top_label.chart1>p.blue{top:-115px;}
-        .top_label.chart1>p.green {top: -64px;left:28.6%;}
+        .top_label.chart1>p.green {top: -64px;left:29.6%;}
         .top_label.upper.chart1>p.lt-blue{top:4px;}
+
+        .notChrome.top_label.chart.upper1>p.green {left:29.6%;}
+        .notChrome.top_label.upper.chart1>p.lt-blue{left:58.6%;}
+        
         .top_label.chart2 {top: 92px;}
+        .notChrome.top_label.chart2{top:104px;}
         .top_label.chart2>p.green {top: -126px;}
         .top_label.chart2>p.lt-blue {top: -12px!important;}
+        
+
         .top_label.chart3{top:90px;}
         .top_label.chart3>p.blue{top:-118px;}
         .top_label.chart3>p.green {top: -62px;left:30.6%;}
 
         .top_label.chart4>p.blue{top:-114;}
         .top_label.chart4>p.green {top: -42px; left: 26.4%;}
+
         .top_label.chart5 {top: 5px;}
+        .notChrome.top_label.chart5{top:20px;}
+        .notChrome.bottom_label.lower {top:13%;}
         .top_label.chart5.lower>p.lt-blue{top:-12px;}
         .top_label.chart5>p.green{top:10px;left: 26.6%;}
-        /*.top_label>p.green{top:-66px!important;left:26.6%!important;}*/
+
         .top_label.upper>p.lt-blue,.top_label.lower>p.lt-blue {top:-4px;left: 52.6%;}
         .bottom_label > p:nth-child(2) {left: 36.6%;}
         .bottom_label > p:last-child {left: 63.2%;}
+        .notChrome.upper.bottom_label > p:last-child,.notChrome.lower.bottom_label > p:last-child{left:70.2%;}
+        .notChrome.upper.bottom_label > p:nth-child(2),.notChrome.lower.bottom_label > p:nth-child(2){left:39.6%;}
         .water-loc.grey {top: -11em;left: 3em;}
+        .notChrome.water-loc.grey.lower{top:-14.5em;} 
       }
       @media screen and (device-aspect-ratio: 40/71) {
         :host {left: -28%;}
@@ -126,20 +153,21 @@
       }
     </style>
      <core-ajax auto url="scripts/data/water{{num}}.json" handleAs="json" response="{{response}}"></core-ajax> 
-     <div class="top_label {{cls}} chart{{num}}"><p class="blue">{{vals[0]}}</p><p class="green">{{vals[1]}}</p><p class="lt-blue">{{vals[2]}}</p></div>
+     <div class="top_label {{cls}} chart{{num}} {{cls2}}"><p class="blue">{{vals[0]}}</p><p class="green">{{vals[1]}}</p><p class="lt-blue">{{vals[2]}}</p></div>
       <google-chart type="column" 
                     id="water{{num}}" 
                     options='{{opts}}'
                     data='scripts/data/water{{num}}.json'>
        </google-chart>
-       <div class="bottom_label {{cls}}"><p>2014</p><p>2013</p><p>2012</p></div>
-       <div class="water-loc grey {{cls}}">{{locations[num]}}</div>
+       <div class="bottom_label {{cls}} {{cls2}}"><p>2014</p><p>2013</p><p>2012</p></div>
+       <div class="water-loc grey {{cls}} {{cls2}}">{{locations[num]}}</div>
   </template>
   <script>
     (function(){
       Polymer({
           ready: function() {
             this.cls =  (this.num < 3) ? 'upper' : 'lower';
+            this.cls2 =  (this.isNotChrome()) ? 'notChrome' : '';
             this.locations = {
               1:"Salt Lake City, Utah",
               2:"Pheonix, AZ",
@@ -148,20 +176,20 @@
               5:"Omaha"
            };
             var height = (this.isMobile()) ? 155 : 195;
-            var caw  = (this.isMobile()) ? 155 : 195;
-            this.opts = {"width": 400,"height": height,"chartArea": {"width": "60%", "height": "110%"},"bar": {"groupWidth": "90%"},"legend": {"position": "none" },"hAxis": { "textPosition": "none","gridlines": {"color": "transparent"},"baselineColor": 'transparent'},"vAxis": { "textPosition": "none","gridlines": {"color": "transparent"},"baselineColor": 'transparent'},"backgroundColor": { "fill":"transparent" },"annotations": {"alwaysOutside": true, "textStyle": {"fontSize": 18}},"animation":{"duration": 3000,"easing": "in"},"tooltip": {"trigger": "none"}}
-            /*$(document).on('google-chart-render',function(e){
-              var id = e.target.id;
-              console.log(id);
-              if(id == self.id){
-                setTimeout(function(){
-                  console.log(self.findChart().getChartSvg());
-                }, 1000);
-              }else{
-                return false;
-              }
-            });*/
+            var caw  = (this.isMobile()) ? "65%" : "60%";
+            this.opts = {"width": 400,"height": height,"chartArea": {"width": caw, "height": "110%"},"bar": {"groupWidth": "90%"},"legend": {"position": "none" },"hAxis": { "textPosition": "none","gridlines": {"color": "transparent"},"baselineColor": 'transparent'},"vAxis": { "textPosition": "none","gridlines": {"color": "transparent"},"baselineColor": 'transparent'},"backgroundColor": { "fill":"transparent" },"annotations": {"alwaysOutside": true, "textStyle": {"fontSize": 18}},"animation":{"duration": 3000,"easing": "in"},"tooltip": {"trigger": "none"}}
 
+          },checkFixSafari:function(){
+              if(this.isSafari()){
+                $('#'+this.id).css('left','0px');
+                
+              }
+          },
+          isSafari:function(){
+            return /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor) ? true : false;
+          },
+          isNotChrome:function(){
+            return (!!window.chrome && !!window.chrome.webstore) ? false: true;
           },
           responseChanged: function(oldValue) {
             this.vals = [this.response[1][1],this.response[2][1],this.response[3][1]];

@@ -31,9 +31,8 @@
   });
 
 MOBILE_NAV.checkLoad();
-var isSafari = /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);
-if(isSafari) $('.info-right-top > span::before').css('height','1em');
-
+var isNotChrome = (!!window.chrome && !!window.chrome.webstore) ? false : true;
+if(isNotChrome) $('body').addClass('notChrome');
 
 // wrap document so it plays nice with other libraries
 // http://www.polymer-project.org/platform/shadow-dom.html#wrappers

@@ -14,10 +14,15 @@
 	  .lt-blue{color:#66A2E4;}
     div.third {background:transparent;}
    .lower > .inner {padding-top:24px;}    
-    div.lower {height:260px;padding-left: 3%;}
+    div.lower {height:260px;padding-left: 3%;position:relative;top:60px;}
+    div.lower:after{content:url(../../img/map.png);position:absolute;top:4%;left:24.5%;}
+    .lower > .inner h4 {margin-left:0;}
     .figure:nth-of-type(even){margin-left: 11px;}
-    .inner .third:nth-child(3) .figure.grey{margin-left: 24px;}
-    .inner .third:nth-child(4) .figure.grey{margin-left: -8%;}
+    .inner .third:nth-child(2){padding-left: 5%;}
+    .inner .third:nth-child(3){padding-left:3.5%;}
+    .inner .third:nth-child(3) .figure.green{margin-left:12%;}
+    .inner .third:nth-child(3) .figure.grey{margin-left: 0px;}
+    .inner .third:nth-child(4) .figure.grey{margin-left: 0;}
     .figure{margin:4px auto 0 10px;}
     .figure.large{  font-size: 37px;}
     .figure.grey.large{font-size:20px;}
@@ -25,9 +30,12 @@
     .chart-title{text-align:left; position:relative; left:20px;font-size:18px;z-index:9;  margin-bottom: 15px;}
 	  h4{color: #796e65;font-size:18px;margin-left:30px;}
     @media only screen and (max-device-width: 667px){
+            div.lower{top:20px;}
+            div.lower:after{left:0;}
       .lower > .inner {  width: 90%;}
         .figure.large{  font-size: 20px;}
         .inner .third .figure:nth-of-type(even){text-align: center;  margin-left: -39%!important;}
+              .inner .third:nth-child(3) .figure.green{margin-left:0;}
         h4{  margin-left: -12px; text-align: center;}
         div.third{  padding-left: 4px;  margin-bottom: 24px;}
         div.third:first-of-type{  margin-top: 20px;}
@@ -41,13 +49,8 @@
   <core-ajax auto url="{{url}}" handleAs="json" response="{{response}}"></core-ajax> 
     <div class="lower row">
               <div class="inner">
-                <h4 >CO<sub>2</sub>e by Geography (Tonnes)</h4>
-                <div class="third col-xs-12 col-xs-offset-4 col-sm-offset-0 col-sm-4 col-md-4 col-lg-4">
-                  <p class="figure large green">{{locations.asia_pacific}}</p>
-                  <p class="figure grey col-xs-12 col-xs-offset-0">Asia Pacific</p>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="third col-xs-12 col-xs-offset-4 col-sm-offset-0  col-sm-4 col-md-4 col-lg-4">
+                <h4 class="col-sm-2 col-md-2 col-lg-2">CO<sub>2</sub>e by Geography (Tonnes)</h4>
+                  <div class="third col-xs-12 col-xs-offset-4 col-sm-offset-0  col-sm-4 col-md-4 col-lg-3">
                   <p class="figure large green">{{locations.americas}}</p>
                   <p class="figure grey col-xs-12 col-xs-offset-0">Americas</p>
                   <div class="clearfix"></div>
@@ -55,6 +58,11 @@
                 <div class="third col-xs-12 col-xs-offset-4 col-sm-offset-0  col-sm-4 col-md-4 col-lg-4">
                   <p class="figure large green">{{locations.europe_mideast_africa}}</p>
                   <p class="figure grey col-xs-12 col-xs-offset-0">Europe Middle East & Africa</p>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="third col-xs-12 col-xs-offset-4 col-sm-offset-0 col-sm-2 col-md-2 col-lg-3">
+                  <p class="figure large green">{{locations.asia_pacific}}</p>
+                  <p class="figure grey col-xs-12 col-xs-offset-0">Asia Pacific</p>
                   <div class="clearfix"></div>
                 </div>
               </div>

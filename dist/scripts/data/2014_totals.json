@@ -2,7 +2,7 @@
   "upper":
   	{"energy_use":[
   		 {"val":"716,353","unit":"MWh"},
-  		 {"val":"20.8","unit":"MWh/Employee"},
+  		 {"val":"20.7","unit":"MWh/Employee"},
     	 {"val":"0.00003993","unit":"MWh/$ Revenue"}
    	],
     "carbon":[
@@ -11,8 +11,8 @@
     	{"val":"0.000015","unit":"/$ Revenue"}
     ]},
   "lower":{
+    "americas":"225,610", 
   	"asia_pacific":"30,851",
-  	"americas":"225,610",	
   	"europe_mideast_africa":"13,915"
   }
 }

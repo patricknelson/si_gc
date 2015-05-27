@@ -13,6 +13,7 @@
 	  .grey{color:#796e65;}
 	  .lt-blue{color:#66A2E4;}
     div.half {height:86.05%;}/**width: 46.9% !important;padding-left: 10px;width:47%;**/
+    .upper div > div{top:30px;}
     div.third {float:left;   width: 33% !important;  left: 1.75%;height: 100%;  position: relative;
   z-index: 1;  background: white;}
     .upper.row{border-bottom:none!important;}
@@ -20,7 +21,7 @@
     .upper > .half:first-child > .half:last-child{border-right: 1px solid #ccc;}
     div.upper, div.lower {height:240px;}
     div.slide-wrap div.upper{border-bottom:1px solid #ccc;}
-    div.upper > .half:first-child > .col-lg-6 {  border-right: 1px solid #ccc;  height: 200px;}
+    div.upper > .half:first-child > .col-lg-6 {  border-right: 1px solid #ccc;  height: 241px;}
     .figure:nth-of-type(even){margin-left: 11px;}
     .figure{margin:4px auto 0 10px;}
     .figure.large{  font-size: 37px;}
@@ -41,13 +42,14 @@
       border-bottom: 1px solid #ccc;
       position: absolute;
       width: 90%;
-      top: 240px;
+      top: 310px;
     }
 	  h4{color: #796e65;font-size:18px;}
     @media only screen and (max-device-width: 667px){
       :host{padding-left:10px;}
+
       div.upper{  height: 200px;}
-      div.upper:after {width: 284px;top: 200px;}
+      div.upper:after {width: 284px;top: 228px;}
       .col-xs-6:not(.half),.col-xs-12{padding:0;}
       div.upper > .half:first-child > .col-lg-6{border-right:none;}
       div.upper > .half:first-child > .col-lg-6:after{content:"";border-right:1px solid #ccc;position:absolute; left: 96%;height: 188px;top: -75px;}

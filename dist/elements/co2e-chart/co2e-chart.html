@@ -73,7 +73,13 @@
         }
         .top_label.top_label.chart1,.top_label.top_label.chart2,
         .top_label.top_label.chart3{top:20px;}
+        
+        .notChrome.top_label, .notChrome.top_label.chart1,
+        .notChrome.top_label.chart2,
+        .notChrome.top_label.chart3{top:35px;}
+
         .bottom_label{  top: -70px;}
+        .notChrome.bottom_label{top:-50px;}
         .top_label>p.blue{top:50px;}
         .top_label.chart2>p.blue{top:12px;}
         .top_label.chart3>p.blue{top:107px;}
@@ -89,7 +95,6 @@
 
         .bottom_label > p:nth-child(2) {left: 26.6%;}
         .bottom_label > p:last-child {left: 50.2%}
-        .top_label>p{color:red!important;}
       }
       @media screen and (device-aspect-ratio: 40/71) {
         .top_label{top: 35px;}
@@ -101,20 +106,21 @@
       }
     </style>
      <core-ajax auto url="scripts/data/co2e_trends{{num}}.json" handleAs="json" response="{{response}}"></core-ajax> 
-     <div class="top_label chart{{num}}"><p class="blue">{{vals[0]}}</p><p class="green">{{vals[1]}}</p><p class="lt-blue">{{vals[2]}}</p></div>
+     <div class="top_label chart{{num}} {{cls}}"><p class="blue">{{vals[0]}}</p><p class="green">{{vals[1]}}</p><p class="lt-blue">{{vals[2]}}</p></div>
       <google-chart type="column" 
                     id="co2e_trends{{num}}" 
                     options='{{opts}}'
                     numberFormats = '[{"col":2, "groupingSymbol": ","}]'
                     data='scripts/data/co2e_trends{{num}}.json'>
        </google-chart>
-       <div class="bottom_label"><p>2014</p><p>2013</p><p>2012</p></div>
+       <div class="bottom_label {{cls}}"><p>2014</p><p>2013</p><p>2012</p></div>
   </template>
   <script>
     (function(){
       Polymer({
           ready: function() {
             var height = (this.isMobile()) ? 350 : 500;
+            this.cls  = (this.isNotChrome()) ? 'notChrome' : ''
             this.opts = {"width": 400,"height": height,"chartArea": {"width": "60%", "height": "60%"},"bar": {"groupWidth": "90%"},"legend": {"position": "none" },"hAxis": { "textPosition": "none","gridlines": {"color": "transparent"},"baselineColor": 'transparent'},"vAxis": { "textPosition": "none","gridlines": {"color": "transparent"},"baselineColor": 'transparent'},"backgroundColor": { "fill":"transparent" },"annotations": {"alwaysOutside": true, "textStyle": {"fontSize": 18}},"animation":{"duration": 3000,"easing": "in"},"tooltip": {"trigger": "none"}}
           },
           responseChanged: function(oldValue) {
@@ -123,6 +129,9 @@
           },
           isMobile :function(){
             return window.matchMedia('screen and (max-width: 767px)').matches;
+          },
+          isNotChrome:function(){
+            return (!!window.chrome && !!window.chrome.webstore) ? false: true;
           },
           formatNumbers:function(data){
               var self = this;

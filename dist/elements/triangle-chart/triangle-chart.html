@@ -46,7 +46,9 @@
             .triangle_label{  left: 60px;}
             .triangle_label.green{left:130px;top:120px;}
         #triangles{left: -29px; top: 49px!important;}
+        .notChrome#triangles{width:100%;left:-20px;}
         .triangle_label.lt-blue{left: 200px;top:42px;}
+        .notChrome.triangle_label.lt-blue{left:186px;}
       }
       @media screen and (device-aspect-ratio: 40/71) {  
         #triangles {width: 100%;left: -20px;top: 98.5px!important;}
@@ -60,13 +62,13 @@
       <core-ajax auto url="{{url}}" handleAs="json" response="{{response}}"></core-ajax> 
       <div class="chart-title grey">{{ctitle}}</div>
       <template repeat="{{label in data}}">
-            <div class="triangle_label {{label.color}}">
+            <div class="triangle_label {{label.color}} {{cls}}">
               {{label.currVal}}<br>
               <span class="grey small">{{label.lastVal}}</span><br>
               <span class="grey xsmall">{{label.v2012}}</span>
             </div>
         </template>
-        <img id ="triangles" src="../../img/triangles.png">
+        <img class="{{cls}}" id ="triangles" src="../../img/triangles.png">
   </template>
   <script>
     (function(){
@@ -80,10 +82,14 @@
                 {currVal:'XX,XXXX',lastVal:'56,592',color:'lt-blue'}
               ];
             }
+            this.cls =  (this.isNotChrome()) ? 'notChrome' : '';
           },
           responseChanged: function(oldValue) {
             this.data = this.response.data;
-          },     
+          },
+          isNotChrome:function(){
+            return (!!window.chrome && !!window.chrome.webstore) ? false: true;
+          }     
       });
     })();
   </script>

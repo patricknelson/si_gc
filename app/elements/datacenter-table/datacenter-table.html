@@ -30,9 +30,10 @@
             font-size: 16px;
             padding: 4px 10px;
           }
+          .notChrome .chart-title{left:10px;}
       }
 	</style>
-    <div class="chart-title grey">{{ctitle}}</div>
+    <div class="chart-title grey {{cls2}}">{{ctitle}}</div>
 		<table class="chart-data {{cls}}">
 		  <tbody>
 		  	<template repeat="{{location in locations}}">
@@ -66,7 +67,11 @@
                 {loc:'ARIZONA',currVal:'1.48',lastVal:'1.490',v2012:'1.49',color:'lt-blue'}
               ];  
             }
-       		}			
+            this.cls2 = (this.isNotChrome()) ? "notChrome" : '';
+       		},
+          isNotChrome:function(){
+            return (!!window.chrome && !!window.chrome.webstore) ? false: true;
+          }     			
       });
   	})();
   </script>

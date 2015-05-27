@@ -73,16 +73,29 @@
       @media only screen and (max-device-width: 640px), 
            only screen and (max-device-width: 667px){
             .chart-title {left: -16px;  top: 34px;}
+            .notChrome.chart-title {left: -16px;  top: 60px!important;}
             #data_center2 {left: -38%;bottom: 144px;}
+            .notChrome #data_center2 {left:-46%;}
         .bottom_label{  top: -318px;}
+        .notChrome.bottom_label{top:-300px;left:20px;}
+
         .top_label {top: 88px;}
-        .top_label > p.blue{left: 15%;top:10px;}
-        .top_label > p.green{top: 10px;}
+        .top_label.notChrome {top: 98px;}
+
+        .top_label > p.blue{left: 15%;top:12px;}
+        .top_label.notChrome> p.blue{left:18%; top:20px;}
+
+        .top_label > p.green{top: 8px;}
+        .top_label.notChrome> p.green{left:54%; top:16px;}
+
         .top_label > p.lt-blue{left: 82.6%;top:-148px;}
+        .top_label.notChrome> p.lt-blue{left:90%; top:-154px;}
+
         .top_label > p > span:last-child{font-size:10px;left:4px;}
         .bottom_label > p:first-child {left: -.5%;}   
         .bottom_label > p:nth-child(3){left:32.6%;}
         .bottom_label > p:nth-child(3) {left: 68%;} 
+        .notChrome.bottom_label > p:nth-child(3){left:72%;}
       }
       @media screen and (device-aspect-ratio: 40/71) {  
         #data_center2{left: -48%;}
@@ -97,8 +110,8 @@
 
     </style>
 <core-ajax auto url="{{url}}" handleAs="json" response="{{response}}"></core-ajax> 
-     <div class="chart-title grey">CO<sub>2</sub>e</div>
-    <div class="top_label">
+     <div class="chart-title grey {{cls}}">CO<sub>2</sub>e</div>
+    <div class="top_label {{cls}}">
       <p class="blue">{{vals[0]}}
         <br><span>{{oldData[2013][0]}}</span>
         <br><span>{{oldData[2012][0]}}</span></p>
@@ -110,17 +123,19 @@
         <br><span>{{oldData[2012][2]}}</span></p>
     </div>
     <google-chart
+    class="{{cls}}"
     type="column"
     id="data_center2"
     options='{{opts}}'
     data='scripts/data/data_center2.json'>
   </google-chart>
-  <div class="bottom_label"><p>UT</p><p>NV</p><p>AZ</p></div>
+  <div class="bottom_label {{cls}}"><p>UT</p><p>NV</p><p>AZ</p></div>
   </template>
   <script>
     (function(){
       Polymer({
           ready: function() {
+            this.cls   = (this.isNotChrome()) ? "notChrome" : '';
             var width  = (this.isMobile()) ? 500 : 600;
             var height = (this.isMobile()) ? 280 : 350;
             var font   = (this.isMobile()) ? 16 : 18;
@@ -137,6 +152,9 @@
           },  
           isMobile :function(){
             return window.matchMedia('screen and (max-width: 767px)').matches;
+          },
+          isNotChrome:function(){
+            return (!!window.chrome && !!window.chrome.webstore) ? false: true;
           },
           formatNumbers:function(data){
               var self = this;
