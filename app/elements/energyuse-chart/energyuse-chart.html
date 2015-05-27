@@ -102,14 +102,9 @@
           },
           positionLabels:function(lbl,i,data){
             lbl.setAttribute('text-anchor','middle');
-            if(i == 3){
-              console.log(lbl);
-              //lbl.setAttribute("x",data[i][0]);
-            }//else{
               var trans = data[i][0]+','+data[i][1];
               lbl.setAttribute("x",data[i][0]);
               lbl.setAttribute("y",data[i][1]);
-            //}
           },
           redraw :function (chrt){
             chrt.drawChart();
