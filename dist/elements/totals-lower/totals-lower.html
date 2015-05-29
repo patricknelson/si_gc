@@ -15,9 +15,9 @@
     div.third {background:transparent;}
    .lower > .inner {padding-top:24px;}    
     div.lower {height:260px;padding-left: 3%;position:relative;top:60px;}
-    div.lower:after{content:url(../../img/map.png);position:absolute;top:4%;left:24.5%;}
+    div.lower:after{content:""; background:url(../../img/map.png) no-repeat;position:absolute;width: 80%;height: 100%;top:4%;left:24.5%;}
     div.lower.notChrome:after{top: -3%;}
-    .lower > .inner h4 {margin-left:0;}
+    .lower > .inner h4 {margin-left:0;padding-left: 27px;  padding-right: 0;}
     .figure:nth-of-type(even){margin-left: 11px;}
     .inner .third:nth-child(2){padding-left: 5%;}
     .inner .third:nth-child(3){padding-left:3.5%;}
@@ -30,6 +30,22 @@
     .figure.medium{font-size:24px;}
     .chart-title{text-align:left; position:relative; left:20px;font-size:18px;z-index:9;  margin-bottom: 15px;}
 	  h4{color: #796e65;font-size:18px;margin-left:30px;}
+    @media screen and (max-width:1024px){
+       div.third{
+        position: relative;
+        left: -40px;
+      } 
+      .inner .third:nth-child(3){padding-left:0;left:-60px;}
+      .inner .third:nth-child(4){left:-74px;}
+      div.lower:after{  left: 10.5%;}
+    }
+    @media screen and (max-width:1024px) and (orientation:portrait){
+      div.third{position: relative;left: -5px;} 
+      .inner .third:nth-child(3){left:-20px;}
+      .inner .third:nth-child(4){left:-60px;}
+      .inner .third:nth-child(4) .figure.grey {margin-left: 20px;width: 300px;}
+      div.lower:after{  left: 16.5%;}
+    }
     @media only screen and (max-device-width: 667px){
             div.lower{top:20px;}
             div.lower:after{left:0;}

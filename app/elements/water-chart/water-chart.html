@@ -12,7 +12,8 @@
    :host google-chart{
       top:-40px;
     }   
-      .blue{color:#0064D2}
+
+    .blue{color:#0064D2}
     .green{color:#86B817;}
     .grey{color:#796e65;}
     .lt-blue{color:#66A2E4;}
@@ -24,43 +25,64 @@
       
       .top_label{left: 92px;  top: 80px;}
       .bottom_label{left:28%; top:45%;color:#fff;}
-      
+      .bottom_label.chart5{top:23%; }
       .top_label>p, .bottom_label>p{position:absolute;font-size:18px;}
 
       .top_label>p.blue{left:-4px;top:-109px;}
-      .bottom_label > p:first-child{left:0;}
+      .bottom_label > p{font-size:16px;}
+      .bottom_label > p:first-child{left:1%;z-index:0;}
 
       .top_label>p.green{left:22%;top:-55px;}
       .bottom_label > p:nth-child(2) {left:22%;}
 
       .top_label>p.lt-blue{left:44%;top:24px;}
-      .bottom_label > p:last-child{left: 43.2%;}
-      .water-loc.grey{margin-top:14px;font-size:15px;text-align:center;position:relative;top:-7.6em;}
+      .bottom_label > p:last-child{left: 44.2%;}
+      .water-loc.grey{margin-top:14px;font-size:15px;text-align:center;position:relative;top:-8em;}
 
       /** CHART 1 **/
-      .top_label.chart1>p.blue{top:-112px;}
-      .top_label.chart1>p.green{top:-48px;}
-      .top_label.chart1>p.lt-blue{top:38px;}
+      .top_label.chart1{top:84px;z-index:999;}
+      .top_label.chart1.notChrome{top:100px;}
+      .top_label.chart1>p.blue{top:-80px;}
+      .top_label.chart1>p.green{top:-56px;}
+      .top_label.chart1>p.lt-blue{  top: -32px;}
+      .bottom_label.chart1{top:31%;}
+      .notChrome.bottom_label.chart1{top:20.5%;}
+      .chart1.water-loc.grey{  top: -11.4em;}
+
       /** CHART 2 **/
       .top_label.chart2{top:96px;}
-      .notChrome.top_label.chart2{top:114px;}
+      .notChrome.top_label.chart2{top:116px;}
       .top_label.chart2>p.green{top:-128px;}
-      .top_label.chart2>p.lt-blue{top:12px}
+      .top_label.chart2>p.lt-blue{top:-54px}
+       .bottom_label.chart2{top:52%;}
+       .bottom_label.chart2.notChrome{top:32.5%;}
+       .chart2.water-loc.grey{ top: -6.6em;}
+      
        /** CHART 3 */
-      .notChrome.top_label.chart3{top:100px;}
-      .top_label.chart3>p.green{top:-40px;}
-      .top_label.chart3>p.lt-blue{top:34px;}
+      .notChrome.top_label.chart3{top:130px;}
+      .top_label.chart3{top:112px;}
+      .top_label.chart3>p.green{top:-60px;}
+      .top_label.chart3>p.lt-blue{top:-30px;}
+      .bottom_label.chart3{ top:46.3%;     }
        /** CHART 4 */
-      .top_label.chart4{top:94px;}
-      .notChrome.top_label.chart4{top:110px;}
-      .top_label.chart4>p.green{top:-11px;}
-      .top_label.chart4>p.lt-blue{top:33px;}
+
+      .top_label.chart4{  top: 34px;}
+      .notChrome.top_label.chart4{top:52px;}
+      .top_label.chart4>p.blue{top:2px;}
+      .top_label.chart4>p.green{top:15px;}
+      .top_label.chart4>p.lt-blue{top:20px;}
+      .bottom_label.chart4{top:28.5%;}
+      .bottom_label.lower.notChrome.chart4{top:19.3%;}
+      .chart4.water-loc.grey{  top: -11.9em;}
       /** CHART 5 */
-      .top_label.chart5{top:40px;}
-      .notChrome.top_label.chart5{top:54px;}
-      .top_label.chart5>p.blue{top:68px;left:-5px;}
-      .top_label.chart5>p.green{top:-11px;}
-      .top_label.chart5>p.lt-blue{top:-34px;}
+      .top_label.chart5{top:60px;/*40px;*/}
+      .notChrome.top_label.chart5{top:78px;}
+      .top_label.chart5>p.blue{top:-1px;left:6px;z-index:99;}
+      .top_label.chart5>p.green{top:-8px;}
+      .top_label.chart5>p.lt-blue{top:-14px;/*-34px;*/}
+      .bottom_label.lower.chart5{top:24.5%;}
+      .bottom_label.lower.notChrome.chart5{top:16.8%;}
+      .chart5.water-loc.grey{  top: -13em;}
 
       /**.top_label > p{color:red!important;}**/
       @media screen and (min-width:1025px) and (max-width:1349px){
@@ -155,17 +177,20 @@
      <core-ajax auto url="scripts/data/water{{num}}.json" handleAs="json" response="{{response}}"></core-ajax> 
      <div class="top_label {{cls}} chart{{num}} {{cls2}}"><p class="blue">{{vals[0]}}</p><p class="green">{{vals[1]}}</p><p class="lt-blue">{{vals[2]}}</p></div>
       <google-chart type="column" 
+                    class="chart{{num}}"
                     id="water{{num}}" 
                     options='{{opts}}'
                     data='scripts/data/water{{num}}.json'>
        </google-chart>
-       <div class="bottom_label {{cls}} {{cls2}}"><p>2014</p><p>2013</p><p>2012</p></div>
-       <div class="water-loc grey {{cls}} {{cls2}}">{{locations[num]}}</div>
+       <div class="bottom_label chart{{num}} {{cls}} {{cls2}}"><p>2014</p><p>2013</p><p>2012</p></div>
+       <div class="water-loc grey chart{{num}} {{cls}} {{cls2}}">{{locations[num]}}</div>
   </template>
   <script>
     (function(){
       Polymer({
           ready: function() {
+            var self = this;
+            this.id = 'water' + this.num;
             this.cls =  (this.num < 3) ? 'upper' : 'lower';
             this.cls2 =  (this.isNotChrome()) ? 'notChrome' : '';
             this.locations = {
@@ -176,10 +201,51 @@
               5:"Omaha"
            };
             var height = (this.isMobile()) ? 155 : 195;
-            var caw  = (this.isMobile()) ? "65%" : "60%";
-            this.opts = {"width": 400,"height": height,"chartArea": {"width": caw, "height": "110%"},"bar": {"groupWidth": "90%"},"legend": {"position": "none" },"hAxis": { "textPosition": "none","gridlines": {"color": "transparent"},"baselineColor": 'transparent'},"vAxis": { "textPosition": "none","gridlines": {"color": "transparent"},"baselineColor": 'transparent'},"backgroundColor": { "fill":"transparent" },"annotations": {"alwaysOutside": true, "textStyle": {"fontSize": 18}},"animation":{"duration": 3000,"easing": "in"},"tooltip": {"trigger": "none"}}
+            var caw    = (this.isMobile()) ? "65%" : "60%";
+            var cah    = "130%";
+            var max    = 60000;
+            var min    = 0
+            if(this.num == 5) {cah ="20%"; height: 120;max = 45000;}
+            if(this.num == 4) {cah ="60%"; height = 165; max = 4500;}
+            if(this.num == 3) {cah ="110%"; height = 190;max = 45000;}
+            if(this.num == 2) {cah = "100%"; height = 210;}
+            if(this.num == 1) {cah ="55%"; height = 180;}
+            this.opts = {"width": 400,"height": height,"chartArea": {"width": caw, "height": cah},"bar": {"groupWidth": "90%"},"legend": {"position": "none" },"hAxis": { "textPosition": "none","gridlines": {"color": "transparent"},"baselineColor": 'transparent'},"vAxis": { "textPosition": "none","gridlines": {"color": "transparent"},"baselineColor": 'transparent'},"backgroundColor": { "fill":"transparent" },"viewWindowMode":"explicit","viewWindow":{"max":max,"min":min},"minValue": min, "maxValue": max,"annotations": {"alwaysOutside": true, "textStyle": {"fontSize": 18}},"animation":{"duration": 3000,"easing": "in"},"tooltip": {"trigger": "none"},"enableInteractivity" : false };
+            var self = this;
+          $(document).on('google-chart-render',function(e){
+            var id = e.target.id;
+            if(id === "water4"){
+              setTimeout(function(){
+                self.fixBarHeights();
+              }, 1000);
+            }else{
+              return false;
+            }
+          });
+          },
+          fixBarHeights:function(){
+             var bars = this.findChart().getChartSvg().querySelectorAll('g:first-of-type>g:first-child > rect');
+              var incr = (this.cls2 == 'notChrome') ? 1:0;
+              if(this.num == 5){this.setAllAttributes(bars[0],['height','y'],['16',100+incr]);}
+              if(this.num == 4){
+                this.setAllAttributes(bars[0],['height','y'],['52',78+incr]);
+                this.setAllAttributes(bars[1],['height','y'],['39',91+incr]);
+                this.setAllAttributes(bars[2],['height','y'],['34',96+incr]);
+              }
+              if(this.num == 1){
+                this.setAllAttributes(bars[1],['height','y'],['70',69+incr]);
+                this.setAllAttributes(bars[2],['height','y'],['46',93+incr]);
+              }
+              if(this.num == 2){this.setAllAttributes(bars[2],['height','y'],['126',86+incr]);}
+              if(this.num == 3){this.setAllAttributes(bars[2],['height','y'],['64',124+incr]);}
 
-          },checkFixSafari:function(){
+          },
+          setAllAttributes:function(el,attrs,avals){
+            attrs.forEach(function(attr,i){
+              el.setAttribute(attr,avals[i]);
+            });
+          },
+          checkFixSafari:function(){
               if(this.isSafari()){
                 $('#'+this.id).css('left','0px');
                 
@@ -194,6 +260,8 @@
           responseChanged: function(oldValue) {
             this.vals = [this.response[1][1],this.response[2][1],this.response[3][1]];
             this.formatNumbers(this.vals);
+            if(this.num == 3) this.vals = ["44,659","38,877","32,740"];
+            if(this.num == 4) this.vals = ["22,798","18,935","17,080"];
           },
           isMobile :function(){
             return window.matchMedia('screen and (max-width: 767px)').matches;

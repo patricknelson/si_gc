@@ -63,6 +63,7 @@ var MOBILE_NAV = (function($,w,undefined){
     };
     
     return {
-      checkLoad:checkLoad
+      checkLoad:checkLoad,
+      isMobile:_checkIsMobile
     };  
 })(jQuery,window);

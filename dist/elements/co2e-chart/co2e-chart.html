@@ -15,31 +15,36 @@
     .lt-blue{color:#66A2E4;}
       .top_label, .bottom_label{position:relative;z-index: 99;}
       .top_label{left: 92px;  top: 80px;}
-      .bottom_label{left:92px; top:56px;color:#fff;}
+      .bottom_label{left:92px; top:60px;color:#fff;}
+      .bottom_label.notChrome{top:76px;}
       .top_label>p, .bottom_label>p{position:absolute;font-size:18px;}
       .top_label>p.blue{left:-4px;}
       .top_label>p.green{left:20.8%;}
       .top_label>p.lt-blue{left:41.6%;}
       /** SCOPE 1 **/
-      .top_label.chart1{top:124px;}
-      .top_label.chart1>p.green{top:94px;}
-      .top_label.chart1>p.lt-blue{top:180px;}
+      .notChrome.top_label.chart1{  top: 320px;}/*top:124px;}*/
+      .top_label.chart1{  top: 300px;}
+      .top_label.chart1>p.green{  top: 16px;}/*top:94px;}*/
+      .top_label.chart1>p.lt-blue{top: 32px;}/*top: 180px;}*/
       /** SCOPE 2 **/
-      .top_label.chart2{top:64px;left:89px;}
-      .top_label.chart2>p.green{top:54px;}
-      .top_label.chart2>p.lt-blue{top:220px}
+      .notChrome.top_label.chart2{top: 88px;}
+      .top_label.chart2{top:68px;left:89px;} /*64px*/
+      .top_label.chart2>p.green{/*top:54px;*/top:8px;}
+      .top_label.chart2>p.lt-blue{/*top:220px*/top:30px;}
        /** SCOPE 3 **/ 
-      .top_label.chart3{top:205px;}
-      .top_label.chart3>p.green{top:-135px;}
-      .top_label.chart3>p.lt-blue{top:101px;}
+      .top_label.chart3{top:305px;}/*205px*/
+      .notChrome.top_label.chart3{  top: 323px;}
+      .top_label.chart3>p.green{/*top:-135px;*/top:-16px;}
+      .top_label.chart3>p.lt-blue{top:12px;/*101px;*/}
 
       
       /*.top_label>p.green{left:20.8%;top:85px;}
       .top_label>p.lt-blue{left:41.6%;top:206px;}*/
-
-      .bottom_label > p:first-child{left:1%;}
+      .bottom_label > p {font-size:16px;}
+      .bottom_label > p:first-child{left:2%;}
+      .bottom_label.notChrome > p:first-child{left:2%;}
       .bottom_label > p:nth-child(2) {left:23.6%;}
-      .bottom_label > p:last-child{left: 43.2%;}
+      .bottom_label > p:last-child{left: 44.2%;}
 
       /*.top_label > p{color:red!important;}*/
       @media screen and (min-width:1025px) and (max-width:1349px){
@@ -120,8 +125,14 @@
       Polymer({
           ready: function() {
             var height = (this.isMobile()) ? 350 : 500;
+            var caw    = "60%";
+            var cah    = "60%";
             this.cls  = (this.isNotChrome()) ? 'notChrome' : ''
-            this.opts = {"width": 400,"height": height,"chartArea": {"width": "60%", "height": "60%"},"bar": {"groupWidth": "90%"},"legend": {"position": "none" },"hAxis": { "textPosition": "none","gridlines": {"color": "transparent"},"baselineColor": 'transparent'},"vAxis": { "textPosition": "none","gridlines": {"color": "transparent"},"baselineColor": 'transparent'},"backgroundColor": { "fill":"transparent" },"annotations": {"alwaysOutside": true, "textStyle": {"fontSize": 18}},"animation":{"duration": 3000,"easing": "in"},"tooltip": {"trigger": "none"}}
+            if(this.num == 1 || this.num == 3) {
+                height = 470;
+                cah    = "70%";
+            }
+            this.opts = {"width": 400,"height": height,"chartArea": {"width": "60%", "height": cah},"bar": {"groupWidth": "90%"},"legend": {"position": "none" },"hAxis": { "textPosition": "none","gridlines": {"color": "transparent"},"baselineColor": 'transparent'},"vAxis": { "textPosition": "none","gridlines": {"color": "transparent"},"baselineColor": 'transparent', "minValue": 0, "maxValue": 230123},"backgroundColor": { "fill":"transparent" },"annotations": {"alwaysOutside": true, "textStyle": {"fontSize": 18}},"animation":{"duration": 3000,"easing": "in"},"tooltip": {"trigger": "none"}}
           },
           responseChanged: function(oldValue) {
             this.vals = [this.response[1][1],this.response[2][1],this.response[3][1]];

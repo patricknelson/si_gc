@@ -23,7 +23,9 @@
     .lt-blue{color:#66A2E4;}
       .top_label, .bottom_label{position:relative;z-index: 99;}
       .bottom_label{left:-6px; top:-349px;color:#fff;}
+      .notChrome.bottom_label{top: -329px;}
       #data_center2{bottom:232px;position:relative;left:-40%;}
+      .notChrome#data_center2{bottom:218px;}
 
       .top_label {
         left: -15px;
@@ -39,15 +41,20 @@
         top: 18px;
         font-weight:bold;
       }
+      .notChrome.top_label {top:44px;} 
       .top_label > p > span:last-child {font-weight:normal;font-size:10px;top:32px;left: 4.5px;}
+      
       .top_label > p.green{left:5px;}
       .top_label > p.green{left: 36.4%; top: 10px;}  
       .top_label > p.lt-blue{left: 69.6%;top: -172px;}
+      .notChrome.top_label> p.lt-blue{top: -170px;}
       .bottom_label > p{position:absolute;top: 55px;font-size: 18px;}
       .bottom_label > p:first-child {left: 4%;}
       .bottom_label > p:nth-child(2) {left: 36.6%;}   
       .bottom_label > p:nth-child(3) {left: 69.5%;} 
       /*.top_label >p{color:red!important;}*/
+      
+
       @media screen and (min-width:1025px) and (max-width:1349px){
         .top_label {left:0;}
         .bottom_label{left:12px;}
@@ -67,7 +74,12 @@
         .bottom_label > p:nth-child(2) {left: 33.6%;}   
         .bottom_label > p:nth-child(3) {left: 82.5%;} 
       }  
-
+      @media  screen and (max-width:1024px) and (orientation:portrait){
+        .bottom_label > p:nth-child(2) {left: 28.6%;}   
+        .bottom_label > p:nth-child(3) {left: 72.5%;} 
+        .top_label > p.green{left: 46.8%; }
+        .top_label > p.lt-blue{left: 92.6%;}
+      }
 
 
       @media only screen and (max-device-width: 640px), 
@@ -140,7 +152,7 @@
             var height = (this.isMobile()) ? 280 : 350;
             var font   = (this.isMobile()) ? 16 : 18;
             var gwdth  = (this.isMobile()) ? "70%" : "60";
-            this.opts  = {"width": width,"height": height,"bar": {"groupWidth": gwdth},"legend": {"position": "none" },"hAxis": { "textPosition": "none","gridlines": {"color": "#ffffff"},"baselineColor": 'transparent' },"vAxis": { "textPosition": "none","gridlines": {"color": "#ffffff"},"baselineColor": 'transparent'},"backgroundColor": { "fill":"transparent" },"annotations": {"alwaysOutside": true, "textStyle": {"fontSize": font}},"animation":{"duration": 3000,"easing": "in"},"tooltip": {"trigger": "none"} }
+            this.opts  = {"width": width,"height": height,"bar": {"groupWidth": gwdth},"legend": {"position": "none" },"hAxis": { "textPosition": "none","gridlines": {"color": "#ffffff"},"baselineColor": 'transparent' },"vAxis": { "textPosition": "none","gridlines": {"color": "#ffffff"},"baselineColor": 'transparent'},"backgroundColor": { "fill":"transparent" },"minValue": 0, "maxValue": 52245,"annotations": {"alwaysOutside": true, "textStyle": {"fontSize": font}},"animation":{"duration": 3000,"easing": "in"},"tooltip": {"trigger": "none"} }
             this.oldData = {
               2013:['44,490','23,929','50,158'],
               2012:['39,258','12,944','45,866']

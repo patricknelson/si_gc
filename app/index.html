@@ -13,12 +13,14 @@
   <!-- endbuild-->
   <link type="text/css" rel="stylesheet" href="styles/jquery.qtip.min.css" />
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://code.jquery.com/jquery-1.11.2.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script>
+  if((window.matchMedia("screen and (max-width: 767px)").matches) 
+      || (window.matchMedia("screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait)").matches)){window.location = "/m.html";}</script>
   <!-- build:js bower_components/webcomponentsjs/webcomponents.min.js -->
   <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
   <!-- endbuild -->
-
+  <script src="https://code.jquery.com/jquery-1.11.2.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
   <!-- will be replaced with elements/elements.vulcanized.html -->
   <link rel="import" href="elements/elements.html">
   <!-- endreplace-->
@@ -60,7 +62,6 @@
             <div class="slide-wrap">
             <div class="slide-title grey">
               <h5>Contribution by Source</h5>
-              <h6>(tonnes)</h6>
             </div>
                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                <div class="chart-title grey">Energy Use</div>
@@ -74,7 +75,7 @@
               </div>
                   
               <div class="energy-used-legend col-md-12">
-                  <div class="l1  ">DATA CENTER</div> 
+                  <div class="l1  ">DATA CENTERS</div> 
                   <div class="l2 ">OFFICES</div>
                    <div class="l3 ">BUSINESS TRAVEL</div>
                     <div class="l4 ">WAREHOUSES</div>
@@ -152,7 +153,7 @@
                   </div>
                   <div class="lower">
                     <div class="half col-xs-12 col-md-6 col-lg-6">
-                      <datacenter-table ctitle="Average Pue"></datacenter-table>
+                      <datacenter-table ctitle="Average PUE"></datacenter-table>
                     </div>
                     <div class="half col-xs-12 col-md-6 col-lg-6">
                       <datacenter-table ctitle="Server Count"></datacenter-table>

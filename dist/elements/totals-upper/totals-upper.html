@@ -18,7 +18,9 @@
   z-index: 1;  background: white;}
     .upper.row{border-bottom:none!important;}
    .lower > .inner {padding-top:14px;}
+
     .upper > .half:first-child > .half:last-child{border-right: 1px solid #ccc;}
+    .notChrome .upper > .half:first-child > h4{margin-right:30px;}
     div.upper, div.lower {height:240px;}
     div.slide-wrap div.upper{border-bottom:1px solid #ccc;}
     div.upper > .half:first-child > .col-lg-6 {  border-right: 1px solid #ccc;  height: 241px;}
@@ -45,6 +47,9 @@
       top: 310px;
     }
 	  h4{color: #796e65;font-size:18px;}
+    @media only screen and (max-width:1024px) and (orientation:portrait){
+        div.upper:after{width: 96%;}
+    }
     @media only screen and (max-device-width: 667px){
       :host{padding-left:10px;}
 
@@ -68,7 +73,7 @@
 
 	</style>
   <core-ajax auto url="{{url}}" handleAs="json" response="{{response}}"></core-ajax> 
-    <div class="upper row">
+    <div class="upper {{cls}} row">
       <div class="half col-xs-6 col-sm-6 col-md-6 col-lg-6">
         <h4 class="col-lg-offset-1">Energy Use</h4>
           <div class="col-xs-12 col-sm-6 col-xs-offset-0 col-md-6 col-lg-5 col-lg-offset-1">
@@ -96,10 +101,10 @@
         </div>
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
           <p class="blue figure medium ">{{carbon[1].val}}</p>
-          <p class="figure grey ">CO<sub>2</sub>e{{carbon[1].unit}}</p>
+          <p class="figure grey ">Tonnes{{carbon[1].unit}}</p>
           <br class="hidden-xs">
           <p class="blue figure medium ">{{carbon[2].val}}</p>
-          <p class="figure grey ">CO<sub>2</sub>e{{carbon[2].unit}}</p>
+          <p class="figure grey ">Tonnes{{carbon[2].unit}}</p>
           <div class="clearfix"></div>
         </div>
       </div>
@@ -109,6 +114,7 @@
     (function(){
       Polymer({
           ready: function() {
+            var cls = this.isNotChrome() ? 'notChrome' : ''; 
             if(!this.url){
               this.energy = [
                  {"val":"695,194","unit":"MW h"},
@@ -125,7 +131,10 @@
           responseChanged: function(oldValue) {
             this.energy = this.response.upper.energy_use;
             this.carbon = this.response.upper.carbon;
-          },     
+          }, 
+          isNotChrome:function(){
+            return (!!window.chrome && !!window.chrome.webstore) ? false: true;
+          }    
       });
     })();
   </script>

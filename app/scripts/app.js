@@ -31,6 +31,9 @@
   });
 
 MOBILE_NAV.checkLoad();
+if(MOBILE_NAV.isMobile()){
+  console.log('mobile');
+}
 var isNotChrome = (!!window.chrome && !!window.chrome.webstore) ? false : true;
 if(isNotChrome) $('body').addClass('notChrome');
 

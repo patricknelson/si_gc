@@ -175,7 +175,7 @@ div#main{
       #tabs > div:first-child{}
       #tabs slide-wrap > div {width: 96.5%;}
       #tabs div.half {float:left;   width: 49% !important;height: 86.05%;}
-      #tabs div.third {float:left; left: 1.75%;height: 100%;  position: relative;  z-index: 1;  background: transparent;}
+      /*#tabs div.third {float:left; left: 1.75%;height: 100%;  position: relative;  z-index: 1;  background: transparent;}*/
       .lower > .inner {padding-top:14px;}
 
       .upper > .half:first-child > .half:last-child{border-right: 1px solid #ccc;}
@@ -202,12 +202,13 @@ div#main{
       /** TAB 1 2014 TOTALS ONLY **/
       #tabs div[data-link^="2014"] div.half{padding-left: 3%;width: 46.9%!important;}
       #tabs div[data-link^="2014"] div.lower{padding-left: 3%;}
-
+      
      #energy_use1,#energy_use2{position: relative; top: -30px;left:15%}
-     #energy_use1{left:-10%;}
+     #energy_use1{left:-25%;}
+     .notChrome #energy_use1{left:-15%;}
 
      #tabs div[data-link^="ENERGY US"] div.half:nth-child(2) .chart-title.grey{left:124px;}
-     #tabs div[data-link^="ENERGY US"] div.slide-wrap > div:nth-child(3) > .chart-title.grey{  left: -25%;}
+     #tabs div[data-link^="ENERGY US"] div.slide-wrap > div:nth-child(3) > .chart-title.grey{  left: -30%;}
      .notChrome #tabs div[data-link^="ENERGY US"] div.slide-wrap > div:nth-child(3) > .chart-title.grey{  left: -30%;}
      #tabs div[data-link^="ENERGY US"] div.slide-wrap > div{padding-left:0;}
       /** LEGEND ENERGY USED CHART **/
@@ -265,29 +266,23 @@ div#main{
         background-color: #CCE0F6;
       }
       #tabs div[data-link^="ENERGY TRE"] div.lower .chart-title.hbar{left:-40.7%}
-      #energy_trends1,#energy_trends2,
-
-      /*#water1,#water2{
-          position: relative;
-          left: -132px;
-          top: 10px;
-      }*/
-      /*.water-icons{position:relative;top:48px;left:34px;/*16px;}
-      .water-icons >img{position:absolute;z-index:9;}
-      .upper .water-icons >img:last-child{top:54px;}
-      .lower .water-icons >img:first-child{top:5px;}
-      .lower .water-icons >img:nth-child(2){top:55px;}
-      .lower .water-icons >img:last-child{top:105px;}*/
+      #energy_trends1,#energy_trends2{left: -106px;position: relative;}
 
 
       /** CO2e **/
+      #tabs div[data-link^="CO2e"]{
+       .chart-title.grey.vbar{
+            left:60px;text-align:left;
+            span.q-ttip:after{  left: 90px;top:5px;}
+        }
+      }
       #co2e_trends1,#co2e_trends2,#co2e_trends3{
         position:relative;
         bottom: 0px;
       }
 
       /*** VERTICAL BAR GRAPH LABELS ***/
-      .top_label, .bottom_label{position:relative;z-index: 99;}
+      /*.top_label, .bottom_label{position:relative;z-index: 99;}
       .top_label{left: 92px;  top: 80px;}
       .bottom_label{left:92px; top:56px;color:#fff;}
       .top_label>p, .bottom_label>p{position:absolute;font-size:18px;}
@@ -300,7 +295,7 @@ div#main{
 
       .top_label>p.lt-blue{left:33.6%;top:206px;}
       .bottom_label > p:last-child{left: 35.2%;}
-      #tabs .chart-title.grey.vbar{left:60px;top: 20px; text-align: left;}
+      #tabs .chart-title.grey.vbar{left:60px;top: 20px; text-align: left;}*/
 
 
       /*** WATER CONSUMPTION ONLY ***/
@@ -311,11 +306,35 @@ div#main{
       .notChrome div[data-link^="WATER"] .slide-wrap > div:not(.clearfix):before{bottom:6px;}
       div[data-link^="WATER"] .slide-wrap > div.lower{padding-top:8px;}
       div[data-link^="WATER"] .slide-wrap > div.lower:before{bottom:0;border:none;}
-      .notChrome div[data-link^="WATER"] .slide-wrap > div.lower:before{bottom:-3px;}
+      .notChrome div[data-link^="WATER"] .slide-wrap > div.lower:before{bottom:-2px;}
       #water1,#water2{top:0;}
       #tabs div[data-link^="WATER"] .chart-title.hbar{text-align:left;left: 16px;top:4%;}
       #tabs div[data-link^="WATER"] div.slide-wrap div.upper{border-bottom:none;}
-
+      /** CHARTS **/
+      .notChrome{
+        #tabs div[data-link^="WATER"] {
+          div div{        
+            &:nth-child(2) water-chart{top:63px;}
+            &:nth-child(3) water-chart{top:-7px;}
+          }
+          .lower div{
+              &:nth-child(2) water-chart{top:13px;}
+              &:nth-child(3) water-chart{top:71px;}
+              &:nth-child(4) water-chart{top:86px;} 
+          }   
+        }
+      }
+      #tabs div[data-link^="WATER"] {
+        div div{        
+          &:nth-child(2) water-chart{top: 63px;}
+          &:nth-child(3) water-chart{top:-7px;}
+        }
+        .lower div{
+            &:nth-child(2) water-chart{top:12px;}
+            &:nth-child(3) water-chart{top:70px;}
+            &:nth-child(4) water-chart{top:85px;} 
+        }   
+      }
       /** Data CENTERS ONLY **/
       #tabs div[data-link^="DATA"] .chart-title.grey {text-align: left;}
       #tabs div[data-link^="DATA"] .upper{overflow:hidden;}

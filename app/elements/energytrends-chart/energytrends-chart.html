@@ -46,9 +46,13 @@
             var self = this;
             this.id = 'energy_trends' + this.num;
             this.isMobile = this.isMobile();
-            var width = (this.isMobile) ? 400 : 1000;
+
+            var width = (this.isMobile) ? 400 : 1200;
+            var width = (this.isIpadPortrait()) ? 1000 : width;
             var font = (this.isMobile) ? 13 : 18;
-            this.opts ={"width": width,"height": 200,"bar": {"groupWidth": "95%"},"legend": {"position": "none" },"hAxis": { "textPosition": "none","gridlines": {"color": "transparent"} },"vAxis": { "textPosition": "none","gridlines": {"color": "transparent"},"baselineColor": 'transparent'},"backgroundColor": { "fill":"transparent" },"annotations": {"alwaysOutside": true,"textStyle": {"fontSize": font}},"animation":{"duration": 3000,"easing": "in"},"tooltip": {"trigger": "none"},"enableInteractivity" : false };
+            var min = 0;
+            var max = 560000;
+            this.opts ={"width": width,"height": 200,"bar": {"groupWidth": "95%"},"legend": {"position": "none" },"hAxis": { "textPosition": "none","gridlines": {"color": "transparent"},"baselineColor": "transparent","minValue": min, "maxValue": max},"vAxis": { "textPosition": "none","gridlines": {"color": "transparent"},"baselineColor": "transparent"},"backgroundColor": { "fill":"transparent" },"annotations": {"alwaysOutside": true,"textStyle": {"fontSize": font}},"animation":{"duration": 3000,"easing": "in"},"tooltip": {"trigger": "none"},"enableInteractivity" : false };
             this.barLabels = {
               1:{
                 0:['2014',68],
@@ -74,6 +78,12 @@
             }
           });
           },
+          isIpadPortrait:function(){
+              return window.matchMedia('screen and (max-width:1200px) and (orientation:portrait)').matches;
+          }, 
+          isNotChrome:function(){
+            return (!!window.chrome && !!window.chrome.webstore) ? false: true;
+          },
           checkFixSafari:function(){
               if(this.isSafari()){
                 $('#'+this.id).css('left','0px');
@@ -89,7 +99,9 @@
             var lbls = this.getTrendsLabels();
             var trans = (this.isMobile) ? 3 : 15;
             lbls.forEach(function(el,i){
+              color = (i != 0) ? ((i==1)?'#86B817':'#66A2E4') : '#0064D2';
               $(el).attr('transform','translate('+trans+',0)');
+              $(el).find('text').attr('fill',color);
             });
           },
           getTrendsLabels:function()
@@ -106,8 +118,9 @@
             var bars = this.getTrendBars(),
             lbls = this.barLabels[this.num],
             self = this, i;
+            var x = (this.isNotChrome() && (!this.isSafari())) ? "260" : "170";
             bars.forEach(function(el,i){
-              var txt= self.buildLabelSvg(lbls[i][0],lbls[i][1],"170");
+              var txt= self.buildLabelSvg(lbls[i][0],lbls[i][1],x);
               $(el).after(txt);
             });
           },
