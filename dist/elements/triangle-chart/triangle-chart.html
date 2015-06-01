@@ -13,13 +13,22 @@
 	  .lt-blue{color:#66A2E4;}
     .small{font-weight:bold;}
     .xsmall{font-size:10px;}
-    .chart-title{text-align:left; position:relative; left:-40px;font-size:18px;z-index:9;  margin-bottom: 15px;}
-      .triangle_label{position:absolute;left:165px;top:68px;}
-      .triangle_label.green{left:220px;top:136px;}
-      .triangle_label.lt-blue{left:294px;top:51px;}
+    .chart-title{text-align:left; position:relative; left:-40px!important;font-size:18px;z-index:9;  margin-bottom: 15px;}
+      .triangle_label{position:absolute;left:142px;top:36px;}/*165*//*68*/
+      .triangle_label.green{left:218px;top:68px;}/*220 136*/
+      .triangle_label.lt-blue{left:296px;top:28px;}/*294 51*/
       .triangle_label > span{font-size: 12px;position: absolute;color: #796e65;left: 4px;top: 18px;}
+      .triangle_label > span:first-of-type:before {
+        content: "";
+        display:block;
+        height:1px;
+        width:128%;
+        position:relative;
+        left:-18%;
+        background-color:#ccc;
+      }
       .triangle_label > span:last-child{font-size: 10px;left: 5.5px;top: 32px;}
-      #triangles {position:relative; top: 54px;}
+      #triangles {position:relative;top: -38px;left: -66px;width: 110%;}/*top: 14px; left: -86px; width: 120%;top: 54px;*/}
 
        @media screen and (min-width:1025px) and (max-width:1349px){
         #triangles {width: 115%;top:24px;left:-46px;}

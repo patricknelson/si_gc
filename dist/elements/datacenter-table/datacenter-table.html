@@ -12,7 +12,8 @@
 	  .grey{color:#796e65;}
 	  .lt-blue{color:#66A2E4;}
 
-      .chart-title{text-align:left; position:relative; left:-40px;font-size:18px;z-index:9;  margin-bottom: 15px;}
+      .chart-title{text-align:left; position:relative; left:-40px!important;font-size:18px;z-index:9;  margin-bottom: 15px;}
+      .chart-title.tbl-2.notChrome{left:-60px;}
   	  .chart-data{margin-top:20px;}
       .chart-data.tbl-1{margin-left:-6px;}
       .chart-data.tbl-2{margin-left:-26px;}
@@ -33,7 +34,7 @@
           .notChrome .chart-title{left:10px;}
       }
 	</style>
-    <div class="chart-title grey {{cls2}}">{{ctitle}}</div>
+    <div class="chart-title grey {{cls}} {{cls2}}">{{ctitle}}</div>
 		<table class="chart-data {{cls}}">
 		  <tbody>
 		        <tr template repeat="{{location in locations}}" class="{{location.color}}">
