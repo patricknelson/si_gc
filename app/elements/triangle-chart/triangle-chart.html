@@ -28,21 +28,33 @@
         background-color:#ccc;
       }
       .triangle_label > span:last-child{font-size: 10px;left: 5.5px;top: 32px;}
-      #triangles {position:relative;top: -38px;left: -66px;width: 110%;}/*top: 14px; left: -86px; width: 120%;top: 54px;*/}
+      #triangles {position:relative;top: -38px;left: -66px;width: 110%;}/*top: 14px; left: -86px; width: 120%;top: 54px;}*/
 
-       @media screen and (min-width:1025px) and (max-width:1349px){
-        #triangles {width: 115%;top:24px;left:-46px;}
-        .triangle_label{left:110px;top:49px;}
-        .triangle_label.green{left:188px;top:116px;}
-        .triangle_label.lt-blue{left: 275px;top:30px;}
-        .triangle_label > span {left:10px;}
+        @media screen and (min-width:1025px) and (max-width:1349px){
+          #triangles {width: 125%;left:-57px;top:-16px;}
+        .triangle_label{left:122px;top:52px;}
+        .triangle_label.green{left:198px;top:82px;}
+        .triangle_label.lt-blue{left: 260px;top:48px;}
+        .triangle_label > span {left:4px;}
       }
-
+      @media screen and (min-width:1160px) and (max-width:1300px){
+          #triangles {top:-26px;}
+      }
+      @media screen and (min-width:1260px) and (max-width:1349px){
+          #triangles {top:-50px;}
+      }
+      @media screen and (min-width:1025px) and (max-width:1139px){
+          #triangles {width: 125%;left:-60px;top:2px;}
+        .triangle_label{left:116px;top:56px;}
+        .triangle_label.green{left:178px;top:84px;}
+        .triangle_label.lt-blue{left: 250px;top:52px;}
+        .triangle_label > span {left:4px;}
+      }
       @media screen and (max-width:1024px){ 
-        #triangles {width:120%;left:-47px;}
-        .triangle_label{  left: 80px;}
-        .triangle_label.green{left:148px;}
-        .triangle_label.lt-blue{left: 225px;}
+        #triangles {width:120%;top:18px;}
+        .triangle_label{  left: 80px; top:76px;}
+        .triangle_label.green{left:148px;top:98px;}
+        .triangle_label.lt-blue{left: 208px;top:70px;}
        }
        @media screen and (max-width:1200px) and (orientation:portrait){
         #triangles {width: auto;top: 54px;}

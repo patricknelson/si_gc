@@ -10,16 +10,40 @@
   <style>
     *, :after, :before{-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
     body{margin:0;}
-    img{vertical-align: middle; border: 0;max-width:100%}
+    img{vertical-align: middle; border: 0;max-width:100%;width:100%;}
   </style>
+  <script>
+    var path = window.location.pathname;
+    path =  path.substring(0, path.lastIndexOf("/"))+'/';
+
+    var isDesktop = function() {
+      console.log(typeof window.orientation === 'undefined');
+      return (typeof window.orientation === 'undefined') ? true : false;
+    };
+    window.onload = function () {
+            window.addEventListener("orientationchange", function() {
+                window.location = path + "index.html";
+            }, false);
+    };
+    window.addEventListener('resize', function(){
+      if(window.matchMedia("screen and (min-width : 1025px)").matches){
+        console.log(isDesktop());
+        if(isDesktop()){
+          window.location = path + "index.html";
+        }
+      }
+    }, false);
+
+
+  </script>
 </head>
 
 <body unresolved fullbleed layout vertical>
-<img src="/gc/img/gc1.jpg" />
-<img src="/gc/img/gc2.jpg" />
-<img src="/gc/img/gc3.jpg" />
-<img src="/gc/img/gc4.jpg" />
-<img src="/gc/img/gc5.jpg" />
-<img src="/gc/img/gc6.jpg" />
+<img src="../img/gc1.jpg" />
+<img src="../img/gc2.jpg" />
+<img src="../img/gc3.jpg" />
+<img src="../img/gc4.jpg" />
+<img src="../img/gc5.jpg" />
+<img src="../img/gc6.jpg" />
 </body>
 </html>

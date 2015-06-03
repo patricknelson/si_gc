@@ -64,25 +64,61 @@
       .bottom_label > p:nth-child(3) {left: 69.5%;} 
       /*.top_label >p{color:red!important;}*/
       
-
-      @media screen and (min-width:1025px) and (max-width:1349px){
-        .top_label {left:0;}
-        .bottom_label{left:12px;}
-        .top_label > p.green{left: 40.8%; }
-        .top_label > p.lt-blue{left: 81.6%;}
-        .bottom_label > p:nth-child(2) {left: 41.6%;}   
-        .bottom_label > p:nth-child(3) {left: 81.5%;}
+      @media screen and (min-width:1260px) and (max-width:1349px){
+        .top_label > p.green{left: 38.6%; }
+        .top_label > p.lt-blue{left: 74.6%;}
+        .bottom_label{left:3px;}
+        .bottom_label > p:nth-child(2) {left: 37.6%;}   
+        .bottom_label > p:nth-child(3) {left: 72.5%;}
+      }  
+      @media screen and (min-width:1199px) and (max-width:1259px){
+        #data_center2{left: -50%!important;}
+        /*.top_label {left: -34%;}
+        .bottom_label{left:6px;}
+        .top_label > p.blue{left: 24%; }
+        .top_label > p.green{left: 64.4%; }
+        .top_label > p.lt-blue{left: 104.6%;}
+        .bottom_label > p:first-child {left: -9%;}
+        .bottom_label > p:nth-child(2) {left: 32%;}   
+        .bottom_label > p:nth-child(3) {left: 72.5%;}*/
       }
-
+      @media screen and (min-width:1025px) and (max-width:1200px){
+        #data_center2{left: -60%!important;}
+          .top_label {left: -34%;}
+        .bottom_label{left:6px;}
+        .top_label > p.blue{left: 24%; }
+        .top_label > p.green{left: 64.4%; }
+        .top_label > p.lt-blue{left: 104.6%;}
+        .bottom_label > p:first-child {left: -9%;}
+        .bottom_label > p:nth-child(2) {left: 32%;}   
+        .bottom_label > p:nth-child(3) {left: 72.5%;}
+      }
+      @media screen and (min-width:1150px) and (max-width:1199px){
+          .top_label > p.green{left: 59.4%; }
+        .top_label > p.lt-blue{left: 96.6%;}
+         .bottom_label{left:0;}
+                 .bottom_label > p:nth-child(2) {left: 29%;}   
+        .bottom_label > p:nth-child(3) {left: 66.5%;}
+      }
+      @media screen and (min-width:1100px) and (max-width:1149px){
+        .top_label > p.green{left: 61.4%; }
+        .top_label > p.lt-blue{left: 101.6%;}
+         
+      }  
+      @media screen and (min-width:1025px) and (max-width:1099px){
+        .top_label > p.green{left: 68.4%; }
+        .top_label > p.lt-blue{left: 109.6%;}
+          .bottom_label{left:12px;}
+      }  
       @media screen and (max-width:1024px){ 
-        #data_center2{left: -68%;}
-        .top_label {left: -49px;}
+        #data_center2{left: -55%!important;}
+        .top_label {left: -42px;}
         .bottom_label{left:10px;}
-        .top_label > p.green{left: 49.8%; }
-        .top_label > p.lt-blue{left: 98.6%;}
-        .bottom_label > p:first-child {left: -17%;}
-        .bottom_label > p:nth-child(2) {left: 33.6%;}   
-        .bottom_label > p:nth-child(3) {left: 82.5%;} 
+        .top_label > p.green{left: 43.8%; }
+        .top_label > p.lt-blue{left: 79.6%;}
+        .bottom_label > p:first-child {left: -9%;}
+        .bottom_label > p:nth-child(2) {left: 28.6%;}   
+        .bottom_label > p:nth-child(3) {left: 65.5%;} 
       }  
       @media  screen and (max-width:1024px) and (orientation:portrait){
         .bottom_label > p:nth-child(2) {left: 28.6%;}   
@@ -158,7 +194,7 @@
       Polymer({
           ready: function() {
             this.cls   = (this.isNotChrome()) ? "notChrome" : '';
-            var width  = (this.isMobile()) ? 500 : 600;
+            var width  = (this.isTablet()) ? 500 : 600;
             var height = (this.isMobile()) ? 280 : 350;
             var font   = (this.isMobile()) ? 16 : 18;
             var gwdth  = (this.isMobile()) ? "70%" : "60";
@@ -174,6 +210,9 @@
           },  
           isMobile :function(){
             return window.matchMedia('screen and (max-width: 767px)').matches;
+          },
+          isTablet:function(){
+            return window.matchMedia('screen and (max-width: 1024px)').matches;
           },
           isNotChrome:function(){
             return (!!window.chrome && !!window.chrome.webstore) ? false: true;

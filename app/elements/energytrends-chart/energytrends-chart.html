@@ -46,9 +46,8 @@
             var self = this;
             this.id = 'energy_trends' + this.num;
             this.isMobile = this.isMobile();
-
             var width = (this.isMobile) ? 400 : 1200;
-            var width = (this.isIpadPortrait()) ? 1000 : width;
+            var width = (this.isTablet()) ? 1000 : width;
             var font = (this.isMobile) ? 13 : 18;
             var min = 0;
             var max = 560000;
@@ -94,6 +93,9 @@
           },
           isMobile :function(){
             return window.matchMedia('screen and (max-width: 767px)').matches;
+          },
+          isTablet:function(){
+            return window.matchMedia('screen and (max-width: 1136px)').matches;
           },
           fixTrendsLabels:function(){
             var lbls = this.getTrendsLabels();

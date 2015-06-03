@@ -84,24 +84,66 @@
       .bottom_label.lower.notChrome.chart5{top:16.8%;}
       .chart5.water-loc.grey{  top: -13em;}
 
-      /**.top_label > p{color:red!important;}**/
-      @media screen and (min-width:1025px) and (max-width:1349px){
+      @media screen and (min-width:1200px) and (max-width:1349px){
         :host{  position: relative;  left: -16%;}
+        .notChrome.bottom_label{left:28%!important;}
         .top_label > p.green{left: 23.8%; }
         .top_label > p.lt-blue{left: 47.6%;}
         .bottom_label > p:nth-child(2) {left: 26.6%;}   
         .bottom_label > p:nth-child(3) {left: 51.2%;}
       }
+      @media screen and (min-width:1280px) and (max-width:1349px){
+        .notChrome.bottom_label{left:27%!important;}
+        .top_label.notChrome > p.lt-blue{left: 46%;}
+        .bottom_label > p:nth-child(2) {left: 23.6%;}   
+        .bottom_label > p:nth-child(3) {left: 48%;}
+      }  
 
+      @media screen and (min-width:1140px) and (max-width:1199px){
+        :host{  position: relative;  left: -16%;}
+        .bottom_label{left:34%!important;}
+        .notChrome.bottom_label{left:32%!important;}
+        .top_label > p.green{left: 28%; }
+        .top_label > p.lt-blue{left: 53%;}
+        .top_label.notChrome > p.lt-blue{left: 54%;}
+        .bottom_label > p:nth-child(2) {left: 28%;}   
+        .bottom_label > p:nth-child(3) {left: 52.2%;}
+      }  
+      @media screen and (min-width:1100px) and (max-width:1140px){
+        :host{  position: relative;  left: -16%;}
+        .bottom_label{left:37%!important;}
+        .bottom-label.notChrome{left:34%!important;}
+        .top_label > p.lt-blue{left: 58.5%!important;}
+        .top_label.notChrome > p.lt-blue{left: 55%!important;}
+
+        .top_label > p.green{left: 26.8%; }
+        .bottom_label > p:nth-child(2) {left: 29%;}   
+        .bottom_label > p:nth-child(3) {left: 55%;}
+      }
+            @media screen and (min-width:1025px) and (max-width:1099px){
+              :host{  position: relative;  left: -18%;}
+              .bottom_label{left:37%;}
+              .notChrome.bottom_label{left:34%!important;}
+        .top_label > p.lt-blue{left: 58.5%!important;}
+        .top_label.notChrome > p.lt-blue{left: 59%!important;}
+        .top_label > p.green{left: 26.8%; }
+              .bottom_label > p:nth-child(2) {left: 32%;}   
+        .bottom_label > p:nth-child(3) {left: 62.2%;}
+         }     
       @media screen and (max-width:1024px){  
         :host{left: -20%;}
-        .bottom_label{left:60%;}
+        .bottom_label.notChrome{left:65%;}
         .top_label>p.green {left: 31.6%;}
         .top_label>p.lt-blue {left: 62.6%;}
         .bottom_label > p:first-child {left: -55px;}
         .bottom_label > p:nth-child(2) {left: 10%;}
-        .bottom_label > p:last-child {left: 109px;}
+        .bottom_label > p:nth-child(3) {left: 104px;}
         .water-loc.grey {font-size: 14px;top: -8.4em;left: 5.3em;}
+        .chart1.water-loc.grey {top:-12em;}
+        .chart2.water-loc.grey {top:-7em;}
+        .chart4.water-loc.grey{top:-12.5em;}
+        .chart5.water-loc.grey{top:-13.6em;}
+
       }
       @media screen and (max-width: 1200px) and (orientation:portrait){
         :host {left: -39%;}
@@ -182,7 +224,7 @@
                     options='{{opts}}'
                     data='scripts/data/water{{num}}.json'>
        </google-chart>
-       <div class="bottom_label chart{{num}} {{cls}} {{cls2}}"><p>2014</p><p>2013</p><p>2012</p></div>
+       <div class="bottom_label chart{{num}} {{cls}} {{cls2}}"><p id="y3">2014</p><p id="y2">2013</p><p id="y1">2012</p></div>
        <div class="water-loc grey chart{{num}} {{cls}} {{cls2}}">{{locations[num]}}</div>
   </template>
   <script>

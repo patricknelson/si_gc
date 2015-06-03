@@ -32,7 +32,10 @@
 
 var isNotChrome = (!!window.chrome && !!window.chrome.webstore) ? false : true;
 if(isNotChrome) $('body').addClass('notChrome');
-
+window.addEventListener("orientationchange", function() {
+  console.log(window.orientation);
+  window.location = "/m.html";
+}, false);
 // wrap document so it plays nice with other libraries
 // http://www.polymer-project.org/platform/shadow-dom.html#wrappers
 })(wrap(document));

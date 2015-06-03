@@ -14,8 +14,26 @@
   <link type="text/css" rel="stylesheet" href="styles/jquery.qtip.min.css" />
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
   <script>
-  if((window.matchMedia("screen and (max-width: 767px)").matches) 
-      || (window.matchMedia("screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait)").matches)){window.location = "/gc/m.html";}</script>
+  var path = window.location.pathname;
+    path =  path.substring(0, path.lastIndexOf("/"))+'/';
+    var isTouchSupported = function() {
+      var msTouchEnabled = window.navigator.msMaxTouchPoints;
+      var generalTouchEnabled = "ontouchstart" in document.createElement("div");
+      if (msTouchEnabled || generalTouchEnabled) {return true;}
+      return false;
+    };
+  var doMobileImg = function(){
+    var isMobile = ((window.matchMedia("screen and (max-width: 767px)").matches) || (window.matchMedia("screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait)") && isTouchSupported())) ? true : false;
+    
+    var isSmallDesktop = (window.matchMedia("screen and (max-width : 1024px)").matches && !isTouchSupported()) ? true : false;
+      if(isMobile || isSmallDesktop){
+        window.location = path + "m.html"; 
+      }
+  };
+  doMobileImg();
+
+  window.addEventListener('resize', doMobileImg, false);
+  </script>
   <!-- build:js bower_components/webcomponentsjs/webcomponents.min.js -->
   <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
   <!-- endbuild -->

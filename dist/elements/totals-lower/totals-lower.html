@@ -30,14 +30,20 @@
     .figure.medium{font-size:24px;}
     .chart-title{text-align:left; position:relative; left:20px;font-size:18px;z-index:9;  margin-bottom: 15px;}
 	  h4{color: #796e65;font-size:18px;margin-left:30px;}
+
+    @media screen and (min-width:1025px) and (max-width:1249px){
+      div.lower:after {left:15.5%;}
+      .inner .third:nth-child(2){padding-left:0;}
+      .inner .third:nth-child(3){margin-left:-40px;}
+    }
     @media screen and (max-width:1024px){
        div.third{
         position: relative;
         left: -40px;
       } 
       .inner .third:nth-child(3){padding-left:0;left:-60px;}
-      .inner .third:nth-child(4){left:-74px;}
-      div.lower:after{  left: 10.5%;}
+      .inner .third:nth-child(4){left:-94px;}
+      div.lower:after{  left: 13.5%;}
     }
     @media screen and (max-width:1024px) and (orientation:portrait){
       div.third{position: relative;left: -5px;} 

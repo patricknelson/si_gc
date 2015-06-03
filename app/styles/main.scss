@@ -267,7 +267,7 @@ div#main{
       }
       #tabs div[data-link^="ENERGY TRE"] div.lower .chart-title.hbar{left:-40.7%}
       #energy_trends1,#energy_trends2{left: -106px;position: relative;}
-
+      .notChrome #energy_trends1,.notChrome #energy_trends2{left: -50px!important;position: relative;}
 
       /** CO2e **/
       #tabs div[data-link^="CO2e"]{
@@ -376,6 +376,9 @@ div#main{
       @media screen and (max-width:1148px){
         #pager a {font-size:11px;}
       }
+       @media screen and (max-width:1300px){
+          #tabs div[data-link^="DATA"] .info-right-top {right:30px;}
+       }
       /** TABLETish **/
       @media screen and (max-width:1200px){
         #main #wrapper > .caroufredsel_wrapper {height:auto;}
@@ -385,7 +388,9 @@ div#main{
         #tabs > div:first-child {}
         /*#energy_use1,#energy_use2 {left: -44%;}*/
         div[data-link^="ENERGY USE"] #tabs > div div.slide-wrap > div {top: -40px;background: transparent;}
+        #tabs div[data-link^="ENERGY TRE"] div.lower .chart-title.hbar{left:-35.7%}
         #tabs div[data-link^="ENERGY US"] div.slide-wrap > div {left: 10px;top:-15px;}
+        #energy_use1 {left: -5%;}
         #tabs .chart-title {
               left: -100px;
               top: 14px;
@@ -393,7 +398,7 @@ div#main{
         #tabs div[data-link^="ENERGY US"] div.slide-wrap > div.energy-used-legend{left:60px;top:25px;}
         #tabs .chart-title.hbar {left: -38%;}
         #tabs .chart-title.grey.vbar {left: 36px;}
-        #tabs div[data-link^="DATA"] .info-right-top {right: 25px;}
+        /*#tabs div[data-link^="DATA"] .info-right-top {right: 25px;}*/
         #tabs div[data-link^="DATA"] .lower > .half{padding-left:5%}
         #tabs div[data-link^="WATER"] .chart-title.hbar {top:5%;margin-bottom:24px;}
         #tabs div[data-link^="WATER"] .chart-title.hbar br {display:none;}
@@ -406,7 +411,7 @@ div#main{
         #wrapper{width: 748px;left: -11.4%; padding-top:2px;}
         #tabs .chart-title.grey.vbar {left: 2px;}
         #tabs div[data-link^="DATA"] .info-right-top{top:-92px;}
-        #triangles {width: auto;top: 54px;}
+        /*#triangles {width: auto;top: 54px;}*/
         #tabs div[data-link^="ENERGY US"] div.slide-wrap > div {left: 10px!important;}
         #tabs div[data-link^="ENERGY US"] div.slide-wrap > div.energy-used-legend{left:40px!important;}
         div[data-link^="WATER"] .slide-wrap > div:first-child .col-sm-6{width: 41.66666667%;}
